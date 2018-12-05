@@ -1,0 +1,15 @@
+version: "3.7"
+
+networks:
+  dapo_bridge:
+
+services:
+
+  dapo-db-postgres:
+    build:
+      context: ./dapo-db-postgres
+    image: dapo/dapo-db-postgres:latest
+    ports:
+      - 5432:5432
+    networks:
+      - dapo_bridge

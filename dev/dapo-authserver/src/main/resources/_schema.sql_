@@ -1,0 +1,134 @@
+DROP TABLE relations;
+DROP TABLE authorities;
+DROP TABLE registrations;
+DROP TABLE recoveryRequests;
+DROP TABLE relationRequests;
+DROP TABLE users;
+DROP TABLE userDetails;
+
+create table IF NOT EXISTS users(
+  username VARCHAR(50) not null primary key,
+  password VARCHAR(255) not null,
+  enabled boolean not null,
+  phone VARCHAR(100) not null,
+  firstName VARCHAR(100) not null,
+  lastName VARCHAR(100) not null,
+  email VARCHAR(50) not null,
+  lang VARCHAR(10) not null,
+  created timestamp default now(),
+  lastModified timestamp default now() on update now(),
+  createdBy VARCHAR(50) NULL,
+  lastModifiedBy VARCHAR(50) NULL
+);
+
+create index ix_users_username on users(username) using HASH;
+
+create table IF NOT EXISTS authorities (
+  username VARCHAR(50) not null,
+  authority VARCHAR(50) not null,
+  scope VARCHAR(50) not null,
+  created timestamp default now(),
+  lastModified timestamp default now() on update now(),
+  createdBy VARCHAR(50) NULL,
+  lastModifiedBy VARCHAR(50) NULL,
+  constraint fk_authorities_users
+  foreign key(username) references users(username)
+);
+create unique index ix_auth_username on authorities (username,authority,scope);
+
+create table IF NOT EXISTS registrations (
+  username VARCHAR(50) not null primary key,
+  nonce VARCHAR(255) not null,
+  confirmed boolean not null,
+  confirmUrl VARCHAR(255) null,
+  created timestamp default now(),
+  lastModified timestamp default now() on update now(),
+  createdBy VARCHAR(50) NULL,
+  lastModifiedBy VARCHAR(50) NULL
+);
+create index ix_registrations_username on registrations(username) using HASH;
+
+create table IF NOT EXISTS recoveryRequests (
+  email VARCHAR(255) not null,
+  username VARCHAR(255) not null ,
+  nonce VARCHAR(255) not null,
+  done BOOLEAN NOT NULL,
+  created timestamp default now(),
+  lastModified timestamp default now() on update now(),
+  createdBy VARCHAR(50) NULL,
+  lastModifiedBy VARCHAR(50) NULL,
+  constraint fk_recoveryRequests_users
+  foreign key(username) references users(username)
+);
+create unique index ix_recoveryRequests_nonce on recoveryRequests(nonce) using HASH;
+
+create table IF NOT EXISTS relations (
+  username VARCHAR(255) not null,
+  target VARCHAR(255) not null ,
+  relationType VARCHAR(255) not null,
+  created timestamp default now(),
+  lastModified timestamp default now() on update now(),
+  createdBy VARCHAR(50) NULL,
+  lastModifiedBy VARCHAR(50) NULL,
+  constraint fk_relations_users
+  foreign key(username) references users(username)
+);
+create unique index ix_relations_username_target_relationType on relations (username,target);
+
+create table IF NOT EXISTS relationRequests (
+  requestor VARCHAR(255) not null,
+  target VARCHAR(255) not null ,
+  status VARCHAR(255) not null,
+  relationType VARCHAR(255) not null,
+  created timestamp default now(),
+  lastModified timestamp default now() on update now(),
+  createdBy VARCHAR(50) NULL,
+  lastModifiedBy VARCHAR(50) NULL,
+  constraint fk_relationRequests_users
+  foreign key(requestor) references users(username)
+);
+create unique index ix_relationRequests_requestor_target on relationRequests (requestor,target);
+
+create table IF NOT EXISTS userDetails (
+  username VARCHAR(50) not null,
+  prop VARCHAR(255) not null,
+  val LONGTEXT
+);
+create unique index ix_username_prop on userDetails (username,prop);
+
+
+LOCK TABLES `registrations` WRITE;
+/*!40000 ALTER TABLE `registrations` DISABLE KEYS */;
+INSERT INTO `registrations` VALUES ('doctor@aossia.com','be49086c-aadc-4dcf-9910-feac4d1698d9',0,'','2017-08-16 08:03:35','2017-08-16 08:03:35',NULL,NULL);
+INSERT INTO `registrations` VALUES ('patient@aossia.com','be49086c-aadc-4dcf-9910-feac4d1698d1',0,'','2017-08-16 08:03:35','2017-08-16 08:03:35',NULL,NULL);
+INSERT INTO `registrations` VALUES ('admin@aossia.com','be49086c-aadc-4dcf-9910-feac4d1698d2',0,'','2017-08-16 08:03:35','2017-08-16 08:03:35',NULL,NULL);
+/*!40000 ALTER TABLE `registrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES ('doctor@aossia.com','$2a$10$zvC1Mpiiy.3fkZ7XVLSOaePPOs6T5YV/metSmN2n2QrrFXL8ZCA8q',1,'359886742867','Doctor','Aossia','doctor@aossia.com','bg','2017-08-16 08:03:35','2017-08-16 08:04:12',NULL,NULL);
+INSERT INTO `users` VALUES ('patient@aossia.com','$2a$10$zvC1Mpiiy.3fkZ7XVLSOaePPOs6T5YV/metSmN2n2QrrFXL8ZCA8q',1,'359892265902','Patient','Aossia','patient@aossia.com','bg','2017-08-16 08:03:35','2017-08-16 08:04:12',NULL,NULL);
+INSERT INTO `users` VALUES ('admin@aossia.com','$2a$10$zvC1Mpiiy.3fkZ7XVLSOaePPOs6T5YV/metSmN2n2QrrFXL8ZCA8q',1,'359892265902','Admin','Aossia','admin@aossia.com','bg','2017-08-16 08:03:35','2017-08-16 08:04:12',NULL,NULL);
+INSERT INTO `users` VALUES ('assistent@aossia.com','$2a$10$zvC1Mpiiy.3fkZ7XVLSOaePPOs6T5YV/metSmN2n2QrrFXL8ZCA8q',1,'359892265902','Assistent','Aossia','tma@aossia.com','bg','2017-08-16 08:03:35','2017-08-16 08:04:12',NULL,NULL);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+LOCK TABLES `authorities` WRITE;
+/*!40000 ALTER TABLE `authorities` DISABLE KEYS */;
+INSERT INTO `authorities` VALUES ('doctor@aossia.com','ROLE_DOCTOR','tma','2017-08-16 08:04:21','2017-08-16 08:04:21',NULL,NULL);
+INSERT INTO `authorities` VALUES ('doctor@aossia.com','ROLE_USER','tma','2017-08-16 08:03:35','2017-08-16 08:05:09',NULL,NULL);
+INSERT INTO `authorities` VALUES ('patient@aossia.com','ROLE_USER','tma','2017-08-16 08:03:35','2017-08-16 08:05:09',NULL,NULL);
+INSERT INTO `authorities` VALUES ('admin@aossia.com','ROLE_USER','tma','2017-08-16 08:03:35','2017-08-16 08:05:09',NULL,NULL);
+INSERT INTO `authorities` VALUES ('admin@aossia.com','ROLE_ADMIN','tma','2017-08-16 08:03:35','2017-08-16 08:05:09',NULL,NULL);
+INSERT INTO `authorities` VALUES ('assistent@aossia.com','ROLE_TMASSISTENT','tma','2017-08-16 08:03:35','2017-08-16 08:05:09',NULL,NULL);
+/*!40000 ALTER TABLE `authorities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+LOCK TABLES `userDetails` WRITE;
+/*!40000 ALTER TABLE `userDetails` DISABLE KEYS */;
+INSERT INTO `userDetails` VALUES ('doctor@aossia.com','sipuser','1000');
+INSERT INTO `userDetails` VALUES ('patient@aossia.com','sipuser','1001');
+/*!40000 ALTER TABLE `userDetails` ENABLE KEYS */;
+UNLOCK TABLES;
+
