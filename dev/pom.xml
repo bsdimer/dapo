@@ -18,6 +18,7 @@
         <module>dapo-api</module>
         <module>dapo-portal</module>
         <module>dapo-authserver</module>
+        <module>dapo-website</module>
     </modules>
 
 </project>
