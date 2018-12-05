@@ -1,4 +1,4 @@
-package com.dapo.portal;
+package com.dapo.website;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,9 +12,9 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 @EnableZuulProxy
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ZxPortalApplication {
+public class DapoWebSiteApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ZxPortalApplication.class, args);
+        SpringApplication.run(DapoWebSiteApplication.class, args);
     }
 }

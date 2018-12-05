@@ -1,20 +1,20 @@
-package com.dapo;
+package com.dapo.portal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 /**
- * Created by Dimitar Dimitrov
+ * Created by dimer on 21.11.17.
  */
+
+@EnableZuulProxy
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableResourceServer
-public class ZontaAuthorizationService {
+public class DapoPortalApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ZontaAuthorizationService.class, args);
+        SpringApplication.run(DapoPortalApplication.class, args);
     }
-
 }

@@ -6,8 +6,8 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @EnableEurekaServer
 @SpringBootApplication
-public class ZontaEurekaServerApplication {
+public class DapoEurekaServerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ZontaEurekaServerApplication.class, args);
+        SpringApplication.run(DapoEurekaServerApplication.class, args);
     }
 }

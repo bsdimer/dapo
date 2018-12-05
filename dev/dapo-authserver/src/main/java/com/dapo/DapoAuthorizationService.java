@@ -1,20 +1,20 @@
-package com.dapo.website;
+package com.dapo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 /**
- * Created by dimer on 21.11.17.
+ * Created by Dimitar Dimitrov
  */
-
-@EnableZuulProxy
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ZxPortalApplication {
+@EnableResourceServer
+public class DapoAuthorizationService {
 
     public static void main(String[] args) {
-        SpringApplication.run(ZxPortalApplication.class, args);
+        SpringApplication.run(DapoAuthorizationService.class, args);
     }
+
 }
