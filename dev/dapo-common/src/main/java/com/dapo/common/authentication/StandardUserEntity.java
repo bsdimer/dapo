@@ -1,4 +1,4 @@
-package com.dapo.common.entity;
+package com.dapo.common.authentication;
 
 import com.dapo.common.authentication.StandardUser;
 import org.springframework.security.core.GrantedAuthority;

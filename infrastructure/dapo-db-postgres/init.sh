@@ -2,7 +2,7 @@
 set -e
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
-    CREATE ROLE dapodbuser WITH LOGIN PASSWORD 'P@ssp0rt';
-    CREATE DATABASE dapodb;
-    GRANT ALL PRIVILEGES ON DATABASE dapodb TO dapodbuser;
+    CREATE ROLE dapo WITH LOGIN PASSWORD 'dapo';
+    CREATE DATABASE dapo;
+    GRANT ALL PRIVILEGES ON DATABASE dapo TO dapo;
 EOSQL

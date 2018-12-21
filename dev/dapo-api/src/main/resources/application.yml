@@ -12,7 +12,21 @@ server:
       - application/json
       - application/javascript
   servlet:
-    context-path: /
+    context-path: /api/v1
 
 spring:
-  application.name: dtsp-api
+  application.name: dapo-api
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+      use-new-id-generator-mappings: true
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://${DBHOST:localhost}:5432/${DBNAME:dapo}
+    username: ${DBUSER:dapo}
+    password: ${DBPASS:dapo}
+    driverClassName: org.postgresql.Driver

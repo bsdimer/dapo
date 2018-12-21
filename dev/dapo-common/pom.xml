@@ -8,7 +8,7 @@
     <packaging>jar</packaging>
 
     <name>dapo-common</name>
-    <description>Zonta Exchange Common Libs</description>
+    <description>DAPO Common Libs</description>
 
     <parent>
         <groupId>com.dapo</groupId>

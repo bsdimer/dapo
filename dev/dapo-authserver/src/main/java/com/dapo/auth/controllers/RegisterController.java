@@ -1,12 +1,11 @@
 package com.dapo.auth.controllers;
 
 import com.dapo.auth.dto.RegistrationRequest;
-import com.dapo.auth.exceptions.ExceptionText;
 import com.dapo.auth.exceptions.OperationException;
 import com.dapo.auth.service.UserService;
 import com.dapo.common.authentication.StandardUser;
 import com.dapo.common.dto.CheckResult;
-import com.dapo.common.entity.StandardUserEntity;
+import com.dapo.common.authentication.StandardUserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
