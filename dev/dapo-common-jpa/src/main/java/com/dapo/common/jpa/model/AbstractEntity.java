@@ -12,7 +12,7 @@ import javax.persistence.*;
 public abstract class AbstractEntity implements Serializable, Cloneable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Version

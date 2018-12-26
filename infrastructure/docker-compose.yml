@@ -5,11 +5,13 @@ networks:
 
 services:
 
-  dapo-db-postgres:
-    build:
-      context: ./dapo-db-postgres
-    image: dapo/dapo-db-postgres:latest
+  dapo-db-postgis:
+    image: kartoza/postgis
     ports:
       - 5432:5432
+    environment:
+      - POSTGRES_USER=dapo
+      - POSTGRES_PASS=dapo
+      - POSTGRES_DBNAME=dapo
     networks:
       - dapo_bridge

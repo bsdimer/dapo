@@ -12,7 +12,7 @@
         <groupId>com.dapo</groupId>
         <artifactId>dapo-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/>
+        <relativePath>../dapo-parent</relativePath>
     </parent>
 
     <properties>

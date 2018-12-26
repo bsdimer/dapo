@@ -12,4 +12,5 @@ public interface GeoEntity {
     Double getLongitude();
 
     void setLongitude(Double longitude);
+
 }

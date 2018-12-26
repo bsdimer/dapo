@@ -9,7 +9,7 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class PictureJpaEntity extends AbstractEntity implements Picture {
+public class PictureEntity extends AbstractEntity implements Picture {
 
     @Override
     public String getUri() {

@@ -1,6 +1,5 @@
 package com.dapo.common.domain;
 
-import java.math.BigDecimal;
 import java.util.Set;
 
 /**
@@ -13,4 +12,22 @@ public interface RealEstateEntity extends GeoEntity {
     void setType(RealEstateType realEstateType);
 
     Set<Picture> getPictures();
+
+    String getDescription();
+
+    Float getEnergyEfficiency();
+
+    String getMunicipality();
+
+    String getCity();
+
+    String getNeighborhood();
+
+    String getSubarea();
+
+    ConstructionType getConstructionType();
+
+    Byte getFloorCount();
+
+    Byte getFloor();
 }
