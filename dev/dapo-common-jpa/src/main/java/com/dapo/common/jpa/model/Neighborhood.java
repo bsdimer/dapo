@@ -1,5 +1,7 @@
 package com.dapo.common.jpa.model;
 
+import com.vividsolutions.jts.geom.Polygon;
+
 import javax.persistence.*;
 
 /**
@@ -8,10 +10,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames = {"city_id" , "name"})})
-public class Neighborhood extends AbstractEntity {
+public class Neighborhood extends AbstractEntity implements GeometryArea {
 
     private String name;
-
+    @Column(columnDefinition = "geometry")
+    private Polygon area;
     @ManyToOne
     private City city;
 
@@ -29,5 +32,15 @@ public class Neighborhood extends AbstractEntity {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    @Override
+    public Polygon getArea() {
+        return area;
+    }
+
+    @Override
+    public void setArea(Polygon area) {
+        this.area = area;
     }
 }

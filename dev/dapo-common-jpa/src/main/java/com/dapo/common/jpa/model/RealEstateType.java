@@ -1,4 +1,4 @@
-package com.dapo.common.domain;
+package com.dapo.common.jpa.model;
 
 /**
  * Created by dimomass on 18.12.18.

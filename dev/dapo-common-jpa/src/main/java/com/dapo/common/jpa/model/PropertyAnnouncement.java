@@ -1,6 +1,4 @@
-package com.dapo.common.domain;
-
-import com.dapo.common.authentication.StandardUser;
+package com.dapo.common.jpa.model;
 
 import java.math.BigDecimal;
 

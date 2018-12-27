@@ -1,7 +1,6 @@
 package com.dapo.common.jpa.model;
 
 import com.vividsolutions.jts.geom.*;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,12 +13,10 @@ import java.util.List;
  */
 
 @Entity
-public class City extends AbstractEntity {
+public class City extends AbstractEntity implements GeometryArea {
 
     @Column(unique = true)
     private String name;
-    /*private Double latitude;
-    private Double longitude;*/
 
     @Column(columnDefinition = "geometry")
     private Polygon area;

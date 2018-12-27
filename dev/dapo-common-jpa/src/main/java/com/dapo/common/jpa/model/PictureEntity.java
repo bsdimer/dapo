@@ -1,28 +1,42 @@
 package com.dapo.common.jpa.model;
 
-import com.dapo.common.domain.Picture;
-
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  * Created by dimomass on 19.12.18.
  */
 
 @Entity
-public class PictureEntity extends AbstractEntity implements Picture {
+public class PictureEntity extends AbstractEntity {
 
-    @Override
+    private String uri;
+    private String checksum;
+    private int size;
+    @ManyToOne
+    private RealEstateJpaEntity target;
+
     public String getUri() {
-        return null;
+        return uri;
     }
 
-    @Override
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
     public String getChecksum() {
-        return null;
+        return checksum;
     }
 
-    @Override
-    public String getSize() {
-        return null;
+    public void setChecksum(String checksum) {
+        this.checksum = checksum;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }

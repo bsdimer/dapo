@@ -30,12 +30,14 @@ public class TestComponent {
     @PostConstruct
     public void contextLoads() throws Exception {
         RealEstateJpaEntity realEstateJpaEntity = new RealEstateJpaEntity();
-        realEstateJpaEntity.setLatitude(12.32324223d);
-        realEstateJpaEntity.setLongitude(123.23123123d);
 
         realEstateJpaEntity.setCity("Sofia");
         realEstateJpaEntity.setNeighborhood("Mladost 1");
         realEstateJpaEntity.setSubarea("Arsenalski");
+        Point point = (Point) wktToGeometry("POINT (23.43312 45.232332)");
+        realEstateJpaEntity.setPoint(point);
+        realEstateJpaRepository.save(realEstateJpaEntity);
+
 
         City city = new City();
         city.setName("Sofia");
@@ -43,10 +45,7 @@ public class TestComponent {
         Polygon polygon = (Polygon) wktToGeometry("POLYGON ((0 0, 0 5, 5 5, 5 0, 0 0))");
         city.setArea(polygon);
         cityRepository.save(city);
-        //city.setArea(polygon);
-        //cityRepository.save(city);
 
-        //realEstateJpaRepository.save(realEstateJpaEntity);
     }
 
     public Geometry wktToGeometry(String wellKnownText)

@@ -1,6 +1,6 @@
 package com.dapo.common.jpa.model;
 
-import com.dapo.common.domain.*;
+import com.vividsolutions.jts.geom.Point;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -14,10 +14,8 @@ import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class RealEstateJpaEntity extends AbstractAuditableEntity implements PropertyAnnouncement {
+public class RealEstateJpaEntity extends AbstractAuditableEntity implements PropertyAnnouncement, GeometryPoint {
 
-    private Double latitude;
-    private Double longitude;
     private RealEstateType type;
     @Column(length = 3000)
     private String description;
@@ -34,28 +32,12 @@ public class RealEstateJpaEntity extends AbstractAuditableEntity implements Prop
     private BigDecimal pricePerM2;
     private Currency currency;
     private Boolean vip;
-
+    @Column(columnDefinition = "geometry")
+    private Point point;
     @OneToMany
     private Set<ExtraEntity> extras;
-
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     private Set<PictureEntity> pictures = new HashSet<>();
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
 
     public RealEstateType getType() {
         return type;
@@ -63,10 +45,6 @@ public class RealEstateJpaEntity extends AbstractAuditableEntity implements Prop
 
     public void setType(RealEstateType type) {
         this.type = type;
-    }
-
-    public Set<Picture> getPictures() {
-        return null;
     }
 
     public String getDescription() {
@@ -83,6 +61,38 @@ public class RealEstateJpaEntity extends AbstractAuditableEntity implements Prop
 
     public void setEnergyEfficiency(Float energyEfficiency) {
         this.energyEfficiency = energyEfficiency;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getMunicipality() {
+        return municipality;
+    }
+
+    public void setMunicipality(String municipality) {
+        this.municipality = municipality;
+    }
+
+    public String getNeighborhood() {
+        return neighborhood;
+    }
+
+    public void setNeighborhood(String neighborhood) {
+        this.neighborhood = neighborhood;
+    }
+
+    public String getSubarea() {
+        return subarea;
+    }
+
+    public void setSubarea(String subarea) {
+        this.subarea = subarea;
     }
 
     public ConstructionType getConstructionType() {
@@ -154,47 +164,28 @@ public class RealEstateJpaEntity extends AbstractAuditableEntity implements Prop
         this.vip = vip;
     }
 
-    public void setPictures(Set<PictureEntity> pictures) {
-        this.pictures = pictures;
-    }
-
     public Set<ExtraEntity> getExtras() {
         return extras;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getMunicipality() {
-        return municipality;
-    }
-
-    public void setMunicipality(String municipality) {
-        this.municipality = municipality;
-    }
-
-    public String getNeighborhood() {
-        return neighborhood;
-    }
-
-    public void setNeighborhood(String neighborhood) {
-        this.neighborhood = neighborhood;
-    }
-
-    public String getSubarea() {
-        return subarea;
-    }
-
-    public void setSubarea(String subarea) {
-        this.subarea = subarea;
-    }
-
     public void setExtras(Set<ExtraEntity> extras) {
         this.extras = extras;
+    }
+
+    public Set<PictureEntity> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(Set<PictureEntity> pictures) {
+        this.pictures = pictures;
+    }
+
+    @Override
+    public Point getPoint() {
+        return point;
+    }
+
+    public void setPoint(Point point) {
+        this.point = point;
     }
 }
