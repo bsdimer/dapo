@@ -53,6 +53,8 @@
         <reactor-net.version>2.0.8.RELEASE</reactor-net.version>
         <reactor-core.version>3.2.2.RELEASE</reactor-core.version>
         <spring-security-jwt.version>1.0.9.RELEASE</spring-security-jwt.version>
+        <jackson-datatype-jts.version>2.4</jackson-datatype-jts.version>
+        <postgis-jdbc.version>2.3.0</postgis-jdbc.version>
     </properties>
 
     <profiles>
@@ -203,6 +205,17 @@
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-jwt</artifactId>
                 <version>${spring-security-jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bedatadriven</groupId>
+                <artifactId>jackson-datatype-jts</artifactId>
+                <version>${jackson-datatype-jts.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.postgis</groupId>
+                <artifactId>postgis-jdbc</artifactId>
+                <version>${postgis-jdbc.version}</version>
+                <scope>runtime</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

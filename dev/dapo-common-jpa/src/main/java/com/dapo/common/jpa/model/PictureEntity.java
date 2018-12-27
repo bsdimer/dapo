@@ -1,6 +1,12 @@
 package com.dapo.common.jpa.model;
 
+import com.dapo.common.json.views.PictureView;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 /**
@@ -10,19 +16,20 @@ import javax.persistence.ManyToOne;
 @Entity
 public class PictureEntity extends AbstractEntity {
 
-    private String uri;
+    @JsonView(PictureView.WithoutContent.class)
     private String checksum;
+    @JsonView(PictureView.WithoutContent.class)
     private int size;
+    @Lob
+    @Column
+    private byte[] source;
+    @JsonView(PictureView.WithoutContent.class)
     @ManyToOne
     private RealEstateJpaEntity target;
-
-    public String getUri() {
-        return uri;
-    }
-
-    public void setUri(String uri) {
-        this.uri = uri;
-    }
+    @JsonView(PictureView.WithoutContent.class)
+    private String extension;
+    @JsonView(PictureView.WithoutContent.class)
+    private String name;
 
     public String getChecksum() {
         return checksum;
@@ -38,5 +45,37 @@ public class PictureEntity extends AbstractEntity {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public byte[] getSource() {
+        return source;
+    }
+
+    public void setSource(byte[] source) {
+        this.source = source;
+    }
+
+    public RealEstateJpaEntity getTarget() {
+        return target;
+    }
+
+    public void setTarget(RealEstateJpaEntity target) {
+        this.target = target;
+    }
+
+    public String getExtension() {
+        return extension;
+    }
+
+    public void setExtension(String extension) {
+        this.extension = extension;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -1,5 +1,6 @@
 package com.dapo.common.jpa.config;
 
+import com.bedatadriven.jackson.datatype.jts.JtsModule;
 import com.dapo.common.jpa.infra.SpringSecurityAuditorAware;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
@@ -44,5 +45,10 @@ public class AbstractDapoJpaConfig {
     @Bean
     NamedParameterJdbcTemplate jdbcTemplate(DataSource dataSource) {
         return new NamedParameterJdbcTemplate(dataSource);
+    }
+
+    @Bean
+    public JtsModule jtsModule() {
+        return new JtsModule();
     }
 }

@@ -38,7 +38,6 @@ public class TestComponent {
         realEstateJpaEntity.setPoint(point);
         realEstateJpaRepository.save(realEstateJpaEntity);
 
-
         City city = new City();
         city.setName("Sofia");
 

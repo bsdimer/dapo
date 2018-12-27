@@ -1,5 +1,10 @@
 package com.dapo.common.jpa.model;
 
+import com.bedatadriven.jackson.datatype.jts.serialization.GeometryDeserializer;
+import com.bedatadriven.jackson.datatype.jts.serialization.GeometrySerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.vividsolutions.jts.geom.Point;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -33,6 +38,8 @@ public class RealEstateJpaEntity extends AbstractAuditableEntity implements Prop
     private Currency currency;
     private Boolean vip;
     @Column(columnDefinition = "geometry")
+    @JsonSerialize(using = GeometrySerializer.class)
+    @JsonDeserialize(contentUsing = GeometryDeserializer.class)
     private Point point;
     @OneToMany
     private Set<ExtraEntity> extras;
