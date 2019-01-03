@@ -1,6 +1,6 @@
 package com.dapo.api.controller;
 
-import com.dapo.common.jpa.model.RealEstateJpaEntity;
+import com.dapo.common.jpa.model.RealEstateEntity;
 import com.dapo.common.jpa.repository.RealEstateJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,7 +25,7 @@ public class RealEstateController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Page<RealEstateJpaEntity> findAll(Pageable pageable) {
+    public Page<RealEstateEntity> findAll(Pageable pageable) {
         return realEstateJpaRepository.findAll(pageable);
     }
 }

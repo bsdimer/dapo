@@ -1,6 +1,6 @@
 package com.dapo.api;
 
-import com.dapo.common.jpa.model.RealEstateJpaEntity;
+import com.dapo.common.jpa.model.RealEstateEntity;
 import com.dapo.common.jpa.repository.RealEstateJpaRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,8 +21,8 @@ public class RepositoryTest {
 
     @Test
     public void contextLoads() throws Exception {
-        RealEstateJpaEntity realEstateJpaEntity = new RealEstateJpaEntity();
-        realEstateJpaRepository.save(realEstateJpaEntity);
+        RealEstateEntity realEstateEntity = new RealEstateEntity();
+        realEstateJpaRepository.save(realEstateEntity);
     }
 
 

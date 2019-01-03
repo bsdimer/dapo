@@ -1,7 +1,6 @@
 package com.dapo.common.jpa.model;
 
 import com.dapo.common.json.views.PictureView;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.Column;
@@ -25,7 +24,7 @@ public class PictureEntity extends AbstractEntity {
     private byte[] source;
     @JsonView(PictureView.WithoutContent.class)
     @ManyToOne
-    private RealEstateJpaEntity target;
+    private RealEstateEntity target;
     @JsonView(PictureView.WithoutContent.class)
     private String extension;
     @JsonView(PictureView.WithoutContent.class)
@@ -55,11 +54,11 @@ public class PictureEntity extends AbstractEntity {
         this.source = source;
     }
 
-    public RealEstateJpaEntity getTarget() {
+    public RealEstateEntity getTarget() {
         return target;
     }
 
-    public void setTarget(RealEstateJpaEntity target) {
+    public void setTarget(RealEstateEntity target) {
         this.target = target;
     }
 

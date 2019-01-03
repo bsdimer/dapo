@@ -17,5 +17,5 @@ public enum RealEstateType {
     MASE,
     WHOLE_BUILDING,
     HOUSE,
-    FOUSE_FLOOR
+    HOUSE_FLOOR
 }

@@ -32,6 +32,7 @@ public class Neighborhood extends AbstractEntity implements GeometryArea {
 
     public void setCity(City city) {
         this.city = city;
+        city.getNeighborhoods().add(this);
     }
 
     @Override

@@ -32,6 +32,7 @@ public class SubArea extends AbstractEntity implements GeometryArea {
 
     public void setCity(City city) {
         this.city = city;
+        city.getSubAreas().add(this);
     }
 
     public Polygon getArea() {

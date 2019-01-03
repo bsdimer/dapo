@@ -2,11 +2,10 @@ package com.dapo.common.jpa.model;
 
 import com.vividsolutions.jts.geom.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by dimomass on 24.12.18.
@@ -18,17 +17,20 @@ public class City extends AbstractEntity implements GeometryArea {
     @Column(unique = true)
     private String name;
 
+    @ManyToOne
+    private Country country;
+
     @Column(columnDefinition = "geometry")
     private Polygon area;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Municipality> municipalityList;
+    private Set<Municipality> municipalityList = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Neighborhood> neighborhoods;
+    private Set<Neighborhood> neighborhoods = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<SubArea> subAreas;
+    private Set<SubArea> subAreas = new HashSet<>();
 
     public String getName() {
         return name;
@@ -38,27 +40,27 @@ public class City extends AbstractEntity implements GeometryArea {
         this.name = name;
     }
 
-    public List<Municipality> getMunicipalityList() {
+    public Set<Municipality> getMunicipalityList() {
         return municipalityList;
     }
 
-    public void setMunicipalityList(List<Municipality> municipalityList) {
+    public void setMunicipalityList(Set<Municipality> municipalityList) {
         this.municipalityList = municipalityList;
     }
 
-    public List<Neighborhood> getNeighborhoods() {
+    public Set<Neighborhood> getNeighborhoods() {
         return neighborhoods;
     }
 
-    public void setNeighborhoods(List<Neighborhood> neighborhoods) {
+    public void setNeighborhoods(Set<Neighborhood> neighborhoods) {
         this.neighborhoods = neighborhoods;
     }
 
-    public List<SubArea> getSubAreas() {
+    public Set<SubArea> getSubAreas() {
         return subAreas;
     }
 
-    public void setSubAreas(List<SubArea> subAreas) {
+    public void setSubAreas(Set<SubArea> subAreas) {
         this.subAreas = subAreas;
     }
 
@@ -68,5 +70,13 @@ public class City extends AbstractEntity implements GeometryArea {
 
     public void setArea(Polygon area) {
         this.area = area;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }

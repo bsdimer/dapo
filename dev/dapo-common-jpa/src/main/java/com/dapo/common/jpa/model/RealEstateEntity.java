@@ -9,6 +9,7 @@ import com.vividsolutions.jts.geom.Point;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,24 +20,31 @@ import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class RealEstateJpaEntity extends AbstractAuditableEntity implements PropertyAnnouncement, GeometryPoint {
+public class RealEstateEntity extends AbstractAuditableEntity implements PropertyAnnouncement, GeometryPoint {
 
     private RealEstateType type;
     @Column(length = 3000)
     private String description;
     private Float energyEfficiency;
+    @Column(nullable = false)
+    @NotNull
     private String city;
     private String municipality;
     private String neighborhood;
     private String subarea;
     private ConstructionType constructionType;
-    private Byte floorCount;
-    private Byte floor;
+    private Byte floorCount = 1;
+    private Byte floor = 1;
     private AnnouncementType announcementType;
+    @Column(nullable = false)
+    @NotNull
     private BigDecimal price;
     private BigDecimal pricePerM2;
-    private Currency currency;
-    private Boolean vip;
+    @Column(nullable = false)
+    @NotNull
+    private int size = 0;
+    private Currency currency = Currency.EUR;
+    private Boolean vip = false;
     @Column(columnDefinition = "geometry")
     @JsonSerialize(using = GeometrySerializer.class)
     @JsonDeserialize(contentUsing = GeometryDeserializer.class)
@@ -142,15 +150,13 @@ public class RealEstateJpaEntity extends AbstractAuditableEntity implements Prop
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+        if (this.getPrice() != null && this.size > 0)
+            this.pricePerM2 = this.price.divide(BigDecimal.valueOf(this.size), 2);
     }
 
     @Override
     public BigDecimal getPricePerM2() {
         return pricePerM2;
-    }
-
-    public void setPricePerM2(BigDecimal pricePerM2) {
-        this.pricePerM2 = pricePerM2;
     }
 
     @Override
@@ -194,5 +200,15 @@ public class RealEstateJpaEntity extends AbstractAuditableEntity implements Prop
 
     public void setPoint(Point point) {
         this.point = point;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+        if (this.getPrice() != null && this.size > 0)
+            this.pricePerM2 = this.price.divide(BigDecimal.valueOf(this.size), 2);
     }
 }
