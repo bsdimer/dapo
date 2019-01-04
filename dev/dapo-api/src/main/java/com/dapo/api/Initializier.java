@@ -53,7 +53,7 @@ public class Initializier {
         Country country = new Country();
         country.setName("България");
         country.setCode("BG");
-        country.setArea(getRandomPolygon(40, 45));
+        country.setArea(getRandomPolygon(41, 43, 25, 27));
         countryRepository.save(country);
 
         List<City> cities = new ArrayList<>();
@@ -67,13 +67,13 @@ public class Initializier {
             City city = new City();
             cities.add(city);
             city.setCountry(country);
-            city.setArea(getRandomPolygon(country.getArea().getCoordinates()[0].x + 0.01, country.getArea().getCoordinates()[0].x + 0.1));
+            city.setArea(getRandomPolygon(41, 43, 25, 27));
             city.setName(RandomStringUtils.randomAlphabetic(10));
 
             for (int j = 0; j < subareasCount; j++) {
                 SubArea subArea = new SubArea();
                 subArea.setName(RandomStringUtils.randomAlphabetic(10));
-                subArea.setArea(getRandomPolygon(city.getArea().getCoordinates()[0].x + 0.01, city.getArea().getCoordinates()[0].x + 0.1));
+                subArea.setArea(getRandomPolygon(41, 43, 25, 27));
                 subArea.setCity(city);
                 subAreas.add(subArea);
             }
@@ -81,7 +81,7 @@ public class Initializier {
             for (int j = 0; j < neighborhoodsCount; j++) {
                 Neighborhood neighborhood = new Neighborhood();
                 neighborhood.setName(RandomStringUtils.randomAlphabetic(10));
-                neighborhood.setArea(getRandomPolygon(city.getArea().getCoordinates()[0].x + 0.01, city.getArea().getCoordinates()[0].x + 0.1));
+                neighborhood.setArea(getRandomPolygon(41, 43, 25, 27));
                 neighborhood.setCity(city);
                 neighborhoods.add(neighborhood);
             }
@@ -89,7 +89,7 @@ public class Initializier {
             for (int j = 0; j < municipalitiesCount; j++) {
                 Municipality municipality = new Municipality();
                 municipality.setName(RandomStringUtils.randomAlphabetic(10));
-                municipality.setArea(getRandomPolygon(city.getArea().getCoordinates()[0].x + 0.01, city.getArea().getCoordinates()[0].x + 0.1));
+                municipality.setArea(getRandomPolygon(41, 43, 25, 27));
                 municipality.setCity(city);
                 municipalities.add(municipality);
             }
@@ -112,7 +112,7 @@ public class Initializier {
             realEstateEntity.setCurrency(Currency.EUR);
             realEstateEntity.setPrice(new BigDecimal(RandomUtils.nextDouble(10000, 10000000)));
             realEstateEntity.setSize(RandomUtils.nextInt(50, 700));
-            realEstateEntity.setPoint(getPoint(neighborhood.getArea().getCoordinates()[0].x + 0.1, neighborhood.getArea().getCoordinates()[0].x + 0.2));
+            realEstateEntity.setPoint(getPoint(41, 43, 25, 27));
             realEstateEntity.setDescription(lorem.getWords(100, 200));
             realEstateJpaRepository.save(realEstateEntity);
         }
@@ -134,18 +134,20 @@ public class Initializier {
         cityRepository.save(city);*/
     }
 
-    private Polygon getRandomPolygon(double min, double max) throws ParseException {
-        Double startx = RandomUtils.nextDouble(min, max);
-        Double starty = RandomUtils.nextDouble(min, max);
+    private Polygon getRandomPolygon(double latmin, double latmax, double longmin, double longmax) throws ParseException {
+        Double startx = RandomUtils.nextDouble(latmin, latmax);
+        Double starty = RandomUtils.nextDouble(longmin, longmax);
         return (Polygon) wktToGeometry(String.format("POLYGON ((%s %s, %s %s, %s %s, %s %s))",
                 startx, starty,
-                RandomUtils.nextDouble(min, max), RandomUtils.nextDouble(min, max),
-                RandomUtils.nextDouble(min, max), RandomUtils.nextDouble(min, max),
+                RandomUtils.nextDouble(startx, startx+0.1), RandomUtils.nextDouble(starty, starty+0.1),
+                RandomUtils.nextDouble(startx, startx+0.1), RandomUtils.nextDouble(starty, starty+0.1),
                 startx, starty
         ));
     }
 
-    private Point getPoint(double x, double y) throws ParseException {
+    private Point getPoint(double minx, double maxx, double miny, double maxy) throws ParseException {
+        Double x = RandomUtils.nextDouble(minx, maxx);
+        Double y = RandomUtils.nextDouble(miny, maxy);
         return (Point) wktToGeometry(String.format("POINT (%s %s)", x, y));
     }
 

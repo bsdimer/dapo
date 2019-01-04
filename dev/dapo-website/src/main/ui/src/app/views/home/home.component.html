@@ -1,11 +1,11 @@
 <!--map area start here-->
 <div id="map_wrapper">
-  <div id="map">
-    <agm-map style="height: 100%" [latitude]="51.673858" [longitude]="7.815982">
-      <agm-marker [latitude]="51.673858" [longitude]="7.815982">
+  <div id="map" *ngIf="!!this.config">
+    <agm-map style="height: 100%" [latitude]="config.mapConfig.latitude" [longitude]="config.mapConfig.longitude">
+      <agm-marker *ngFor="let property of latestProperties.content" [latitude]="property.point.coordinates[0]" [longitude]="property.point.coordinates[1]">
         <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
           <ng-template>
-            My first Snazzy Info Window!
+            {{property.description}}
           </ng-template>
         </agm-snazzy-info-window>
       </agm-marker>

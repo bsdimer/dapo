@@ -11,6 +11,8 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
 import { environment } from "../environments/environment";
 import { CoreModule } from "./modules/core/core.module";
+import { NgxWebstorageModule } from "ngx-webstorage";
+import { DapoModule } from "./modules/dapo/dapo.module";
 
 @NgModule({
   declarations: [
@@ -23,15 +25,17 @@ import { CoreModule } from "./modules/core/core.module";
     BrowserModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: '<GMAP-KEY>'
+      apiKey: 'GMAPKEY'
     }),
+    NgxWebstorageModule.forRoot(),
     LoggerModule.forRoot({
       serverLoggingUrl: environment.loggerUri,
       level: NgxLoggerLevel.DEBUG,
       serverLogLevel: NgxLoggerLevel.ERROR
     }),
     AgmSnazzyInfoWindowModule,
-    CoreModule
+    CoreModule,
+    DapoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
