@@ -23,7 +23,7 @@ import { CoreModule } from "./modules/core/core.module";
     BrowserModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB8JSJfdzld_gS4dbXfIz7doF7tSlOBa9Q'
+      apiKey: '<GMAP-KEY>'
     }),
     LoggerModule.forRoot({
       serverLoggingUrl: environment.loggerUri,
