@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from "./authentication/authentication.service";
 import { ConfigurationService } from "./configuration/configuration.service";
+import { Broadcaster } from "./events/broadcaster";
 
 @NgModule({
   declarations: [],
@@ -10,7 +11,8 @@ import { ConfigurationService } from "./configuration/configuration.service";
   ],
   providers: [
     AuthenticationService,
-    ConfigurationService
+    ConfigurationService,
+    Broadcaster
   ]
 })
 export class CoreModule { }

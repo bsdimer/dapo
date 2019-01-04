@@ -20,6 +20,7 @@
         <module>dapo-authserver</module>
         <module>dapo-website</module>
         <module>dapo-common-jpa</module>
+        <module>dapo-config</module>
     </modules>
 
 </project>

@@ -3,12 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dapo-api</artifactId>
+    <artifactId>dapo-config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>dapo-api</name>
-    <description>DAPO API service</description>
+    <name>dapo-config</name>
+    <description>DAPO Config API service</description>
 
     <parent>
         <groupId>com.dapo</groupId>
@@ -30,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
         <dependency>
             <groupId>com.dapo</groupId>
@@ -48,28 +48,8 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>com.dapo</groupId>
-            <artifactId>dapo-common-jpa</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.postgis</groupId>
-            <artifactId>postgis-jdbc</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.thedeanda</groupId>
-            <artifactId>lorem</artifactId>
-            <version>2.1</version>
         </dependency>
     </dependencies>
 

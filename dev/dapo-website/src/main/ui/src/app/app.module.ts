@@ -10,7 +10,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
 import { environment } from "../environments/environment";
-import { CoreModule } from "./modules/core/core/core.module";
+import { CoreModule } from "./modules/core/core.module";
 
 @NgModule({
   declarations: [
