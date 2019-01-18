@@ -5,29 +5,24 @@ import com.dapo.common.jpa.model.Currency;
 import com.dapo.common.jpa.repository.CityRepository;
 import com.dapo.common.jpa.repository.CountryRepository;
 import com.dapo.common.jpa.repository.RealEstateJpaRepository;
+import com.dapo.common.jpa.utils.geo.GeoUtils;
 import com.thedeanda.lorem.Lorem;
 import com.thedeanda.lorem.LoremIpsum;
-import com.vividsolutions.jts.geom.*;
 import com.vividsolutions.jts.io.ParseException;
-import com.vividsolutions.jts.io.WKTReader;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by dimomass on 21.12.18.
  */
 
 @Component
-@Profile("init")
 public class Initializier {
 
 
@@ -40,6 +35,9 @@ public class Initializier {
     @Autowired
     CountryRepository countryRepository;
 
+    @Autowired
+    GeoUtils geoUtils;
+
     int citiesCount = 100;
     int subareasCount = 100;
     int neighborhoodsCount = 100;
@@ -47,13 +45,12 @@ public class Initializier {
     int realEstateCount = 1000;
 
 
-    @PostConstruct
     public void contextLoads() throws Exception {
         Lorem lorem = LoremIpsum.getInstance();
         Country country = new Country();
         country.setName("България");
         country.setCode("BG");
-        country.setArea(getRandomPolygon(41, 43, 25, 27));
+        country.setArea(geoUtils.getRandomPolygon(41, 43, 25, 27));
         countryRepository.save(country);
 
         List<City> cities = new ArrayList<>();
@@ -67,13 +64,13 @@ public class Initializier {
             City city = new City();
             cities.add(city);
             city.setCountry(country);
-            city.setArea(getRandomPolygon(41, 43, 25, 27));
+            city.setArea(geoUtils.getRandomPolygon(41, 43, 25, 27));
             city.setName(RandomStringUtils.randomAlphabetic(10));
 
             for (int j = 0; j < subareasCount; j++) {
                 SubArea subArea = new SubArea();
                 subArea.setName(RandomStringUtils.randomAlphabetic(10));
-                subArea.setArea(getRandomPolygon(41, 43, 25, 27));
+                subArea.setArea(geoUtils.getRandomPolygon(41, 43, 25, 27));
                 subArea.setCity(city);
                 subAreas.add(subArea);
             }
@@ -81,7 +78,7 @@ public class Initializier {
             for (int j = 0; j < neighborhoodsCount; j++) {
                 Neighborhood neighborhood = new Neighborhood();
                 neighborhood.setName(RandomStringUtils.randomAlphabetic(10));
-                neighborhood.setArea(getRandomPolygon(41, 43, 25, 27));
+                neighborhood.setArea(geoUtils.getRandomPolygon(41, 43, 25, 27));
                 neighborhood.setCity(city);
                 neighborhoods.add(neighborhood);
             }
@@ -89,7 +86,7 @@ public class Initializier {
             for (int j = 0; j < municipalitiesCount; j++) {
                 Municipality municipality = new Municipality();
                 municipality.setName(RandomStringUtils.randomAlphabetic(10));
-                municipality.setArea(getRandomPolygon(41, 43, 25, 27));
+                municipality.setArea(geoUtils.getRandomPolygon(41, 43, 25, 27));
                 municipality.setCity(city);
                 municipalities.add(municipality);
             }
@@ -112,7 +109,7 @@ public class Initializier {
             realEstateEntity.setCurrency(Currency.EUR);
             realEstateEntity.setPrice(new BigDecimal(RandomUtils.nextDouble(10000, 10000000)));
             realEstateEntity.setSize(RandomUtils.nextInt(50, 700));
-            realEstateEntity.setPoint(getPoint(41, 43, 25, 27));
+            realEstateEntity.setPoint(geoUtils.getRandomPoint(41, 43, 25, 27));
             realEstateEntity.setDescription(lorem.getWords(100, 200));
             realEstateJpaRepository.save(realEstateEntity);
         }
@@ -134,26 +131,11 @@ public class Initializier {
         cityRepository.save(city);*/
     }
 
-    private Polygon getRandomPolygon(double latmin, double latmax, double longmin, double longmax) throws ParseException {
-        Double startx = RandomUtils.nextDouble(latmin, latmax);
-        Double starty = RandomUtils.nextDouble(longmin, longmax);
-        return (Polygon) wktToGeometry(String.format("POLYGON ((%s %s, %s %s, %s %s, %s %s))",
-                startx, starty,
-                RandomUtils.nextDouble(startx, startx+0.1), RandomUtils.nextDouble(starty, starty+0.1),
-                RandomUtils.nextDouble(startx, startx+0.1), RandomUtils.nextDouble(starty, starty+0.1),
-                startx, starty
-        ));
-    }
 
-    private Point getPoint(double minx, double maxx, double miny, double maxy) throws ParseException {
-        Double x = RandomUtils.nextDouble(minx, maxx);
-        Double y = RandomUtils.nextDouble(miny, maxy);
-        return (Point) wktToGeometry(String.format("POINT (%s %s)", x, y));
-    }
 
-    private Geometry wktToGeometry(String wellKnownText)
-            throws ParseException {
-
-        return new WKTReader().read(wellKnownText);
+    @PostConstruct
+    private void testGeoMapResult() throws ParseException {
+        List result = (List) realEstateJpaRepository.findAll();
+        geoUtils.normalizeCollection(result, 8d, 5);
     }
 }

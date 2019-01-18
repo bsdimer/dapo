@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 
 @MappedSuperclass
-public abstract class AbstractAuditableEntity extends AuditableEntity implements Serializable, Cloneable {
+public abstract class AbstractAuditableEntity extends AuditableEntity implements Serializable, Cloneable, Identifiable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

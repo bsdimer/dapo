@@ -6,7 +6,7 @@ import com.vividsolutions.jts.geom.Polygon;
 /**
  * Created by dimomass on 27.12.18.
  */
-public interface GeometryPoint {
+public interface GeometryPoint extends Identifiable {
 
     Point getPoint();
 

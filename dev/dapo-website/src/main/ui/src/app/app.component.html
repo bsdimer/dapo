@@ -38,11 +38,11 @@
                 <li class="hidden-xs"><a href="#"><i class="fa fa-youtube-square"></i></a></li>
                 <li class="hidden-xs"><a href="#"><i class="fa fa-pinterest-square"></i></a></li>
                 <li class="dropdown">
-                  <a href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/flag.png" alt="Flag" title="Flag"><i class="fa fa-caret-down"></i></a>
+                  <a href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/{{currentLang}}.png" alt="Flag" title="Flag"><i class="fa fa-caret-down"></i></a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#"><img src="../assets/images/flag.png" alt="Flag" title="Flag"> Hebrew</a>
-                    <a class="dropdown-item" href="#"><img src="../assets/images/flag.png" alt="Flag" title="Flag">Spanish</a>
-                    <a class="dropdown-item" href="#"><img src="../assets/images/flag.png" alt="Flag" title="Flag">Russian</a>
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="setLanguage('bg')"><img src="../assets/images/bg.png" alt="Flag" title="Flag">{{'bg' | translate}}</a>
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="setLanguage('en')"><img src="../assets/images/en.png" alt="Flag" title="Flag">{{'en' | translate}}</a>
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="setLanguage('ru')"><img src="../assets/images/ru.png" alt="Flag" title="Flag">{{'ru' | translate}}</a>
                   </div>
                 </li>
               </ul>
@@ -53,7 +53,7 @@
               <ul>
                 <li>
                   <a routerLink="/login">
-                    <i class="fa fa-sign-in"></i>login / register
+                    <i class="fa fa-sign-in"></i> {{"login / register" | translate}}
 
                   </a>
                 </li>
@@ -61,7 +61,7 @@
             </div>
             <div class="header_btn header_btn_full visible-xs visible-sm response_add_property">
 
-              <a href="add_listing.html"><i class="fa fa-plus"></i> add listing</a>
+              <a href="add_listing.html"><i class="fa fa-plus"></i> {{ 'add listing' | translate }}</a>
 
             </div>
           </div>
@@ -101,7 +101,7 @@
             <nav id="primary-nav" class="dropdown nav_left_margin">
               <!-- search code end -->
               <ul class="dropdown menu cart_dropdown_wrapper">
-                <li><a href="#" title="">home</a>
+                <li><a href="#" title="">{{'find a property' | translate}}</a>
                   <ul class="dropdown_header">
                     <li><a href="home_slider.html" title=""> home slider</a></li>
                     <li><a href="home_map.html" title=""> home map</a></li>
@@ -109,7 +109,7 @@
                     <li><a href="home_parallax.html" title=""> home image</a></li>
                   </ul>
                 </li>
-                <li class="dropdown"><a href="#" title="">properties</a>
+                <li class="dropdown"><a href="#" title="">{{ "market your property" | translate}}</a>
                   <ul class="dropdown_header">
                     <li><a href="property_listing_map.html" title=""> listing map</a>
 
@@ -147,7 +147,7 @@
                   </ul>
                 </li>
 
-                <li><a href="#" title="">pages</a>
+                <li><a href="#" title="">{{"find a sevice" | translate}}</a>
                   <ul class="dropdown_header">
                     <li><a href="404.html" title=""> 404 error</a></li>
                     <li><a href="about_us.html" title=""> about us</a></li>
@@ -170,13 +170,13 @@
                   </ul>
                 </li>
 
-                <li><a href="#" title="">blog</a>
+                <li><a href="#" title="">{{'why DAPO' | translate}}</a>
                   <ul class="dropdown_header">
                     <li><a href="blog_single.html" title=""> blog single</a></li>
                     <li><a href="blog_category.html" title="">blog category</a></li>
                   </ul>
                 </li>
-                <li><a href="#" title="">shop</a>
+                <!--<li><a href="#" title="">shop</a>
                   <ul class="dropdown_header">
                     <li><a href="cart.html" title=""> cart page</a></li>
                     <li>
@@ -186,14 +186,14 @@
                       <a href="product_details.html">product details</a>
                     </li>
                   </ul>
-                </li>
-                <li><a href="contact_us.html" title="">contact us</a>
+                </li>-->
+                <li><a href="contact_us.html" title="">{{"contact us" | translate}}</a>
 
                 </li>
                 <li>
                   <button class="searchd inner_login"><i class="fa fa-search"></i></button>
                 </li>
-                <li class="caret_btn">
+                <!--<li class="caret_btn">
                   <a href="#"><i class="fa fa-shopping-basket"></i><span>2</span></a>
                   <ul>
                     <li>
@@ -243,11 +243,11 @@
                     </li>
 
                   </ul>
-                </li>
+                </li>-->
                 <li>
                   <div class="header_btn header_btn_full">
 
-                    <a href="add_listing.html"><i class="fa fa-plus"></i> add listing</a>
+                    <a href="add_listing.html"><i class="fa fa-plus"></i> {{ 'add listing' | translate }}</a>
 
                   </div>
                 </li>
@@ -270,7 +270,7 @@
                       <ul class="nav">
                         <li><a href="#" title="">home</a>
                           <ul>
-                            <li><a href="home_slider.html" title=""> home slider</a></li>
+                            <li><a href="home_slider.html" title="">home slider</a></li>
                             <li><a href="home_map.html" title=""> home map</a></li>
                             <li><a href="home_vedio.html" title=""> home vedio</a></li>
                             <li><a href="home_parallax.html" title=""> home image</a></li>

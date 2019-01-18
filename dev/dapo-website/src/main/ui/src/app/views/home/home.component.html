@@ -1,14 +1,21 @@
 <!--map area start here-->
 <div id="map_wrapper">
   <div id="map" *ngIf="!!this.config">
-    <agm-map style="height: 100%" [latitude]="config.mapConfig.latitude" [longitude]="config.mapConfig.longitude">
-      <agm-marker *ngFor="let property of latestProperties.content" [latitude]="property.point.coordinates[0]" [longitude]="property.point.coordinates[1]">
-        <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
-          <ng-template>
-            {{property.description}}
-          </ng-template>
-        </agm-snazzy-info-window>
-      </agm-marker>
+    <agm-map style="height: 100%" [latitude]="config.mapConfig.latitude"
+             [longitude]="config.mapConfig.longitude" [zoom]="zoom"
+             (boundsChange)="onBoundsChange($event)" (zoomChange)="onZoomChange($event)">
+      <agm-marker-cluster
+        imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+        <agm-marker *ngFor="let property of latestProperties" iconUrl="/assets/images/favicon.png"
+                    [latitude]="property.point.coordinates[0]"
+                    [longitude]="property.point.coordinates[1]">
+          <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+            <ng-template>
+              {{property.description}}
+            </ng-template>
+          </agm-snazzy-info-window>
+        </agm-marker>
+      </agm-marker-cluster>
     </agm-map>
   </div>
 </div>

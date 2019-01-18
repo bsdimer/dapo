@@ -1,12 +1,14 @@
 package com.dapo.auth.authentication;
 
-import com.dapo.auth.service.UserService;
-import com.dapo.common.authentication.StandardUser;
+import com.dapo.auth.service.CustomUserDetailsService;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
@@ -14,16 +16,16 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  */
 public class BasicAuthenticationProvider implements AuthenticationProvider {
 
-    private UserService userService;
+    private AuthenticationManager authenticationManager;
 
-    public BasicAuthenticationProvider(UserService userService) {
-        this.userService = userService;
+    public BasicAuthenticationProvider(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
     }
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         try {
-            StandardUser user = (StandardUser) userService.authenticate(authentication);
+            UserDetails user = (UserDetails) authenticationManager.authenticate(authentication);
 
             if (user == null || ! user.isEnabled()) {
                 authentication.setAuthenticated(false);

@@ -14,7 +14,7 @@ server:
       - application/json
       - application/javascript
   servlet:
-    context-path: /auth
+    context-path: /
 
 # PROFILES
 spring:
@@ -23,23 +23,39 @@ spring:
     database: POSTGRESQL
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       use-new-id-generator-mappings: true
     properties.hibernate.temp.use_jdbc_metadata_defaults: false
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
   datasource:
     platform: postgres
-    url: jdbc:postgresql://${DB_HOST:localhost}:5432/rad
-    username: dbadmin
-    password: P@ssp0rt
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/dapo
+    username: dapo
+    password: dapo
     driverClassName: org.postgresql.Driver
-
-# RabbitMQ datasource
-  rabbitmq:
-    host: ${RABBITMQ_HOST:localhost}
-    port: ${RABBITMQ_PORT:5672}
-    username: ${RABBITMQ_USER:appspace-auth}
-    password: ${RABBITMQ_PASS:P@ssp0rt}
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 5014057553-8gm9um6vnli3cle5rgigcdjpdrid14m9.apps.googleusercontent.com
+            clientSecret: tWZKVLxaD_ARWsriiiUFYoIk
+            redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - profile
+          facebook:
+            clientId: 516070698796485
+            clientSecret: 2a0b4582efdd50892421764f1e3b372e
+            redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - public_profile
+        provider:
+          facebook:
+            authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
+            tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
+            userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
 
 # LOGGING
 logging:

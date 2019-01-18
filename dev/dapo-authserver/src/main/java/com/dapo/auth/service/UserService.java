@@ -1,62 +1,39 @@
 package com.dapo.auth.service;
 
-import com.dapo.auth.dto.AuthorityUpdateRequest;
-import com.dapo.auth.dto.UserUpdateRequest;
-import com.dapo.auth.exceptions.OperationException;
-import com.dapo.common.authentication.StandardUser;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import com.dapo.auth.model.User;
+import com.dapo.auth.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 /**
- * Created by dimer on 17.10.16.
+ * Created by dimomass on 18.01.19.
  */
-public interface UserService<T> {
 
-    T findByUsername(String username);
+@Service
+public class UserService {
 
-    Page<T> findAll(Pageable pageable);
+    private UserRepository userRepository;
 
-    T findByEmail(String email);
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-    Page<T> findAllByNameContains(String namePart, Pageable pageable);
+    public Optional<User> findByEmail(String email) {
+        return this.userRepository.findByEmail(email);
+    }
 
-    Page<T> findAllByEmailContains(String emailPart, Pageable pageable);
+    public Boolean emailExist(String email) {
+        return userRepository.existsByEmail(email);
+    }
 
-    Page<T> findAllByNameAndEmailContains(String namePart, String emailPart, Pageable pageable);
+    public User save(User user) {
+        return userRepository.save(user);
+    }
 
-    List<T> findAll();
-
-    void save(T user, String remoteUrl) throws OperationException;
-
-    boolean userExist(String username);
-
-    boolean emailExist(String email);
-
-    void setValid(String username);
-
-    String startRecovery(String email, String username, String passwordUrl) throws UsernameNotFoundException;
-
-    void recovery(String nonce, String password) throws OperationException;
-
-    T authenticate(Authentication authentication) throws OperationException;
-
-    void addDetail(String username, String key, String value);
-
-    void updateDetail(String username, String key, String value);
-
-    void addUserAuthority(String username, String authority) throws OperationException;
-
-    void removeUserAuthority(String username, String authority) throws OperationException;
-
-    void resendConfirmationEmail(String username);
-
-    T update(UserUpdateRequest request) throws OperationException;
-
-    T updateAuthorityAll(AuthorityUpdateRequest request);
-
-    T confirmRegistration(String nonce);
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
+    }
 }

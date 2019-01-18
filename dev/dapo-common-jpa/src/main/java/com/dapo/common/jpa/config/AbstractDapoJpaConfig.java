@@ -25,7 +25,7 @@ import java.util.Optional;
 @EnableTransactionManagement
 @EntityScan("com.dapo.common.jpa.model")
 @EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware", dateTimeProviderRef = "dateTimeProviderAware")
-public class AbstractDapoJpaConfig {
+public abstract class AbstractDapoJpaConfig {
 
     @Bean(value = "springSecurityAuditorAware")
     public AuditorAware<String> myAuditorProvider() {

@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Guest Wireless Authentication - Bertrange Capital</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <script>
+
+        function loadAction() {
+            var url = window.location.href;
+            var args = new Object();
+            var query = location.search.substring(1);
+            var pairs = query.split("&");
+            for (var i = 0; i < pairs.length; i++) {
+                var pos = pairs[i].indexOf('=');
+                if (pos == -1) continue;
+                var argname = pairs[i].substring(0, pos);
+                var value = pairs[i].substring(pos + 1);
+                args[argname] = unescape(value);
+            }
+//alert( "AP MAC Address is " + args.ap_mac);
+//alert( "The Switch URL to post user credentials is " + args.switch_url);
+//document.forms[0].action = args.switch_url;
+
+// This is the status code returned from webauth login action
+// Any value of status code from 1 to 5 is error condition and user
+// should be shown error as below or modify the message as it suits
+// the customer
+            if (args.statusCode == 1) {
+                document.getElementById("result").innerText = "You are already logged in. No further action is required on your part.";
+            }
+            else if (args.statusCode == 2) {
+                document.getElementById("result").innerText = "You are not configured to authenticate against web portal. No further action is required on your part.";
+            }
+            else if (args.statusCode == 3) {
+                document.getElementById("result").innerText = "The username specified cannot be used at this time. Perhaps the username is already logged into the system?";
+            }
+            else if (args.statusCode == 4) {
+                document.getElementById("result").innerText = "The User has been excluded. Please contact the administrator.";
+            }
+            else if (args.statusCode == 5) {
+                document.getElementById("result").innerText = "Invalid username and password. Please try again.";
+            } else {
+                document.getElementById("result").innerText = "Authentication successfull";
+            }
+
+        }
+
+    </script>
+</head>
+<body id="LoginForm" onload="loadAction();">
+
+<div class="container">
+    <div class="login-form">
+        <div class="main-div col-sm-12 col-md-6 col-lg-4">
+            <div class="panel">
+                <h2>Guest Wireless Access</h2>
+                <p id="result">&nbsp;</p>
+            </div>
+        </div>
+        <p class="botto-text">Designed for Bertrange Capital</p>
+    </div>
+</div>
+</body>
+</html>

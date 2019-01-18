@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Created by dimomass on 21.12.18.
  */
@@ -24,8 +26,13 @@ public class RealEstateController {
         this.realEstateJpaRepository = realEstateJpaRepository;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public Page<RealEstateEntity> findAll(Pageable pageable) {
+    @RequestMapping(method = RequestMethod.GET, value = "/findAllPageable")
+    public Page<RealEstateEntity> findAllPageable(Pageable pageable) {
         return realEstateJpaRepository.findAll(pageable);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/findAll")
+    public List<RealEstateEntity> findAll() {
+        return (List<RealEstateEntity>) realEstateJpaRepository.findAll();
     }
 }

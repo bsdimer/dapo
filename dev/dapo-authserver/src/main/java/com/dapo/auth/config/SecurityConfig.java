@@ -1,22 +1,14 @@
 package com.dapo.auth.config;
 
-import com.dapo.auth.authentication.BasicAuthenticationProvider;
-import com.dapo.auth.authentication.MultiAuthenticationManager;
-import com.dapo.auth.authentication.MultiAuthenticationUserDetailService;
-import com.dapo.auth.service.UserService;
-import com.dapo.auth.service.impl.JpaUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -45,11 +37,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/rad")
+                .formLogin()
+                .loginPage("/login").permitAll().defaultSuccessUrl("/rad")
                 .and()
-                .requestMatchers().antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access", "/find/**")
+                .requestMatchers()
+                .antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access", "/find/**")
                 .and()
-                .csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .csrf()
+                .disable()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests().anyRequest().authenticated();
     }

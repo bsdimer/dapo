@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { PageResponse } from "../../core/rest/page-response";
-import { RealEstate } from "../model/real-estate";
+import { RealEstate } from "../model/v1/real-estate";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -13,7 +13,11 @@ export class RealEstateService {
 
   constructor(private http:HttpClient) { }
 
-  public getLatestProperties():Observable<PageResponse<RealEstate>> {
-    return this.http.get<PageResponse<RealEstate>>(this.baseUrl);
+  public getLatestPropertiesPageable():Observable<PageResponse<RealEstate>> {
+    return this.http.get<PageResponse<RealEstate>>(this.baseUrl + "/findAllPageable");
+  }
+
+  public getLatestProperties():Observable<Array<RealEstate>> {
+    return this.http.get<Array<RealEstate>>(this.baseUrl + "/findAll");
   }
 }

@@ -33,8 +33,8 @@ public class RealEstateEntity extends AbstractAuditableEntity implements Propert
     private String neighborhood;
     private String subarea;
     private ConstructionType constructionType;
-    private Byte floorCount = 1;
-    private Byte floor = 1;
+    private Byte floorCount;
+    private Byte floor;
     private AnnouncementType announcementType;
     @Column(nullable = false)
     @NotNull

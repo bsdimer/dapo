@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Broadcaster } from "../events/broadcaster";
-import { ConfigEvent } from "../events/config-event.enum";
+import { ConfigEvent } from "./config-event.enum";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class ConfigurationService {
     return this.http.get(this.configUrl)
       .subscribe(result => {
         this.config = result;
-        this.broadcaster.$broadcast(ConfigEvent.LOADED_SUCCESSFULLY, this.config);
+        this.broadcaster.$broadcast(ConfigEvent.CONFIG_LOADED_SUCCESSFULLY, this.config);
       });
   }
 }
