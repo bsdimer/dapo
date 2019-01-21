@@ -38,13 +38,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin()
-                .loginPage("/login").permitAll().defaultSuccessUrl("/rad")
-                .and()
+                    .disable()
+                .csrf()
+                    .disable()
                 .requestMatchers()
                 .antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access", "/find/**")
                 .and()
-                .csrf()
-                .disable()
+
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()

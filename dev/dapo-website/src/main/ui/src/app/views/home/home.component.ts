@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
   }
 
   onBoundsChange($event) {
-    console.log(GeoUtils.parseGmapEvent($event));
+    //console.log(GeoUtils.parseGmapEvent($event));
   }
 
   onZoomChange($event) {

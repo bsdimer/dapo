@@ -4,7 +4,20 @@
 
 export const environment = {
   production: false,
-  loggerUri: "/logger"
+  loggerUri: "/logger",
+  mainRestApiPrefix: "/api/v2",
+  authRestApiPrefix: "/auth",
+  auth: {
+    clientAuthentication: "dapoweb:dapo123**",
+    tokenExpirationDelta: 15000,
+    facebookLoginUri: "/oauth2/authorize/facebook?redirect_uri=http://localhost:4200/auth/oauth2/redirect",
+    googleLoginUri: "/oauth2/authorize/google?redirect_uri=http://localhost:4200/auth/oauth2/redirect"
+  },
+  view: {
+    default: "/",
+    defaultLang: "en",
+    langs: ["bg", "en"],
+  }
 };
 
 /*

@@ -9,10 +9,10 @@
             <div class="abt_txt_box heading_center">
               <div class="tb_left_heading_wraper heading_center_line">
 
-                <h3>login to your account</h3>
+                <h3>{{'login to your account' | translate }}</h3>
 
               </div>
-              <p>Please Login To Access Weapon Store Area.</p>
+              <p>{{'Please Login To Access Weapon Store Area' | translate }}.</p>
             </div>
 
           </div>
@@ -25,11 +25,11 @@
           <div class="login_wrapper">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-                <a href="#" class="btn btn-primary" id="fb_btn"> <span>Login with Facebook</span><i
+                <a href="{{environment.auth.facebookLoginUri}}" class="btn btn-primary" id="fb_btn"> <span> {{'Login with Facebook' | translate }}</span><i
                   class="fa fa-facebook-f"></i> </a>
               </div>
               <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-                <a href="#" class="btn btn-primary google-plus"> Login with Google <i class="fa fa-google"></i> </a>
+                <a href="{{environment.auth.googleLoginUri}}" class="btn btn-primary google-plus"> {{'Login with Google' | translate }} <i class="fa fa-google"></i> </a>
               </div>
             </div>
             <h2>or</h2>

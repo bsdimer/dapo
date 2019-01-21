@@ -1,5 +1,7 @@
 {
   "/auth/*": "http://localhost:8082",
+  "/oauth2/*": "http://localhost:8080",
+  "/oauth/*": "http://localhost:8082",
   "/api/*": "http://localhost:8081",
   "/stomp/*": {
     "target": "wss://localhost:8080",
