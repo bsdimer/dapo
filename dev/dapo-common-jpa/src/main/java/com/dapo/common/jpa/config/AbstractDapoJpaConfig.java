@@ -42,10 +42,10 @@ public abstract class AbstractDapoJpaConfig {
         };
     }
 
-    @Bean
+    /*@Bean
     NamedParameterJdbcTemplate jdbcTemplate(DataSource dataSource) {
         return new NamedParameterJdbcTemplate(dataSource);
-    }
+    }*/
 
     @Bean
     public JtsModule jtsModule() {

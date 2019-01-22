@@ -4,7 +4,6 @@ import com.dapo.common.jpa.model.PictureEntity;
 import com.dapo.common.jpa.repository.PictureRepository;
 import com.dapo.common.json.views.PictureView;
 import com.fasterxml.jackson.annotation.JsonView;
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

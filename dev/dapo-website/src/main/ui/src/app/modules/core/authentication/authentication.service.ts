@@ -30,6 +30,13 @@ export class AuthenticationService {
   @LocalStorage()
   private tokenData: Oauth2TokenData;
 
+  @LocalStorage()
+  private token: string;
+
+  public setToken(token:string) {
+    this.token = token;
+  }
+
   public static decodeAccessToken(access_token: string) {
     return JSON.parse(AuthenticationService.b64DecodeUnicode(access_token.split('.')[1]));
   }

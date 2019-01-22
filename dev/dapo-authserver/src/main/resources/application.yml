@@ -1,24 +1,7 @@
-# EMBEDDED SERVER CONFIGURATION
 server:
   port: ${PORT:8082}
-  use-forward-headers: true
-  error.whitelabel.enabled: false
-  compression:
-    enabled: true
-    min-response-size: 1024
-    mime-types:
-      - text/html
-      - text/css
-      - text/plain
-      - text/xml
-      - application/json
-      - application/javascript
-  servlet:
-    context-path: /
-
-# PROFILES
 spring:
-  application.name: dapo-authserver
+  application.name: dapo-api
   jpa:
     database: POSTGRESQL
     show-sql: true
@@ -29,17 +12,17 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
   datasource:
     platform: postgres
-    url: jdbc:postgresql://${DB_HOST:localhost}:5432/dapo
-    username: dapo
-    password: dapo
+    url: jdbc:postgresql://${DBHOST:localhost}:5432/${DBNAME:dapo}
+    username: ${DBUSER:dapo}
+    password: ${DBPASS:dapo}
     driverClassName: org.postgresql.Driver
   security:
     oauth2:
       client:
         registration:
           google:
-            clientId: 5014057553-8gm9um6vnli3cle5rgigcdjpdrid14m9.apps.googleusercontent.com
-            clientSecret: tWZKVLxaD_ARWsriiiUFYoIk
+            clientId: 1068892626621-q685593a795qsvfubd89l9ejg4tjkk4p.apps.googleusercontent.com
+            clientSecret: H7jLnkXvWr-fVgfvb78cRoDx
             redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
             scope:
               - email
@@ -51,59 +34,28 @@ spring:
             scope:
               - email
               - public_profile
+          github:
+            clientId: d3e47fc2ddd966fa4352
+            clientSecret: 3bc0f6b8332f93076354c2a5bada2f5a05aea60d
+            redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - user:email
+              - read:user
         provider:
           facebook:
             authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
             tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
             userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
-
-# LOGGING
-logging:
-  level:
-    org:
-      springframework:
-        security: DEBUG
-        jdbc:
-          core:
-            JdbcTemplate: DEBUG
-
-aossia:
-  rad:
-    passwordRecovery:
-      confirm:
-        subject: password recovery confirmation
-    registration:
-      scopes: ${SCOPES}
-      confirm:
-        from: ${spring.application.name}@dapo.tech
-        subject: registration confirmation
-
-# EUREKA
-eureka:
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://${EUREKA_HOST:aossia-rad-discovery}:8761/eureka/
-
----
-
-spring:
-  profiles: standalone
-
-  datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:dapo_users}?useUnicode=yes&characterEncoding=UTF-8
-  rabbitmq:
-    host: ${RABBITMQ_HOST:localhost}
-    port: ${RABBITMQ_PORT:5672}
-    username: ${RABBITMQ_USER:appspace-auth}
-    password: ${RABBITMQ_PASS:P@ssp0rt}
-
-# EUREKA
-eureka:
-  instance:
-      hostname: localhost
-      port: 8761
-  client:
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+app:
+  auth:
+    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+    tokenExpirationMsec: 864000000
+  oauth2:
+    # After successfully authenticating with the OAuth2 Provider,
+    # we'll be generating an auth token for the user and sending the token to the
+    # redirectUri mentioned by the client in the /oauth2/authorize request.
+    # We're not using cookies because they won't work well in mobile clients.
+    authorizedRedirectUris:
+      - http://localhost:4200/a/token
+      - myandroidapp://oauth2/redirect
+      - myiosapp://oauth2/redirect

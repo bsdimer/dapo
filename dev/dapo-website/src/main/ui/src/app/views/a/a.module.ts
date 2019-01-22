@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ARoutingModule } from './a-routing.module';
+import { TokenSetComponent } from './token-set/token-set.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [TokenSetComponent],
   imports: [
     CommonModule,
     ARoutingModule

@@ -1,5 +1,4 @@
 package com.dapo.auth.model;
-import com.dapo.common.authentication.AuthProvider;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -35,8 +34,6 @@ public class User {
     private AuthProvider provider;
 
     private String providerId;
-
-    private boolean enabled;
 
     public Long getId() {
         return id;
@@ -100,13 +97,5 @@ public class User {
 
     public void setProviderId(String providerId) {
         this.providerId = providerId;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
     }
 }

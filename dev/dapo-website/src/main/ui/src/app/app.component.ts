@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     this.broadcaster.$on(ConfigEvent.CONFIG_LOADED_SUCCESSFULLY).subscribe((result) => {
       this.config = result.data;
     });
-    this.configService.getConfig();
+    this.configService.loadConfig();
     if (!this.currentLang) this.currentLang = this.defaultLang ? this.defaultLang : this.config.defaultLang;
     this.translate.use(this.currentLang);
   }

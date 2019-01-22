@@ -4,6 +4,7 @@ import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { TranslateModule } from "@ngx-translate/core";
 import { CoreModule } from "../../modules/core/core.module";
+import { TokenSetComponent } from "./token-set/token-set.component";
 
 const routes: Routes = [
   {
@@ -13,6 +14,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'token',
+    component: TokenSetComponent,
+    data: { error: "/login" }
   },
   {
     path: '',

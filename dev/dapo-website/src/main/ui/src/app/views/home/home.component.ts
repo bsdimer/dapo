@@ -6,6 +6,8 @@ import { PageResponse } from "../../modules/core/rest/page-response";
 import { RealEstate } from "../../modules/dapo/model/v1/real-estate";
 import { google } from "@agm/core/services/google-maps-types";
 import { GeoUtils } from "../../modules/dapo/utils/geo-utils";
+import { ConfigurationService } from "../../modules/core/configuration/configuration.service";
+import { Configurable } from "../../modules/core/configuration/configurable";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,16 +20,18 @@ export class HomeComponent implements OnInit {
 
   private zoom: number = 8;
 
-  constructor(private broadcaster: Broadcaster, private realEstateService: RealEstateService) {
+  constructor(private broadcaster: Broadcaster,
+              private configService: ConfigurationService,
+              private realEstateService: RealEstateService) {
   }
 
   ngOnInit() {
     this.broadcaster.$on(ConfigEvent.CONFIG_LOADED_SUCCESSFULLY).subscribe((result) => {
       this.config = result.data;
-      this.realEstateService.getLatestProperties().subscribe(
-        result => this.latestProperties = result
-      )
     });
+    if (this.configService.isResolved) {
+      this.config = this.configService.config;
+    }
 
     /*var service = new google.maps.places.PlacesService(map);
      service.nearbySearch({
@@ -36,6 +40,7 @@ export class HomeComponent implements OnInit {
      type : [ 'restaurant' ]
      }, callback);*/
   }
+
 
   onBoundsChange($event) {
     //console.log(GeoUtils.parseGmapEvent($event));

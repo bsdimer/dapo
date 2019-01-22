@@ -1,6 +1,6 @@
 <!--map area start here-->
 <div id="map_wrapper">
-  <div id="map" *ngIf="!!this.config">
+  <div id="map" *ngIf="config != undefined">
     <agm-map style="height: 100%" [latitude]="config.mapConfig.latitude"
              [longitude]="config.mapConfig.longitude" [zoom]="zoom"
              (boundsChange)="onBoundsChange($event)" (zoomChange)="onZoomChange($event)">

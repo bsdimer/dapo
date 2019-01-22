@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.6.RELEASE</version>
+        <version>2.1.2.RELEASE</version>
         <relativePath/>
     </parent>
 
@@ -30,8 +30,8 @@
         <maven.resource.plugin.version>3.0.2</maven.resource.plugin.version>
         <maven.version>3.5.0</maven.version>
         <wrapper.maven.plugin>0.0.5</wrapper.maven.plugin>
-        <spring-cloud.version>Finchley.SR2</spring-cloud.version>
-        <spring-cloud-starter-parent.version>Finchley.SR2</spring-cloud-starter-parent.version>
+        <spring-cloud.version>Greenwich.RC2</spring-cloud.version>
+        <spring-cloud-starter-parent.version>Greenwich.RC2</spring-cloud-starter-parent.version>
         <platform-bom.version>Cairo-SR3</platform-bom.version>
         <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
         <java.mail.version>1.5.3</java.mail.version>

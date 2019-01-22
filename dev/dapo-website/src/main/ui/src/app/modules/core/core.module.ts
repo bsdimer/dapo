@@ -6,6 +6,7 @@ import { Broadcaster } from "./events/broadcaster";
 
 @NgModule({
   declarations: [],
+  exports: [],
   imports: [
     CommonModule
   ],
