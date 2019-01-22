@@ -6,8 +6,4 @@ package com.dapo.common.jpa.config;
 
 public abstract class AbstractGeoMapConfig {
 
-    /*@Bean
-    public GeoUtils getGeoUtils(){
-        return new GeoUtils();
-    }*/
 }

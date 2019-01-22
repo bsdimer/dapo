@@ -13,7 +13,6 @@ import org.apache.commons.lang3.RandomUtils;
  */
 public class GeoUtils {
 
-
     public static Polygon getRandomPolygon(double latmin, double latmax, double longmin, double longmax) throws ParseException {
         Double startx = RandomUtils.nextDouble(latmin, latmax);
         Double starty = RandomUtils.nextDouble(longmin, longmax);
