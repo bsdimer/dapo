@@ -3,45 +3,45 @@
 	  "use strict";
 
 	//---------- Preloader -section ---------------//
- 
-	jQuery(window).on('load', function() {
+
+	/*jQuery(window).on('load', function() {
 		jQuery("#status").fadeOut();
 		jQuery("#preloader").delay(350).fadeOut("slow");
-	});
-	
-	
-	
+	});*/
+
+
+
 	//--------------------up scroll js-----------------------------
-			
+
 					$(window).scroll(function() {
-						if ($(this).scrollTop() >= 100) {       
-							$('#return-to-top').fadeIn(200);   
+						if ($(this).scrollTop() >= 100) {
+							$('#return-to-top').fadeIn(200);
 						} else {
-							$('#return-to-top').fadeOut(200);  
+							$('#return-to-top').fadeOut(200);
 						}
 					});
-					$('#return-to-top').on('click',function() {   
+					$('#return-to-top').on('click',function() {
 						$('body,html').animate({
-							scrollTop : 0                
+							scrollTop : 0
 						}, 500);
 					});
-												
+
 			//--------------- Scroll to Top end ----------------//
-			
-					
-			// Slider 
+
+
+			// Slider
 			$('.slider').slider({
 				full_width: true
 			});
 			$('.testimonial_slider').carousel();
-			
-			
-			//------------slider js code----------------//			
+
+
+			//------------slider js code----------------//
 
 				function BannerSlider () {
 				  var banner = $("#theme-main-banner");
 				  if (banner.length) {
-					  banner.camera({ //here I declared some settings, the height and the presence of the thumbnails 
+					  banner.camera({ //here I declared some settings, the height and the presence of the thumbnails
 						height: '1100px',
 						navigation: true,
 						pagination: true,
@@ -66,8 +66,8 @@
 						BannerSlider ();
 					})(jQuery);
 				});
-								
-								
+
+
 				//-----------Search box jquery------------//
 
 			$( ".searchd" ).on( "click", function() {
@@ -77,8 +77,8 @@
 			$( ".close" ).on( "click", function() {
 			  $( ".searchbox" ).removeClass( "open", 1000);
 			});
-					
-					
+
+
 					// Wow js
 				$(window).on("load", function() {
 						var wow = new WOW({
@@ -90,10 +90,10 @@
 						});
 						wow.init();
 					});
-			
-			
-			
-			
+
+
+
+
     //---------------- jQuery SlickNav / Onepage Mobile menu-----------//
 
     $('.mainmenu').slicknav({
@@ -104,30 +104,30 @@
         closeOnClick: true
     });
 
-  
+
 	//----------- jQuery MeanMenu / Multipage Mobile menu----------//
     $('.mobile-menu nav').meanmenu({
         meanScreenWidth: "992",
         meanMenuContainer: ".mobile-menu"
     });
-	
-	
+
+
 	//------------ Menu js for Position fixed--------------//
 				$(window).scroll(function(){
-					var window_top = $(window).scrollTop() + 1; 
+					var window_top = $(window).scrollTop() + 1;
 					if (window_top > 30) {
 						$('.transparent-menu').addClass('menu_fixed animated fadeIn');
 					} else {
 						$('.transparent-menu').removeClass('menu_fixed animated fadeIn');
 					}
 				});
-				
-		
+
+
 					//------------parallex js code----------------//
 
-			
+
 		//---------- service slider js -----------//
-	
+
 	$(document).ready(function() {
               $('.service_slider_wrapper .owl-carousel').owlCarousel({
                 loop: true,
@@ -155,8 +155,8 @@
               })
             })
 
-			
-				
+
+
 		 // Testimonial Slider js
     $(document).ready(function() {
             $('.sw_team_slider .owl-carousel').owlCarousel({
@@ -184,9 +184,9 @@
                 }
             })
         })
-	
-	
-			
+
+
+
    $(document).ready(function() {
               $('.video_img_section .owl-carousel').owlCarousel({
                 loop: true,
@@ -213,9 +213,9 @@
                 }
               })
             })
-					
-	
-					
+
+
+
 			//* slider *//
 	 $(document).ready(function() {
             $('.cc_ps_top_slider_section_2 .owl-carousel').owlCarousel({
@@ -244,8 +244,8 @@
             })
         })
 
-		
-		
+
+
 
 
 	/* datepicker js */
@@ -253,16 +253,16 @@
 			$(function () {
 				$(".datepicker").datepicker({
 					format: 'dd/mm/yyyy',
-					autoclose: true, 
+					autoclose: true,
 					todayHighlight: false
 				})
 			});
-						
-			
-			
-			
+
+
+
+
 			 // --------Progress Bar ----------------------//
-			 
+
 				$('.progressFive, .progressFour').on('inview', function(event, visible, visiblePartX, visiblePartY) {
 					if (visible) {
 						$.each($('div.progress-bar'),function(){
@@ -270,12 +270,12 @@
 						});
 						$(this).off('inview');
 					}
-				});		
-						
-			
-			
+				});
+
+
+
 			//---------testimonial js----------//
-			
+
         $(document).ready(function() {
             $('.testi_slider_wrapper .owl-carousel').owlCarousel({
                 loop: true,
@@ -302,7 +302,7 @@
                 }
             })
         })
-					
+
 		 // Testimonial Slider js
     $(document).ready(function() {
             $('.team_slider_wrapper .owl-carousel').owlCarousel({
@@ -330,9 +330,9 @@
                 }
             })
         })
-	
-			
-			
+
+
+
      //--------------partner slider-------------//
     $('.partner_slider .owl-carousel').owlCarousel({
                 loop: true,
@@ -358,11 +358,11 @@
                 }
               });
 
-			
-			
-			
+
+
+
 			//----------- team slider js -------------//
-	
+
 	$(document).ready(function() {
               $('.team_slider_wrapper .owl-carousel').owlCarousel({
                 loop: true,
@@ -390,9 +390,9 @@
               })
             })
 
-	
+
 		//----------- team slider js -------------//
-	
+
 	$(document).ready(function() {
               $('.projct_slider_wrapper .owl-carousel').owlCarousel({
                 loop: true,
@@ -420,7 +420,7 @@
               })
             })
 
-	
+
 	//*****-----blog slidder wrapper-------******//
 			$(document).ready(function() {
             $('.blog_cat_slider_wrapper .owl-carousel').owlCarousel({
@@ -448,8 +448,8 @@
                 }
             })
         })
-			
-	
+
+
 		//-------------- VENOBOX JS -------------//
             $('.venobox').venobox({
                 numeratio: true,
@@ -458,8 +458,8 @@
                 spinner: 'wandering-cubes',
                 spinColor: '#dbbb0a'
             });
-			
-		 //------------ counter-section------------// 
+
+		 //------------ counter-section------------//
 
     $('.counter_section').on('inview', function(event, visible, visiblePartX, visiblePartY) {
         if (visible) {
@@ -476,9 +476,9 @@
             $(this).off('inview');
         }
     });
-	
+
 			//*******----------partner js--------*********//
-		
+
 		$(document).ready(function() {
               $('.partner_slider_wrapper .owl-carousel').owlCarousel({
                 loop: true,
@@ -506,12 +506,12 @@
               })
             })
 
-	
-		
-				
+
+
+
 			//--------- Contact Form Submition--------------//
-			
-			
+
+
 	function checkRequire(formId , targetResp){
 		targetResp.html('');
 		var email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
@@ -580,6 +580,6 @@
 		}
 	});
 
-	
-  
+
+
     });

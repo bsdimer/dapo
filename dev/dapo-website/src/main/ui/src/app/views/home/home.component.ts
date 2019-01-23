@@ -7,7 +7,7 @@ import { RealEstate } from "../../modules/dapo/model/v1/real-estate";
 import { google } from "@agm/core/services/google-maps-types";
 import { GeoUtils } from "../../modules/dapo/utils/geo-utils";
 import { ConfigurationService } from "../../modules/core/configuration/configuration.service";
-import { Configurable } from "../../modules/core/configuration/configurable";
+import { AuthenticationService } from "../../modules/core/authentication/authentication.service";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private broadcaster: Broadcaster,
               private configService: ConfigurationService,
+              private authenticationService: AuthenticationService,
               private realEstateService: RealEstateService) {
   }
 
@@ -50,4 +51,8 @@ export class HomeComponent implements OnInit {
     this.zoom = $event;
   }
 
+  test() {
+    console.log(this.authenticationService.isAuthenticated);
+    console.log(this.authenticationService.currentUser);
+  }
 }

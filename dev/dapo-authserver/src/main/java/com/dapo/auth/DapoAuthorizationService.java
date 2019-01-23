@@ -1,6 +1,6 @@
 package com.dapo.auth;
 
-import com.dapo.auth.config.AppProperties;
+import com.dapo.auth.common.config.AppProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

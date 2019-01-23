@@ -21,6 +21,7 @@
         <module>dapo-common-jpa</module>
         <module>dapo-config</module>
         <module>dapo-authserver</module>
+        <module>dapo-common-auth</module>
     </modules>
 
 </project>

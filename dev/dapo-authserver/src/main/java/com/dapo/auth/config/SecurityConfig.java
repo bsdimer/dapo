@@ -1,8 +1,8 @@
 package com.dapo.auth.config;
 
+import com.dapo.auth.common.oauth2.TokenAuthenticationFilter;
 import com.dapo.auth.security.CustomUserDetailsService;
 import com.dapo.auth.security.RestAuthenticationEntryPoint;
-import com.dapo.auth.security.TokenAuthenticationFilter;
 import com.dapo.auth.security.oauth2.HttpCookieOAuth2AuthorizationRequestRepository;
 import com.dapo.auth.security.oauth2.OAuth2AuthenticationFailureHandler;
 import com.dapo.auth.security.oauth2.OAuth2AuthenticationSuccessHandler;
@@ -42,9 +42,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler;
-
-    @Autowired
-    private HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository;
 
     @Bean
     public TokenAuthenticationFilter tokenAuthenticationFilter() {

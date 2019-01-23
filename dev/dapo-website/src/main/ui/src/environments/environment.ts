@@ -11,12 +11,15 @@ export const environment = {
     clientAuthentication: "dapoweb:dapo123**",
     tokenExpirationDelta: 15000,
     facebookLoginUri: "/oauth2/authorize/facebook?redirect_uri=http://localhost:4200/a/token",
-    googleLoginUri: "/oauth2/authorize/google?redirect_uri=http://localhost:4200/a/token"
+    googleLoginUri: "/oauth2/authorize/google?redirect_uri=http://localhost:4200/a/token",
+    successUrl: "/home",
+    failUrl: "/a/login",
+    userInfoUri: "/user/me"
   },
   view: {
     default: "/",
     defaultLang: "en",
-    langs: ["bg", "en"],
+    langs: ["bg", "en"]
   }
 };
 

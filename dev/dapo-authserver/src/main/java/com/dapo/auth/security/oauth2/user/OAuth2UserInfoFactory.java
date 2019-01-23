@@ -1,7 +1,7 @@
 package com.dapo.auth.security.oauth2.user;
 
 import com.dapo.auth.exception.OAuth2AuthenticationProcessingException;
-import com.dapo.auth.model.AuthProvider;
+import com.dapo.auth.common.oauth2.AuthProvider;
 
 import java.util.Map;
 

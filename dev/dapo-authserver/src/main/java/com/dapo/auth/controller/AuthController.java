@@ -1,14 +1,14 @@
 package com.dapo.auth.controller;
 
+import com.dapo.auth.common.oauth2.TokenProvider;
 import com.dapo.auth.payload.LoginRequest;
 import com.dapo.auth.exception.BadRequestException;
-import com.dapo.auth.model.AuthProvider;
-import com.dapo.auth.model.User;
+import com.dapo.auth.common.oauth2.AuthProvider;
+import com.dapo.auth.model.UserEntity;
 import com.dapo.auth.payload.ApiResponse;
 import com.dapo.auth.payload.AuthResponse;
 import com.dapo.auth.payload.SignUpRequest;
 import com.dapo.auth.repository.UserRepository;
-import com.dapo.auth.security.TokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -61,7 +61,7 @@ public class AuthController {
         }
 
         // Creating user's account
-        User user = new User();
+        UserEntity user = new UserEntity();
         user.setName(signUpRequest.getName());
         user.setEmail(signUpRequest.getEmail());
         user.setPassword(signUpRequest.getPassword());
@@ -69,7 +69,7 @@ public class AuthController {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        User result = userRepository.save(user);
+        UserEntity result = userRepository.save(user);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/user/me")
