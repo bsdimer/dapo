@@ -20,7 +20,8 @@ export class TopHeaderComponent implements OnInit {
 
   constructor(private broadcaster: Broadcaster,
               private authService: AuthenticationService,
-              private translate: TranslateService) { }
+              private translate: TranslateService) {
+  }
 
   ngOnInit() {
     this.broadcaster.$on(ConfigEvent.CONFIG_LOADED_SUCCESSFULLY).subscribe((result) => {
@@ -34,4 +35,9 @@ export class TopHeaderComponent implements OnInit {
     this.translate.use(lang);
     this.defaultLang = lang;
   }
+
+  test() {
+    console.log(this.authService.isAuthenticated);
+  }
+
 }

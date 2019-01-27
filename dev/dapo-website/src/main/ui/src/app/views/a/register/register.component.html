@@ -1,3 +1,110 @@
-<p>
-  register works!
-</p>
+<div class="register_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-12 col-xs-12 col-sm-12 col-lg-offset-3">
+        <div class="tb_work_txt_wrapper">
+          <div class="abt_txt_box heading_center">
+            <div class="tb_left_heading_wraper heading_center_line">
+
+              <h3>{{'register_form' | translate }}</h3>
+
+            </div>
+            <p>{{ 'register_message' | translate }}</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-8 col-md-offset-2">
+        <div class="register_wrapper_box">
+          <form #registerForm="ngForm" (ngSubmit)="onSubmit()" [mustMatch]="['password', 'confirmPassword']" novalidate>
+            <div class="register_left_form">
+
+              <div class="jp_regiter_top_heading">
+                <p style="text-transform: none">{{'Fields with * are mandatory'| translate}}</p>
+              </div>
+              <div class="row clearfix">
+                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                  <input type="text" name="name" [(ngModel)]="model.name" #name="ngModel"
+                         placeholder="{{'name' | translate }}*" required/>
+                  <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                    <div *ngIf="name.errors.required">{{'Name is required' | translate}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row clearfix">
+
+                <!--Form Group-->
+                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" name="email" [(ngModel)]="model.email" #email="ngModel"
+                         placeholder="{{'Email' | translate }}*" required email style="text-transform: none"/>
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <div *ngIf="email.errors.required">{{'Email is required' | translate }}</div>
+                    <div *ngIf="email.errors.email">{{'Email must be a valid email address' | translate }}</div>
+                  </div>
+                </div>
+                <!--Form Group-->
+                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                  <input type="text" name="phone" [(ngModel)]="model.phone" #phone="ngModel"
+                         placeholder="{{'phone' | translate }}" style="text-transform: none"/>
+                </div>
+              </div>
+              <!--Form Group-->
+              <div class="row clearfix">
+
+                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                  <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel"
+                         placeholder="{{'password' | translate }}" minlength="5" required style="text-transform: none"/>
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                    <div *ngIf="password.errors.required">{{'Password is required' | translate }}</div>
+                    <div *ngIf="password.errors.minlength">{{'pass_min_leng_err5' | translate }}</div>
+                  </div>
+                </div>
+                <!--Form Group-->
+                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                  <input type="password" name="confirmPassword" [(ngModel)]="model.confirmPassword"
+                         #confirmPassword="ngModel" required
+                         placeholder="{{'confirmPassword' | translate }}" style="text-transform: none"/>
+                  <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+                    <div *ngIf="confirmPassword.errors.required">{{'confirmPassword is required' | translate }}</div>
+                    <div *ngIf="confirmPassword.errors.mustMatch">{{'Passwords must match' | translate}}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row clearfix">
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  {{ error | translate}}
+                </div>
+              </div>
+
+              <div class="row clearfix">
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="check-box text-center">
+                    <input type="checkbox" name="termsAgreed" id="termsAgreed" [(ngModel)]="model.termsAgreed"
+                           #termsAgreed="ngModel" required> &ensp;
+                    <label for="termsAgreed" class="label_2">
+                      {{'I agreed to the' | translate}}
+                      <a class="check_box_anchr">{{'Terms and Conditions' | translate }}</a>
+                      {{'governing the use of our site' | translate}}</label>
+                    <div *ngIf="termsAgreed.invalid && (termsAgreed.dirty || termsAgreed.touched)">
+                      <div *ngIf="termsAgreed.errors.required">{{'termsAgreed is required' | translate }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="login_btn_wrapper register_btn_wrapper login_wrapper register_wrapper_btn">
+              <button type="submit" class="btn btn-primary login_btn" (click)="register(model)" [disabled]="!registerForm.form.valid"> {{'register' | translate }} </button>
+            </div>
+            <div class="login_message">
+              <p>{{'Already a member?' | translate }}<a routerLink="/a/login"> {{'login'|translate}} </a></p>
+            </div>
+
+          </form>
+        </div>
+        <p class="btm_txt_register_form">{{'logout_warning' | translate }}</p>
+      </div>
+    </div>
+  </div>
+</div>

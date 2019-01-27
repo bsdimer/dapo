@@ -15,6 +15,7 @@ import { HttpClient } from "@angular/common/http";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TopHeaderComponent } from './views/top-header/top-header.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -28,6 +29,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'GMAPKEY'

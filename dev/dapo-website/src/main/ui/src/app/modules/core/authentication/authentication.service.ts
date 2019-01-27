@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ChangeDetectorRef } from '@angular/core';
 import { Broadcaster } from "../events/broadcaster";
 import { LocalStorage } from "ngx-webstorage";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../../environments/environment";
 import { map, catchError, tap } from "rxjs/internal/operators";
-import { AuthenticationEvent } from "./AuthenticationEvent";
 import { of, Observable } from "rxjs";
+import { AuthenticationEvent } from "./AuthenticationEvent";
 
 @Injectable({
   providedIn: 'root',
@@ -17,36 +17,54 @@ export class AuthenticationService {
   private _currentUser: any;
   private _isAuthenticated: boolean;
 
-  constructor(private broadcaster: Broadcaster, private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private broadcaster:Broadcaster) {
   }
 
   private validateToken(token: string): boolean {
     return true;
   }
 
-  public setToken(token: any): Observable<any> {
+  public setToken(token: any) {
     this.token = token;
-    return this.authenticate();
+    this.authenticate();
   }
 
   private refreshToken(): void {
   }
 
-  public authenticate(): Observable<any> {
-    this.http.get(environment.auth.userInfoUri, {headers: {Authorization: `Bearer ${this.token}`}}).pipe(
-      catchError((error: any) => {
-        this.broadcaster.$broadcast(AuthenticationEvent.AUTHENTICATION_FAIL, error);
-        return of(error);
-      })
-    ).subscribe(user => {
-      this._currentUser = user;
-      this._isAuthenticated = true;
-      this.broadcaster.$broadcast(AuthenticationEvent.AUTHENTICATION_SUCCESS, user);
-    });
-    return of(this._currentUser);
+  public authenticate() {
+    if (!!this.token) {
+      this.http.get(environment.auth.userInfoUri, {headers: {Authorization: `Bearer ${this.token}`}})
+        .pipe(
+          catchError(err => {
+            this.clearAuthentication();
+            return of(err)
+          })
+        )
+        .subscribe(
+          user => {
+            this._currentUser = user;
+            this._isAuthenticated = true;
+          },
+          error => {
+            this.clearAuthentication();
+          },
+          () => {
+            this.broadcaster.$broadcast(AuthenticationEvent.AUTHENTICATION_COMPLETE);
+          }
+        );
+    } else {
+      this.clearAuthentication();
+    }
   }
 
   public logout() {
+    this.clearAuthentication();
+    this.broadcaster.$broadcast(AuthenticationEvent.AUTHENTICATION_COMPLETE);
+  }
+
+  private clearAuthentication() {
     this.token = null;
     this._currentUser = null;
     this._isAuthenticated = false;

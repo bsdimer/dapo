@@ -7,6 +7,7 @@ import { ConfigEvent } from "./modules/core";
 import { Config } from "./modules/dapo/model/v1/config";
 import { AuthenticationService } from "./modules/core/authentication/authentication.service";
 import { AuthenticationEvent } from "./modules/core/authentication/AuthenticationEvent";
+import { RouterOutlet } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.configService.loadConfig().subscribe();
-    this.authService.authenticate().subscribe();
+    this.authService.authenticate();
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 
 }

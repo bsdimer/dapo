@@ -4,3 +4,4 @@ export * from './events/broadcast-event';
 export * from './configuration/config-event.enum';
 export * from './utils/Executor';
 export * from './configuration/configuration.service';
+export * from './guard'

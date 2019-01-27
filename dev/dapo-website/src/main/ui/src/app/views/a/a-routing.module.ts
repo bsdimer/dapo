@@ -5,6 +5,7 @@ import { RegisterComponent } from "./register/register.component";
 import { TranslateModule } from "@ngx-translate/core";
 import { CoreModule } from "../../modules/core/core.module";
 import { TokenSetComponent } from "./token-set/token-set.component";
+import { NoAuthGuard } from "../../modules/core/guard/noauth.guard";
 
 const routes: Routes = [
   {
@@ -18,7 +19,7 @@ const routes: Routes = [
   {
     path: 'token',
     component: TokenSetComponent,
-    data: { error: "/login" }
+    data: { error: "/a/login" }
   },
   {
     path: '',
@@ -27,13 +28,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    RegisterComponent],
   imports: [
     RouterModule.forChild(routes),
-    TranslateModule,
-    CoreModule
   ],
   exports: [RouterModule]
 })
