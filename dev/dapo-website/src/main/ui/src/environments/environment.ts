@@ -14,7 +14,8 @@ export const environment = {
     googleLoginUri: "/oauth2/authorize/google?redirect_uri=http://localhost:4200/a/token",
     successUrl: "/home",
     failUrl: "/a/login",
-    userInfoUri: "/user/me"
+    userInfoUri: "/user/me",
+    signUpUrl: "/auth/signup"
   },
   view: {
     default: "/",

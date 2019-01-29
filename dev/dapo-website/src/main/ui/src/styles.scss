@@ -1,11 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 .login_btn {
   width: 100%;
-  padding: 1em;
+  padding: 13px;
   font-size: large;
   text-transform: uppercase;
 }
 
+.txt-transform-none {
+  text-transform: none;
+}
+
 .a-button {
   cursor: pointer
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
 }

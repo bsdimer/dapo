@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SignupRequest } from "../../../modules/core/authentication/signup-request";
+import { RegistrationService } from "../../../modules/core/authentication/registration.service";
 
 @Component({
   selector: 'app-register',
@@ -10,22 +11,22 @@ export class RegisterComponent implements OnInit {
 
   private model:SignupRequest = new SignupRequest();
 
-  constructor() { }
+  constructor(private registrationService: RegistrationService) { }
 
   ngOnInit() {
   }
 
-  register() {
-    debugger;
+  signup() {
+    this.registrationService.signUp(this.model).subscribe(result => {
+      console.log(result);
+      debugger;
+    })
   }
 
   public test(){
     debugger;
   }
 
-  public onSubmit(){
-    debugger;
-  }
 
   private isValid(){
     return true;

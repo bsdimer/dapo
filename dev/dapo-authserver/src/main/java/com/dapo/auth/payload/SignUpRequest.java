@@ -15,6 +15,8 @@ public class SignUpRequest {
     @Email
     private String email;
 
+    private String phone;
+
     @NotBlank
     private String password;
 
@@ -40,5 +42,13 @@ public class SignUpRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

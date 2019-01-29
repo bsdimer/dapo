@@ -6575,6 +6575,7 @@ video {
   text-align: center;
   margin: 0px auto;
   font-size: 14px;
+  text-transform: none;
 }
 
 .register_wrapper_box {

@@ -63,6 +63,7 @@ public class AuthController {
         // Creating user's account
         UserEntity user = new UserEntity();
         user.setName(signUpRequest.getName());
+        user.setPhone(signUpRequest.getPhone());
         user.setEmail(signUpRequest.getEmail());
         user.setPassword(signUpRequest.getPassword());
         user.setProvider(AuthProvider.local);
@@ -76,7 +77,7 @@ public class AuthController {
                 .buildAndExpand(result.getId()).toUri();
 
         return ResponseEntity.created(location)
-                .body(new ApiResponse(true, "User registered successfully@"));
+                .body(new ApiResponse(true, "User registered successfully"));
     }
 
 }

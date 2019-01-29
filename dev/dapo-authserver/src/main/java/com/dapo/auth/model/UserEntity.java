@@ -28,6 +28,8 @@ public class UserEntity implements User {
     @Column(nullable = false)
     private Boolean emailVerified = false;
 
+    private String phone;
+
     @JsonIgnore
     private String password;
 
@@ -99,5 +101,13 @@ public class UserEntity implements User {
 
     public void setProviderId(String providerId) {
         this.providerId = providerId;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

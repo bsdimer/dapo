@@ -32,7 +32,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     BrowserAnimationsModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'GMAPKEY'
+      apiKey: 'AIzaSyBMGKHXLeizvrfckXbFFt8SfeaSBHi8xd4'
     }),
     AgmJsMarkerClustererModule,
     NgxWebstorageModule.forRoot(),

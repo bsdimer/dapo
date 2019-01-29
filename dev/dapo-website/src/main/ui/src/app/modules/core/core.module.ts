@@ -6,6 +6,7 @@ import { Broadcaster } from "./events/broadcaster";
 import { AuthGuard } from "./guard/auth.guard";
 import { NoAuthGuard } from "./guard/noauth.guard";
 import { MustMatchDirective } from './directives/mustMatch/must-match.directive';
+import { RegistrationService } from "./authentication/registration.service";
 
 @NgModule({
   declarations: [MustMatchDirective],
@@ -16,7 +17,8 @@ import { MustMatchDirective } from './directives/mustMatch/must-match.directive'
   providers: [
     AuthenticationService,
     ConfigurationService,
-    Broadcaster
+    Broadcaster,
+    RegistrationService
   ]
 })
 export class CoreModule { }
