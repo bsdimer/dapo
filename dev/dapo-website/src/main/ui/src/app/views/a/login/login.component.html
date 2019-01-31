@@ -21,49 +21,55 @@
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <!-- login_wrapper -->
+          <form #loginForm="ngForm" (ngSubmit)="login()">
+            <div class="login_wrapper">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
+                  <a href="{{environment.auth.facebookLoginUri}}" class="btn btn-primary" id="fb_btn"> <span> {{'Login with Facebook' | translate }}</span><i
+                    class="fa fa-facebook-f"></i> </a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
+                  <a href="{{environment.auth.googleLoginUri}}" class="btn btn-primary google-plus"> {{'Login with
+                    Google' | translate }} <i class="fa fa-google"></i> </a>
+                </div>
+              </div>
+              <h2>{{'or' | translate }}</h2>
 
-          <div class="login_wrapper">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-                <a href="{{environment.auth.facebookLoginUri}}" class="btn btn-primary" id="fb_btn"> <span> {{'Login with Facebook' | translate }}</span><i
-                  class="fa fa-facebook-f"></i> </a>
+              <div class="formsix-pos">
+                <div class="form-group i-email">
+                  <input type="email" name="email" class="form-control" required email id="email"
+                         placeholder="{{'email'| translate }} *" [(ngModel)]="req.email" #email="ngModel">
+                </div>
               </div>
-              <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-                <a href="{{environment.auth.googleLoginUri}}" class="btn btn-primary google-plus"> {{'Login with Google' | translate }} <i class="fa fa-google"></i> </a>
+              <div class="formsix-e">
+                <div class="form-group i-password">
+                  <input type="password" name="password" class="form-control" required id="password"
+                         placeholder="{{'password' | translate }} *" [(ngModel)]="req.password" #password="ngModel">
+                </div>
+              </div>
+              <div class="login_remember_box">
+                <label class="control control--checkbox">{{'remember_me'| translate}}
+                  <input type="checkbox">
+                  <span class="control__indicator"></span>
+                </label>
+                <a href="#" class="forget_password">
+                  {{'Forgot Password' | translate}}
+                </a>
+              </div>
+              <div class="login_btn_wrapper">
+                <button type="submit" class="btn btn-primary login_btn" [disabled]="!loginForm.form.valid"> {{'login' | translate }}</button>
+                <!--
+                              <a href="#" class="btn btn-primary login_btn"> login </a>
+                -->
+              </div>
+              <div class="login_message">
+                <p>{{'dont_have_account_q' | translate }}<a routerLink="/a/register"> {{'Register now'| translate}} </a>
+                </p>
               </div>
             </div>
-            <h2>{{'or' | translate }}</h2>
-            <div class="formsix-pos">
-              <div class="form-group i-email">
-                <input type="email" class="form-control" required="" id="email2" placeholder="{{'email'| translate }} *">
-              </div>
-            </div>
-            <div class="formsix-e">
-              <div class="form-group i-password">
-                <input type="password" class="form-control" required="" id="password2" placeholder="{{'password' | translate }} *">
-              </div>
-            </div>
-            <div class="login_remember_box">
-              <label class="control control--checkbox">{{'remember_me'| translate}}
-                <input type="checkbox">
-                <span class="control__indicator"></span>
-              </label>
-              <a href="#" class="forget_password">
-                {{'Forgot Password' | translate}}
-              </a>
-            </div>
-            <div class="login_btn_wrapper">
-              <button type="submit" class="btn btn-primary login_btn"> {{'login' | translate }} </button>
-<!--
-              <a href="#" class="btn btn-primary login_btn"> login </a>
--->
-            </div>
-            <div class="login_message">
-              <p>{{'dont_have_account_q' | translate }}<a routerLink="/a/register"> {{'Register now'| translate}} </a></p>
-            </div>
-          </div>
-          <p class="btm_txt_register_form" style="text-transform: none">{{'logout_warning' | translate }}</p>
-          <!-- /.login_wrapper-->
+            <p class="btm_txt_register_form" style="text-transform: none">{{'logout_warning' | translate }}</p>
+            <!-- /.login_wrapper-->
+          </form>
         </div>
       </div>
     </div>

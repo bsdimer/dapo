@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.configService.loadConfig().subscribe();
-    this.authService.authenticate();
+    this.authService.authenticate().subscribe();
   }
 
   prepareRoute(outlet: RouterOutlet) {

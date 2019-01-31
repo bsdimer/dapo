@@ -15,7 +15,16 @@
         </div>
       </div>
       <div class="col-md-8 col-md-offset-2">
-        <div class="register_wrapper_box">
+        <div class="register_wrapper_box" *ngIf="state=='success'">
+          <div class="jp_regiter_top_heading">
+            <p style="text-transform: none">{{'confirm_email_message'| translate}}</p>
+          </div>
+          <div class="login_message">
+            <p>{{'Go to login' | translate }}<a routerLink="/a/login"> {{'login'|translate}} </a></p>
+          </div>
+        </div>
+
+        <div class="register_wrapper_box" *ngIf="state=='default'">
           <form #registerForm="ngForm" (ngSubmit)="signup()" [mustMatch]="['password', 'confirmPassword']" novalidate>
             <div class="register_left_form">
 
@@ -94,8 +103,14 @@
               </div>
             </div>
 
+            <div class="error-message" *ngIf="state=='error'">
+              {{message | translate }}
+            </div>
+
             <div class="login_btn_wrapper register_btn_wrapper login_wrapper register_wrapper_btn">
-              <button type="submit" class="btn btn-primary login_btn" [disabled]="!registerForm.form.valid"> {{'register' | translate }} </button>
+              <button type="submit" class="btn btn-primary login_btn" [disabled]="!registerForm.form.valid">
+                {{'register' | translate }}
+              </button>
             </div>
             <div class="login_message">
               <p>{{'Already a member?' | translate }}<a routerLink="/a/login"> {{'login'|translate}} </a></p>

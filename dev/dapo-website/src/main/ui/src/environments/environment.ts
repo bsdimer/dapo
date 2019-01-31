@@ -15,7 +15,8 @@ export const environment = {
     successUrl: "/home",
     failUrl: "/a/login",
     userInfoUri: "/user/me",
-    signUpUrl: "/auth/signup"
+    signUpUrl: "/auth/signup",
+    loginUrl: "/auth/login"
   },
   view: {
     default: "/",

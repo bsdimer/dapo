@@ -44,5 +44,14 @@
   "termsAgreed is required": "Трябва да се съгласите с условията преди да продължите",
   "Forgot Password": "Забравена парола",
   "dont_have_account_q": "Нямате собствен профил ?",
-  "Register now": "Регистрирай се сега"
+  "Register now": "Регистрирай се сега",
+  "Email address already in use.": "Вашият email вече съществува в нашата база.",
+  "User registered successfully": "Вашата регистрация премина успешно",
+  "confirm_email_message": "На електронната Ви поща ще получите известие за регистрацията. Моля потвърдете го преди да продължите.",
+  "Go to login": "Към логин",
+  "Name is required": "Името е задължително поле",
+  "Email is required": "Електронната поща е задължителна",
+  "confirmPassword is required": "Моля потвърдете паролата",
+  "Passwords must match": "Паролите не съвпадат"
+
 }
