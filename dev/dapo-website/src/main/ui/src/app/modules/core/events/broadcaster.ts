@@ -1,7 +1,11 @@
 import { filter } from 'rxjs/operators';
 import { BroadcastEvent } from "./broadcast-event";
 import { Subject, Observable } from "rxjs";
+import { Injectable } from "@angular/core";
 
+@Injectable({
+  providedIn: 'root'
+})
 export class Broadcaster {
   private _event: Subject<BroadcastEvent>;
 

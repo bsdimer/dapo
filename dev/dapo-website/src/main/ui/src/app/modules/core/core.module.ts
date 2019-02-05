@@ -15,9 +15,6 @@ import { RegistrationService } from "./authentication/registration.service";
     CommonModule
   ],
   providers: [
-    AuthenticationService,
-    ConfigurationService,
-    Broadcaster,
     RegistrationService
   ]
 })

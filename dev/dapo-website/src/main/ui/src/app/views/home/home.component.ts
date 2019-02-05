@@ -34,6 +34,12 @@ export class HomeComponent implements OnInit {
       this.config = this.configService.config;
     }
 
+    this.realEstateService.getLatestProperties().subscribe(
+      result => {
+        this.latestProperties = result;
+      }
+    );
+
     /*var service = new google.maps.places.PlacesService(map);
      service.nearbySearch({
      location : myPlace,

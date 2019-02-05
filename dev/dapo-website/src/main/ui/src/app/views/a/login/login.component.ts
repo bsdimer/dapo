@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
       this.authService.setToken(result).subscribe(
         success => {
           // ToDo: should fix this
-          window.location.href = window.location.origin + environment.auth.successUrl;
+          this.router.navigate([environment.auth.successUrl]);
+          //window.location.href = window.location.origin + environment.auth.successUrl;
         }
       )
     })

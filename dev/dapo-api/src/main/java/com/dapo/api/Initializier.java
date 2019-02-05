@@ -12,6 +12,7 @@ import com.vividsolutions.jts.io.ParseException;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -23,6 +24,7 @@ import java.util.*;
  */
 
 @Component
+@Profile("init")
 public class Initializier {
 
 
@@ -41,7 +43,7 @@ public class Initializier {
     int municipalitiesCount = 100;
     int realEstateCount = 1000;
 
-
+    @PostConstruct
     public void contextLoads() throws Exception {
         Lorem lorem = LoremIpsum.getInstance();
         Country country = new Country();
