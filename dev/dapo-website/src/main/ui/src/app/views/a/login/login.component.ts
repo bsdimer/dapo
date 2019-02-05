@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
         success => {
           // ToDo: should fix this
           this.router.navigate([environment.auth.successUrl]);
-          //window.location.href = window.location.origin + environment.auth.successUrl;
         }
       )
     })

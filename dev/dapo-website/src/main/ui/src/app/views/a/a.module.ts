@@ -15,8 +15,7 @@ import { TranslateModule } from "@ngx-translate/core";
     CommonModule,
     ARoutingModule,
     CoreModule,
-    FormsModule,
-    TranslateModule
+    FormsModule
   ]
 })
 export class AModule { }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { PageResponse } from "../../core/rest/page-response";
 import { RealEstate } from "../model/v1/real-estate";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,7 @@ export class RealEstateService {
   }
 
   public getLatestProperties():Observable<Array<RealEstate>> {
-    return this.http.get<Array<RealEstate>>(this.baseUrl + "/findAll");
+    return of([]);
+    //return this.http.get<Array<RealEstate>>(this.baseUrl + "/findAll");
   }
 }

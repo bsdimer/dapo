@@ -2,10 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
-import { TranslateModule } from "@ngx-translate/core";
-import { CoreModule } from "../../modules/core/core.module";
 import { TokenSetComponent } from "./token-set/token-set.component";
-import { NoAuthGuard } from "../../modules/core/guard/noauth.guard";
 
 const routes: Routes = [
   {
