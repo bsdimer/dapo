@@ -33,7 +33,7 @@
         <spring-cloud.version>Greenwich.RC2</spring-cloud.version>
         <spring-cloud-starter-parent.version>Greenwich.RC2</spring-cloud-starter-parent.version>
         <platform-bom.version>Cairo-SR3</platform-bom.version>
-        <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
+        <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
         <java.mail.version>1.5.3</java.mail.version>
         <springfox.version>2.4.0</springfox.version>
         <spring-boot-daemon-integration.version>1.2.0-SNAPSHOT</spring-boot-daemon-integration.version>
@@ -57,6 +57,9 @@
         <postgis-jdbc.version>2.3.0</postgis-jdbc.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <com.vividsolutions.version>1.13</com.vividsolutions.version>
+        <spring-data-mongodb.version>2.1.4.RELEASE</spring-data-mongodb.version>
+        <spring.framework.version>5.1.4.RELEASE</spring.framework.version>
+        <querydsl.version>4.2.1</querydsl.version>
     </properties>
 
     <profiles>

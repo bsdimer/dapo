@@ -2,17 +2,16 @@ package com.dapo.common.jpa.config;
 
 import com.bedatadriven.jackson.datatype.jts.JtsModule;
 import com.dapo.common.jpa.infra.SpringSecurityAuditorAware;
+import com.dapo.common.jpa.repository.RealEstateJpaRepository;
+import com.dapo.common.jpa.service.RealEstateJpaService;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.auditing.DateTimeProvider;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.sql.DataSource;
 import java.time.LocalDateTime;
 import java.time.temporal.TemporalAccessor;
 import java.util.Optional;
@@ -40,6 +39,11 @@ public abstract class AbstractDapoJpaConfig {
                 return Optional.of(LocalDateTime.now());
             }
         };
+    }
+
+    @Bean
+    public RealEstateJpaService realEstateService(RealEstateJpaRepository realEstateJpaRepository) {
+        return new RealEstateJpaService(realEstateJpaRepository);
     }
 
     @Bean

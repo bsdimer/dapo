@@ -14,6 +14,8 @@
     <modules>
         <module>dapo-parent</module>
         <module>dapo-common</module>
+        <module>dapo-common-jpa</module>
+        <module>dapo-common-nosql</module>
         <module>dapo-eureka</module>
         <module>dapo-api</module>
         <module>dapo-portal</module>

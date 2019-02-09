@@ -18,7 +18,7 @@ export class RealEstateService {
   }
 
   public getLatestProperties():Observable<Array<RealEstate>> {
-    return of([]);
-    //return this.http.get<Array<RealEstate>>(this.baseUrl + "/findAll");
+    //return of([]);
+    return this.http.get<Array<RealEstate>>(this.baseUrl + "/findAll");
   }
 }

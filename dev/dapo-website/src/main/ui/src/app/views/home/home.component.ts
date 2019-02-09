@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
 
     this.realEstateService.getLatestProperties().subscribe(
       result => {
+        console.log(result);
         this.latestProperties = result;
       }
     );

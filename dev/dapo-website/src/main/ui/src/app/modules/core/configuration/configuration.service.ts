@@ -25,10 +25,11 @@ export class ConfigurationService implements OnDestroy{
         this.config = result;
         this.isResolved = true;
         this.broadcaster.$broadcast(ConfigEvent.CONFIG_LOADED_SUCCESSFULLY, this.config);
+        return result;
       }),
       catchError((error:any) => {
         this.broadcaster.$broadcast(ConfigEvent.CONFIG_LOADING_FAILED, error);
-        return of(error);
+        return error;
       })
     )
   }
