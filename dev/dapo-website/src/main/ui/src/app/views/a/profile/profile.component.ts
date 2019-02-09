@@ -1,19 +1,23 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router, Params } from "@angular/router";
 import { AuthenticationService } from "../../../modules/core/authentication/authentication.service";
 import { environment } from "../../../../environments/environment";
+import { BsModalRef, BsModalService } from "ngx-bootstrap";
 
 @Component({
-  selector: 'app-token-set',
-  templateUrl: './token-set.component.html',
-  styleUrls: ['./token-set.component.scss']
+  selector: 'profile-controller',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
 })
-export class TokenSetComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
   private message: string;
+  private user;
+  modalRef: BsModalRef;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
+              private modalService: BsModalService,
               private authService: AuthenticationService) {
   }
 
@@ -23,21 +27,30 @@ export class TokenSetComponent implements OnInit {
       if (params.hasOwnProperty("token")) {
         this.authService.setToken(params["token"]).subscribe(
           result => {
-            //this.router.navigateByUrl(environment.auth.successUrl);
-            // ToDo: should fix this
-            window.location.href = window.location.origin + environment.auth.successUrl;
+            this.user = this.authService.currentUser;
           },
           error => {
             this.router.navigateByUrl(environment.auth.failUrl, params['error']);
           }
         )
+      } else {
+        if (this.authService.isAuthenticated) {
+          this.user = this.authService.currentUser;
+        }
       }
 
       if (params.hasOwnProperty("error")) {
         this.message = params["error"];
-        //this.router.navigateByUrl(environment.auth.failUrl, params['error']);
       }
     });
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  save(){
+    console.log(this.user);
   }
 
 }

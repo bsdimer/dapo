@@ -5,13 +5,10 @@
         <div class="tb_work_txt_wrapper">
           <div class="abt_txt_box heading_center">
             <div class="tb_left_heading_wraper heading_center_line">
-
               <h3>{{'register_form' | translate }}</h3>
-
             </div>
             <p>{{ 'register_message' | translate }}</p>
           </div>
-
         </div>
       </div>
       <div class="col-md-8 col-md-offset-2">
@@ -23,11 +20,9 @@
             <p>{{'Go to login' | translate }}<a routerLink="/a/login"> {{'login'|translate}} </a></p>
           </div>
         </div>
-
         <div class="register_wrapper_box" *ngIf="state=='default'">
           <form #registerForm="ngForm" (ngSubmit)="signup()" [mustMatch]="['password', 'confirmPassword']" novalidate>
             <div class="register_left_form">
-
               <div class="jp_regiter_top_heading">
                 <p style="text-transform: none">{{'Fields with * are mandatory'| translate}}</p>
               </div>
@@ -41,7 +36,6 @@
                 </div>
               </div>
               <div class="row clearfix">
-
                 <!--Form Group-->
                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
                   <input type="text" name="email" [(ngModel)]="model.email" #email="ngModel"
@@ -108,7 +102,7 @@
             </div>
 
             <div class="login_btn_wrapper register_btn_wrapper login_wrapper register_wrapper_btn">
-              <button type="submit" class="btn btn-primary login_btn" [disabled]="!registerForm.form.valid">
+              <button type="submit" class="btn btn-primary form_button" [disabled]="!registerForm.form.valid">
                 {{'register' | translate }}
               </button>
             </div>

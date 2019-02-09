@@ -5,6 +5,7 @@ import { AuthenticationService } from "../../modules/core/authentication/authent
 import { LocalStorage } from "ngx-webstorage";
 import { ConfigEvent } from "../../modules/core/configuration/config-event.enum";
 import { Config } from "../../modules/dapo/model/v1/config";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-top-header',
@@ -20,6 +21,7 @@ export class TopHeaderComponent implements OnInit {
 
   constructor(private broadcaster: Broadcaster,
               private authService: AuthenticationService,
+              private router:Router,
               private translate: TranslateService) {
   }
 
@@ -36,8 +38,10 @@ export class TopHeaderComponent implements OnInit {
     this.defaultLang = lang;
   }
 
-  test() {
-    console.log(this.authService.isAuthenticated);
+  logout() {
+    this.authService.logout().subscribe(() => {
+      this.router.navigate(['/']);
+    })
   }
 
 }

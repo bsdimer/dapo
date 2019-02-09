@@ -6409,12 +6409,12 @@ video {
   border-bottom: 1px solid #e4e4e4;
 }
 
-.login_btn_wrapper a.login_btn {
+.login_btn_wrapper a.form_button {
   text-align: center;
   text-transform: uppercase;
 }
 
-.login_btn_wrapper a.login_btn:hover {
+.login_btn_wrapper a.form_button:hover {
   background-color: #337ab7;
   border-color: #337ab7;
   -webkit-transition: all 0.5s;

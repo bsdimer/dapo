@@ -51,7 +51,7 @@
                   <a class="a-button" routerLink="/a/login" *ngIf="!authService.isAuthenticated">
                     <i class="fa fa-sign-in"></i> {{"login / register" | translate}}
                   </a>
-                  <a class="a-button" (click)="authService.logout()" *ngIf="authService.isAuthenticated">
+                  <a class="a-button" (click)="logout()" *ngIf="authService.isAuthenticated">
                     <i class="fa fa-sign-out"></i> {{"logout" | translate}}
                   </a>
                 </li>

@@ -58,9 +58,10 @@ export class AuthenticationService {
     return this.http.post(environment.auth.loginUrl, request);
   }
 
-  public logout() {
+  public logout():Observable<boolean> {
     this.clearAuthentication();
     this.broadcaster.$broadcast(AuthenticationEvent.AUTHENTICATION_COMPLETE);
+    return of(true);
   }
 
   private clearAuthentication() {

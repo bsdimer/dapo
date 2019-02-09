@@ -52,6 +52,19 @@
   "Name is required": "Името е задължително поле",
   "Email is required": "Електронната поща е задължителна",
   "confirmPassword is required": "Моля потвърдете паролата",
-  "Passwords must match": "Паролите не съвпадат"
+  "Passwords must match": "Паролите не съвпадат",
+  "more_info": " Повече информация",
+  "You are not logged in": "Не сте влезли в системата",
+  "Login now": "Влезте сега",
+  "standard_user_agreement": "приемам стандартните правила за ползване на системата",
+  "agree_collectInformation": "приемам правилата за събиране на информация",
+  "agree_agentContactMe": "приемам, че лицензирани и одобрени агенти на системата ще мога се свързват с мен",
+  "standardUserAgreement_text": "Стандартни правила на системата",
+  "agreeCollectInformation_text": "Правила за събиране на информация от мен",
+  "agreeAgentContactMe_text": "Лицензирани и одобрени агентити на системата ще могат да се свържат с мен с цел обенна информация",
+  "profile_form_descr": "Управление на вашите данни",
+  "profile form": "Потребителски профил",
+  "rights of use": "Правила за ползване",
+  "save": "запис"
 
 }

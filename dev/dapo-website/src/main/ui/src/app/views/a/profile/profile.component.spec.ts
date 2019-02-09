@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TokenSetComponent } from './token-set.component';
 
-describe('TokenSetComponent', () => {
+describe('ProfileComponent', () => {
   let component: TokenSetComponent;
   let fixture: ComponentFixture<TokenSetComponent>;
 

@@ -1,0 +1,114 @@
+<!--login section start-->
+<div class="login_section">
+  <!-- login_form_wrapper -->
+  <div class="login_form_wrapper">
+    <div class="container">
+      <div class="row" *ngIf="!user || user == undefined">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="login_message">
+            <p>{{'You are not logged in' | translate }}<a routerLink="/a/login"> {{'Login now'| translate}} </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!!user">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 col-xs-12 col-sm-12 col-lg-offset-3">
+            <div class="tb_work_txt_wrapper">
+              <div class="abt_txt_box heading_center">
+                <div class="tb_left_heading_wraper heading_center_line">
+                  <h3>{{'profile form' | translate }}</h3>
+                </div>
+                <p>{{'profile_form_descr' | translate }}.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="!!user">
+          <div class="col-md-8 col-md-offset-2">
+            <form #profileForm="ngForm" (ngSubmit)="save()">
+              <div class="login_wrapper">
+                <div class="row" style="margin-bottom: 30px !important;">
+                  <div class="col-md-4 col-md-offset-4">
+                    <img class="img-circle img-responsive"
+                         src="{{!!user.imageUrl && user.imageUrl.length > 0?user.imageUrl:'/assets/images/unknown-user.jpg'}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control" id="name" readonly
+                         placeholder="{{'name'| translate }} *" [ngModel]="user.name" #name="ngModel">
+                </div>
+                <div class="form-group i-email">
+                  <input type="email" name="email" class="form-control" id="email" email readonly
+                         placeholder="{{'email'| translate }} *" [ngModel]="user.email" #name="ngModel">
+                </div>
+                <div class="login_remember_box">
+                  <label class="control control--checkbox">{{'standard_user_agreement'| translate}}
+                    <input type="checkbox" [ngModel]="user.agreedStandardUser" [ngModelOptions]="{standalone: true}">
+                    <span class="control__indicator"></span>
+                  </label>
+                  <a (click)="openModal(standardUserAgreement)">{{'more_info' | translate}}</a>
+                </div>
+                <div class="login_remember_box">
+                  <label class="control control--checkbox">{{'agree_collectInformation'| translate}}
+                    <input type="checkbox" [ngModel]="user.agreedCollectInformation" [ngModelOptions]="{standalone: true}">
+                    <span class="control__indicator"></span>
+                  </label>
+                  <a (click)="openModal(agreeCollectInformation)">{{'more_info' | translate}}</a>
+                </div>
+                <div class="login_remember_box">
+                  <label class="control control--checkbox">{{'agree_agentContactMe'| translate}}
+                    <input type="checkbox" [ngModel]="user.agreedAgentContactMe" [ngModelOptions]="{standalone: true}">
+                    <span class="control__indicator"></span>
+                  </label>
+                  <a (click)="openModal(agreeAgentContactMe)">{{'more_info' | translate}}</a>
+                </div>
+                <div class="login_btn_wrapper">
+                  <button type="submit" class="btn btn-primary form_button"> {{'save' | translate }}</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.login_form_wrapper-->
+</div>
+<!--login section end-->
+
+<ng-template #standardUserAgreement>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{'rights of use'| translate}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    {{'standardUserAgreement_text' | translate}}
+  </div>
+</ng-template>
+
+<ng-template #agreeCollectInformation>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{'rights of use'| translate}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    {{'agreeCollectInformation_text' | translate}}
+  </div>
+</ng-template>
+
+<ng-template #agreeAgentContactMe>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{'rights of use'| translate}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    {{'agreeAgentContactMe_text' | translate}}
+  </div>
+</ng-template>

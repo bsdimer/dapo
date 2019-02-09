@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
-import { TokenSetComponent } from "./token-set/token-set.component";
+import { ProfileComponent } from "./profile/profile.component";
 
 const routes: Routes = [
   {
@@ -14,8 +14,8 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'token',
-    component: TokenSetComponent,
+    path: 'profile',
+    component: ProfileComponent,
     data: { error: "/a/login" }
   },
   {

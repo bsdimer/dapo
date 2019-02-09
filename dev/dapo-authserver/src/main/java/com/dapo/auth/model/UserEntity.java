@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {
@@ -28,10 +30,22 @@ public class UserEntity implements User {
     @Column(nullable = false)
     private Boolean emailVerified = false;
 
+    @Column
+    private Boolean agreedStandardUser = false;
+
+    @Column
+    private Boolean agreedCollectInformation = false;
+
+    @Column
+    private Boolean agreedAgentContactMe = false;
+
     private String phone;
 
     @JsonIgnore
     private String password;
+
+    @OneToMany
+    private List<UserProperty> properties;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -109,5 +123,37 @@ public class UserEntity implements User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<UserProperty> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<UserProperty> properties) {
+        this.properties = properties;
+    }
+
+    public Boolean getAgreedStandardUser() {
+        return agreedStandardUser;
+    }
+
+    public void setAgreedStandardUser(Boolean agreedStandardUser) {
+        this.agreedStandardUser = agreedStandardUser;
+    }
+
+    public Boolean getAgreedCollectInformation() {
+        return agreedCollectInformation;
+    }
+
+    public void setAgreedCollectInformation(Boolean agreedCollectInformation) {
+        this.agreedCollectInformation = agreedCollectInformation;
+    }
+
+    public Boolean getAgreedAgentContactMe() {
+        return agreedAgentContactMe;
+    }
+
+    public void setAgreedAgentContactMe(Boolean agreedAgentContactMe) {
+        this.agreedAgentContactMe = agreedAgentContactMe;
     }
 }

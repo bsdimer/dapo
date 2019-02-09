@@ -16,6 +16,7 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TopHeaderComponent } from './views/top-header/top-header.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ModalModule } from "ngx-bootstrap";
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -44,6 +45,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     AgmSnazzyInfoWindowModule,
     CoreModule,
     DapoModule,
+    ModalModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

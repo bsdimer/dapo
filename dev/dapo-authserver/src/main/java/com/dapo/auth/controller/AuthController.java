@@ -67,6 +67,7 @@ public class AuthController {
         user.setEmail(signUpRequest.getEmail());
         user.setPassword(signUpRequest.getPassword());
         user.setProvider(AuthProvider.local);
+        user.setAgreedStandardUser(true);
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
