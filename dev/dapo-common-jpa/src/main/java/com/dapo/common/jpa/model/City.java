@@ -12,7 +12,7 @@ import java.util.Set;
  */
 
 @Entity
-public class City extends AbstractEntity implements GeometryArea {
+public class City extends AbstractEntity implements GeometryArea, NamedEntity {
 
     @Column(unique = true)
     private String name;

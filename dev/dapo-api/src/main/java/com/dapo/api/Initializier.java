@@ -98,10 +98,10 @@ public class Initializier {
             SubArea subArea = subAreas.get(RandomUtils.nextInt(0, subAreas.size()));
             Municipality municipality = municipalities.get(RandomUtils.nextInt(0, municipalities.size()));
             Neighborhood neighborhood = neighborhoods.get(RandomUtils.nextInt(0, neighborhoods.size()));
-            realEstateEntity.setCity(city.getName());
-            realEstateEntity.setSubarea(subArea.getName());
-            realEstateEntity.setNeighborhood(neighborhood.getName());
-            realEstateEntity.setMunicipality(municipality.getName());
+            realEstateEntity.setCity(city);
+            realEstateEntity.setSubarea(subArea);
+            realEstateEntity.setNeighborhood(neighborhood);
+            realEstateEntity.setMunicipality(municipality);
             realEstateEntity.setType(RealEstateType.values()[RandomUtils.nextInt(0, RealEstateType.values().length)]);
             realEstateEntity.setAnnouncementType(AnnouncementType.values()[RandomUtils.nextInt(0, AnnouncementType.values().length)]);
             realEstateEntity.setConstructionType(ConstructionType.values()[RandomUtils.nextInt(0, ConstructionType.values().length)]);

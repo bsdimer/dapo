@@ -2,7 +2,7 @@ package com.dapo.common.jpa.model;
 
 import com.bedatadriven.jackson.datatype.jts.serialization.GeometryDeserializer;
 import com.bedatadriven.jackson.datatype.jts.serialization.GeometrySerializer;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.dapo.common.jpa.serializiers.NamedEntitySerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.vividsolutions.jts.geom.Point;
@@ -26,12 +26,19 @@ public class RealEstateEntity extends AbstractAuditableEntity implements Propert
     @Column(length = 3000)
     private String description;
     private Float energyEfficiency;
-    @Column(nullable = false)
     @NotNull
-    private String city;
-    private String municipality;
-    private String neighborhood;
-    private String subarea;
+    @OneToOne
+    @JsonSerialize(using = NamedEntitySerializer.class)
+    private City city;
+    @OneToOne
+    @JsonSerialize(using = NamedEntitySerializer.class)
+    private Municipality municipality;
+    @OneToOne
+    @JsonSerialize(using = NamedEntitySerializer.class)
+    private Neighborhood neighborhood;
+    @OneToOne
+    @JsonSerialize(using = NamedEntitySerializer.class)
+    private SubArea subarea;
     private ConstructionType constructionType;
     private Byte floorCount;
     private Byte floor;
@@ -78,36 +85,40 @@ public class RealEstateEntity extends AbstractAuditableEntity implements Propert
         this.energyEfficiency = energyEfficiency;
     }
 
-    public String getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(City city) {
         this.city = city;
     }
 
-    public String getMunicipality() {
+    public Municipality getMunicipality() {
         return municipality;
     }
 
-    public void setMunicipality(String municipality) {
+    public void setMunicipality(Municipality municipality) {
         this.municipality = municipality;
     }
 
-    public String getNeighborhood() {
+    public Neighborhood getNeighborhood() {
         return neighborhood;
     }
 
-    public void setNeighborhood(String neighborhood) {
+    public void setNeighborhood(Neighborhood neighborhood) {
         this.neighborhood = neighborhood;
     }
 
-    public String getSubarea() {
+    public SubArea getSubarea() {
         return subarea;
     }
 
-    public void setSubarea(String subarea) {
+    public void setSubarea(SubArea subarea) {
         this.subarea = subarea;
+    }
+
+    public void setPricePerM2(BigDecimal pricePerM2) {
+        this.pricePerM2 = pricePerM2;
     }
 
     public ConstructionType getConstructionType() {

@@ -14,7 +14,7 @@ import java.util.Set;
  */
 
 @Entity
-public class Country extends AbstractEntity implements GeometryArea {
+public class Country extends AbstractEntity implements GeometryArea, NamedEntity {
 
     private String name;
     @Column(columnDefinition = "geometry")

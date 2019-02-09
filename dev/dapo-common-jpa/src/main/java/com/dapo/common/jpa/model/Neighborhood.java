@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames = {"city_id" , "name"})})
-public class Neighborhood extends AbstractEntity implements GeometryArea {
+public class Neighborhood extends AbstractEntity implements GeometryArea, NamedEntity {
 
     private String name;
     @Column(columnDefinition = "geometry")
