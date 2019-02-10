@@ -9,7 +9,7 @@
              (boundsChange)="onBoundsChange($event)" (zoomChange)="onZoomChange($event)">
       <agm-marker-cluster
         imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
-        <agm-marker *ngFor="let property of latestProperties" iconUrl="/assets/images/favicon.png"
+        <agm-marker *ngFor="let property of properties" iconUrl="/assets/images/favicon.png"
                     [latitude]="property.point.coordinates[0]"
                     [longitude]="property.point.coordinates[1]">
           <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
@@ -35,11 +35,11 @@
               <!-- Nav tabs -->
               <ul id="tabTwo" class="nav nav-tabs">
                 <li class="active">
-                  <a href="#contentTwo-1" data-toggle="tab">
+                  <a href="#contentTwo-1" data-toggle="tab" (click)="request.announcementType = 'SELL'">
                     {{'buy' | translate}}</a>
                 </li>
                 <li>
-                  <a href="#contentTwo-2" data-toggle="tab">
+                  <a href="#contentTwo-2" data-toggle="tab" (click)="request.announcementType = 'RENT'">
                     {{'rent' | translate}}</a>
                 </li>
               </ul>
@@ -52,10 +52,10 @@
                       <div class="col-md-3 col-lg-3 col-xs-12">
                         <mat-form-field>
                           <input type="text" matInput placeholder="{{'city/locality name' | translate}}"
-                                 (input)="onCityChange($event)"
+                                 (input)="onCityChange($event)" (change)="onCitySet($event)"
                                  [matAutocomplete]="auto">
                           <mat-autocomplete #auto="matAutocomplete"
-                                            (optionSelected)="selectedCity = $event.option.value" [displayWith]="cityNameFn">
+                                            (optionSelected)="request.city = $event.option.value.id" [displayWith]="cityNameFn">
                             <mat-option *ngFor="let city of filteredCities" [value]="city">
                               {{city.name}}
                             </mat-option>
@@ -64,7 +64,7 @@
                       </div>
                       <div class="col-md-3 col-lg-3 col-xs-12">
                         <mat-form-field>
-                          <mat-select placeholder="{{'property type'|translate}}">
+                          <mat-select placeholder="{{'property type'|translate}}" (selectionChange)="request.type = $event.value">
                             <mat-option *ngFor="let propType of propertyTypes" [value]="propType">
                               {{propType | translate}}
                             </mat-option>

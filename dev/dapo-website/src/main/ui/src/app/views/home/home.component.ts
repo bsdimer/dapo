@@ -9,6 +9,7 @@ import { FormControl } from "@angular/forms";
 import { Observable } from "rxjs";
 import { startWith, map } from "rxjs/internal/operators";
 import { City } from "../../modules/dapo/model/v1/city";
+import { RealEstate } from "../../modules/dapo/model/v1/real-estate";
 
 @Component({
   selector: 'app-home',
@@ -19,13 +20,14 @@ import { City } from "../../modules/dapo/model/v1/city";
 export class HomeComponent implements OnInit {
 
   config: any;
-  latestProperties: any;
-  selectedPropType: any = "";
+  properties: Array<RealEstate>;
   propertyTypes: Array<string> = [];
   citiesFormControl = new FormControl();
   cities: City[] = [{id:1, name:"asd"}];
   filteredCities: City[];
   selectedCity: City;
+  selectedPropType: string;
+  request:any = {announcementType: 'SELL'};
 
   private zoom: number = 8;
 
@@ -58,6 +60,10 @@ export class HomeComponent implements OnInit {
     this._filter(event.target.value);
   }
 
+  private onCitySet($event) {
+    if($event.target.value.length == 0) delete this.request["city"];
+  }
+
   private _filter(value: string) {
     this.filteredCities =  this.cities.filter(city => city.name.toLowerCase().includes(value.toLowerCase()));
   }
@@ -75,7 +81,7 @@ export class HomeComponent implements OnInit {
   }
 
   search(){
-    debugger;
+    this.realEstateService.search(this.request).subscribe(result => this.properties = result);
   }
 
 }
