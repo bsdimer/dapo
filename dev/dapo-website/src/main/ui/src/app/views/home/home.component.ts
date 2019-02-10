@@ -2,25 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { Broadcaster } from "../../modules/core";
 import { ConfigEvent } from "../../modules/core";
 import { RealEstateService } from "../../modules/dapo/service/real-estate.service";
-import { PageResponse } from "../../modules/core/rest/page-response";
-import { RealEstate } from "../../modules/dapo/model/v1/real-estate";
-import { google } from "@agm/core/services/google-maps-types";
-import { GeoUtils } from "../../modules/dapo/utils/geo-utils";
 import { ConfigurationService } from "../../modules/core/configuration/configuration.service";
 import { AuthenticationService } from "../../modules/core/authentication/authentication.service";
+import { NomenclatureService } from "../../modules/dapo/service/nomenclature.service";
+import { FormControl } from "@angular/forms";
+import { Observable } from "rxjs";
+import { startWith, map } from "rxjs/internal/operators";
+import { City } from "../../modules/dapo/model/v1/city";
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
 
-  private config: any;
-  private latestProperties: any;
+  config: any;
+  latestProperties: any;
+  selectedPropType: any = "";
+  propertyTypes: Array<string> = [];
+  citiesFormControl = new FormControl();
+  cities: City[] = [{id:1, name:"asd"}];
+  filteredCities: City[];
+  selectedCity: City;
 
   private zoom: number = 8;
 
   constructor(private broadcaster: Broadcaster,
+              private nomenclatureService: NomenclatureService,
               private configService: ConfigurationService,
               private authenticationService: AuthenticationService,
               private realEstateService: RealEstateService) {
@@ -34,21 +44,23 @@ export class HomeComponent implements OnInit {
       this.config = this.configService.config;
     }
 
-    this.realEstateService.getLatestProperties().subscribe(
-      result => {
-        console.log(result);
-        this.latestProperties = result;
-      }
-    );
+    this.nomenclatureService.getPropertyTypes().subscribe(result => {
+      this.propertyTypes = result
+    });
 
-    /*var service = new google.maps.places.PlacesService(map);
-     service.nearbySearch({
-     location : myPlace,
-     radius : 5500,
-     type : [ 'restaurant' ]
-     }, callback);*/
+    this.nomenclatureService.cities.subscribe(result => {
+      this.cities = result;
+      this.filteredCities = result;
+    });
   }
 
+  private onCityChange(event) {
+    this._filter(event.target.value);
+  }
+
+  private _filter(value: string) {
+    this.filteredCities =  this.cities.filter(city => city.name.toLowerCase().includes(value.toLowerCase()));
+  }
 
   onBoundsChange($event) {
     //console.log(GeoUtils.parseGmapEvent($event));
@@ -58,8 +70,12 @@ export class HomeComponent implements OnInit {
     this.zoom = $event;
   }
 
-  test() {
-    console.log(this.authenticationService.isAuthenticated);
-    console.log(this.authenticationService.currentUser);
+  cityNameFn(event):string {
+    return event.name;
   }
+
+  search(){
+    debugger;
+  }
+
 }

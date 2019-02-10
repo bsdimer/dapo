@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/realEstate")
+@RequestMapping("/re")
 public class RealEstateController {
 
     private RealEstateJpaService realEstateJpaService;
@@ -27,19 +27,15 @@ public class RealEstateController {
         this.realEstateJpaService = realEstateJpaService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/findAllPageable")
-    public Page<RealEstateEntity> findAllPageable(Pageable pageable) {
-        return realEstateJpaService.findAll(pageable);
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/findAll")
-    public List<RealEstateEntity> findAll() {
-        return (List<RealEstateEntity>) realEstateJpaService.findAll();
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/search")
+    @RequestMapping(method = RequestMethod.GET, value = "/s")
     @ResponseBody
     public Iterable<RealEstateEntity> search(@QuerydslPredicate(root = RealEstateEntity.class) Predicate predicate) {
         return realEstateJpaService.findAll(predicate);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/sp")
+    @ResponseBody
+    public Page<RealEstateEntity> searchPageable(@QuerydslPredicate(root = RealEstateEntity.class) Predicate predicate, Pageable pageable) {
+        return realEstateJpaService.findAll(predicate, pageable);
     }
 }

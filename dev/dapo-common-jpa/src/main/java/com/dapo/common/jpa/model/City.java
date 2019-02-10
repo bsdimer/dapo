@@ -1,5 +1,6 @@
 package com.dapo.common.jpa.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.vividsolutions.jts.geom.*;
 
 import javax.persistence.*;
@@ -24,12 +25,15 @@ public class City extends AbstractEntity implements GeometryArea, NamedEntity {
     private Polygon area;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Municipality> municipalityList = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Neighborhood> neighborhoods = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<SubArea> subAreas = new HashSet<>();
 
     public String getName() {

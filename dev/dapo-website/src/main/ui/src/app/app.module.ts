@@ -17,6 +17,8 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TopHeaderComponent } from './views/top-header/top-header.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ModalModule } from "ngx-bootstrap";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatInputModule, MatSelectModule, MatFormFieldModule, MatAutocompleteModule } from "@angular/material";
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -44,7 +46,13 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     }),
     AgmSnazzyInfoWindowModule,
     CoreModule,
+    FormsModule,
+    ReactiveFormsModule,
     DapoModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
     ModalModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

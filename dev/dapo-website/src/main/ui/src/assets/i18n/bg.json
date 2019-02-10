@@ -65,6 +65,25 @@
   "profile_form_descr": "Управление на вашите данни",
   "profile form": "Потребителски профил",
   "rights of use": "Правила за ползване",
-  "save": "запис"
-
+  "save": "запис",
+  "buy": "продава",
+  "rent": "под наем",
+  "search": "търсене",
+  "advanced search": "разширено",
+  "city/locality name": "населено място",
+  "property type": "тип на имота",
+  "ONE_BEDROOM" : "едностаен",
+  "TWO_BEDROOMS" : "двустаен",
+  "THREE_BEDROOMS" : "тристаен",
+  "FOUR_BEDROOMS" : "четиристаен",
+  "MANY_BEDROOMS" : "многостаен",
+  "MAISONETTE" : "мезонет",
+  "STUDIO" : "студио",
+  "OFFICE" : "офис",
+  "ONLY_ONE_ROOM" : "стая",
+  "GARRAGE" : "гараж",
+  "MASE" : "мазе",
+  "WHOLE_BUILDING" : "цяла сграда",
+  "HOUSE" : "къща",
+  "HOUSE_FLOOR" : "етаж от къща"
 }

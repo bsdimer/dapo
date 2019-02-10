@@ -1,0 +1,72 @@
+/deep/ .mat-form-field {
+  .mat-input-element {
+    color: white;
+  }
+  .mat-form-field-label {
+    color: white;
+  }
+  .mat-form-field-underline {
+    background-color: white;
+  }
+  .mat-form-field-ripple {
+    background-color: white;
+  }
+  .mat-form-field-required-marker {
+    color: white;
+  }
+}
+
+/deep/ .mat-form-field.mat-focused {
+  .mat-form-field-label {
+    color: white;
+  }
+  .mat-form-field-ripple {
+    background-color: white;
+  }
+  .mat-form-field-required-marker {
+    color: white;
+  }
+  .mat-input-element {
+    color: white;
+  }
+}
+
+/deep/ .mat-select-value-text {
+  color: white;
+}
+
+
+/deep/ .mat-select-arrow {
+  color: white;
+}
+
+.tab-pane {
+  margin-bottom: 30px;
+}
+
+.search-btn-grp {
+  padding-bottom: 0;
+  margin-bottom: 30px;
+}
+
+.search-btn {
+  text-transform: uppercase;
+  padding: 10px 15px 10px 15px;
+  background-color: white;
+  color: #34495e;
+  border: 1px solid white;
+  border-radius: 1px;
+  transition: all 0.5s ease;
+}
+
+.search-btn:hover {
+  padding: 10px 15px 10px 15px;
+  color: white;
+  background-color: inherit;
+  border: 1px solid white;
+  border-radius: 1px;
+}
+
+.advanced-search-btn {
+  background-color: #c9cccf;
+}

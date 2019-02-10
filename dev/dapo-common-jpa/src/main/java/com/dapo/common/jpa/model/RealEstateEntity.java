@@ -11,7 +11,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -25,6 +27,8 @@ public class RealEstateEntity extends AbstractAuditableEntity implements Propert
     private RealEstateType type;
     @Column(length = 3000)
     private String description;
+    @ElementCollection
+    private List<String> tags = new ArrayList<>();
     private Float energyEfficiency;
     @NotNull
     @OneToOne
@@ -213,11 +217,19 @@ public class RealEstateEntity extends AbstractAuditableEntity implements Propert
         this.point = point;
     }
 
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
     public int getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+        public void setSize(int size) {
         this.size = size;
         if (this.getPrice() != null && this.size > 0)
             this.pricePerM2 = this.price.divide(BigDecimal.valueOf(this.size), 2);

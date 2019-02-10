@@ -4,10 +4,10 @@
 
 	//---------- Preloader -section ---------------//
 
-	/*jQuery(window).on('load', function() {
+	jQuery(window).on('load', function() {
 		jQuery("#status").fadeOut();
 		jQuery("#preloader").delay(350).fadeOut("slow");
-	});*/
+	});
 
 
 

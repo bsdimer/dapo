@@ -36,118 +36,61 @@
               <ul id="tabTwo" class="nav nav-tabs">
                 <li class="active">
                   <a href="#contentTwo-1" data-toggle="tab">
-                    buy</a>
+                    {{'buy' | translate}}</a>
                 </li>
                 <li>
                   <a href="#contentTwo-2" data-toggle="tab">
-                    rent</a>
+                    {{'rent' | translate}}</a>
                 </li>
-                <li>
-                  <a href="#contentTwo-3" data-toggle="tab">
-                    project</a>
-                </li>
-
               </ul>
 
               <!-- Tab panes -->
               <div class="row">
                 <div class="tab-content">
-
-                  <div class="tab-pane fade in active main-search-field " id="contentTwo-1">
-                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                      <div class="at-col-default-mar map_deal_input">
-                        <input type="text" placeholder="enter your keyword">
+                  <form>
+                    <div class="tab-pane fade in active" id="contentTwo-1">
+                      <div class="col-md-3 col-lg-3 col-xs-12">
+                        <mat-form-field>
+                          <input type="text" matInput placeholder="{{'city/locality name' | translate}}"
+                                 (input)="onCityChange($event)"
+                                 [matAutocomplete]="auto">
+                          <mat-autocomplete #auto="matAutocomplete"
+                                            (optionSelected)="selectedCity = $event.option.value" [displayWith]="cityNameFn">
+                            <mat-option *ngFor="let city of filteredCities" [value]="city">
+                              {{city.name}}
+                            </mat-option>
+                          </mat-autocomplete>
+                        </mat-form-field>
                       </div>
-                    </div>
-                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                      <div class="at-col-default-mar map_deal_input">
-                        <input type="text" placeholder="enter city/locality name">
+                      <div class="col-md-3 col-lg-3 col-xs-12">
+                        <mat-form-field>
+                          <mat-select placeholder="{{'property type'|translate}}">
+                            <mat-option *ngFor="let propType of propertyTypes" [value]="propType">
+                              {{propType | translate}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
                       </div>
-                    </div>
-                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                      <div class="at-col-default-mar">
-                        <div class="at-col-default-mar map_deal_input">
-                          <select>
-                            <option value="0" selected>Types</option>
-                            <option value="1">Family House</option>
-                            <option value="2">Apartment</option>
-                            <option value="3">villa</option>
-                          </select>
+                      <div class="col-md-3 col-lg-3 col-xs-12">
+                        <mat-form-field>
+                          <input matInput placeholder="{{'price' | translate}}">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-3 col-lg-3 col-xs-12">
+                        <div class="btn-group search-btn-grp">
+                          <button class="btn search-btn" (click)="search()">
+                            {{'search' | translate}}
+                          </button>
+                          <button class="btn search-btn advanced-search-btn">
+                            {{'advanced search' | translate}}
+                          </button>
                         </div>
                       </div>
+                      <!--<div class="col-md-3 col-lg-3  col-xs-12">
+                      </div>-->
                     </div>
-                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                      <div class="at-col-default-mar map_deal_input">
-                        <select class="div-toggle" data-target=".my-info-1">
-                          <option value="0" selected>02 bathroomn</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                      <div class="at-col-default-mar no-mb map_deal_input">
-                        <select>
-                          <option value="0" selected>02 bedroom</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                      <div class="b-search__main-form label map_lavel">
-                        <h5>area</h5>
-                        <div class="range">
-                          <div id="range-price" class="range-box"></div>
-
-                          <input type="text" id="price" class="price-box" readonly/>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                      <div class="b-search__main-form label map_lavel">
-                        <h5>price</h5>
-                        <div class="range">
-                          <div id="range-price_2" class="range-box"></div>
-
-                          <input type="text" id="price_2" class="price-box" readonly/>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                      <div class="map_checkbox">
-                        <label class="control control--checkbox">More Search Option
-                          <input type="checkbox">
-                          <span class="control__indicator"></span>
-                        </label>
-                      </div>
-                      <div class="at_btn_form deals_btn map_deal_btnn">
-
-                        <ul>
-                          <li>
-                            <a href="#">
-                              search properties
-                            </a>
-                          </li>
-                        </ul>
-
-                      </div>
-
-                    </div>
-                  </div>
+                  </form>
                   <div class="tab-pane fade main-search-field " id="contentTwo-2">
-                    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                      <div class="at-col-default-mar map_deal_input">
-                        <input type="text" placeholder="enter your keyword">
-                      </div>
-                    </div>
                     <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
                       <div class="at-col-default-mar map_deal_input">
                         <input type="text" placeholder="enter city/locality name">
@@ -319,7 +262,6 @@
                   </div>
 
                 </div>
-
               </div>
             </div>
           </div>
@@ -346,7 +288,8 @@
             sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.<br>
 
             elit consequat sollicitudin, lorem quis bibendum auctor, This is Photoshop's version of Lorem Ipsum. Proin
-            gravida nibh vel velit auctor aliquet.sum etmis nibh nec, tincidunt ipsum etiau eu ctor turpis. Quisque Cras
+            gravida nibh vel velit auctor aliquet.sum etmis nibh nec, tincidunt ipsum etiau eu ctor turpis. Quisque
+            Cras
             vel gravida.rpis. Quisque sitmi tincidunt ipsum etiau.</h5>
           <h6><a href="#">read more</a></h6>
         </div>
@@ -1086,8 +1029,10 @@
           orciarel gravida rpis. Quisque sitmi tincidunt ipsum etiau.</p>
         <div class="abt_checkbox">
           <ul>
-            <li><a href="#"><i class="fa fa-check-square"></i>mis nibh nec nibh nec ipsum tincidunt ipsumelit.</a></li>
-            <li><a href="#"><i class="fa fa-check-square"></i>lementum mis nibh Quisque nibh nec Quisque sitmi leme.</a>
+            <li><a href="#"><i class="fa fa-check-square"></i>mis nibh nec nibh nec ipsum tincidunt ipsumelit.</a>
+            </li>
+            <li><a href="#"><i class="fa fa-check-square"></i>lementum mis nibh Quisque nibh nec Quisque sitmi
+              leme.</a>
             </li>
           </ul>
         </div>

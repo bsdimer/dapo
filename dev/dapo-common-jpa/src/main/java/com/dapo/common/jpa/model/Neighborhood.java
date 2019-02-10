@@ -1,5 +1,6 @@
 package com.dapo.common.jpa.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.vividsolutions.jts.geom.Polygon;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public class Neighborhood extends AbstractEntity implements GeometryArea, NamedE
     @Column(columnDefinition = "geometry")
     private Polygon area;
     @ManyToOne
+    @JsonBackReference
     private City city;
 
     public String getName() {

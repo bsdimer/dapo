@@ -1,24 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { PageResponse } from "../../core/rest/page-response";
 import { RealEstate } from "../model/v1/real-estate";
 import { Observable, of } from "rxjs";
+import { PageResponse } from "../../core/rest/page-response";
+import { HttpParams } from "@angular/common/http";
+import { environment } from "../../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RealEstateService {
 
-  private baseUrl:string = "http://localhost:4200/api/v1/realEstate";
+  private apiPrefix: string = environment.apiPrefix;
 
-  constructor(private http:HttpClient) { }
-
-  public getLatestPropertiesPageable():Observable<PageResponse<RealEstate>> {
-    return this.http.get<PageResponse<RealEstate>>(this.baseUrl + "/findAllPageable");
+  constructor(private http: HttpClient) {
   }
 
-  public getLatestProperties():Observable<Array<RealEstate>> {
-    //return of([]);
-    return this.http.get<Array<RealEstate>>(this.baseUrl + "/findAll");
+  public search(parameters?): Observable<RealEstate[]> {
+    return this.http.get<RealEstate[]>(this.apiPrefix + "/re/s", {params: parameters});
   }
+
+  public searchPageable(parameters?): Observable<PageResponse<RealEstate>> {
+    return this.http.get<PageResponse<RealEstate>>(this.apiPrefix + "/re/sp", {params: parameters});
+  }
+
 }

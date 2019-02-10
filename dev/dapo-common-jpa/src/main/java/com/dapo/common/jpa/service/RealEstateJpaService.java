@@ -28,6 +28,10 @@ public class RealEstateJpaService implements RealEstateService {
         return repository.findAll();
     }
 
+    public Page<RealEstateEntity> findAll(Predicate predicate, Pageable pageable) {
+        return repository.findAll(predicate, pageable);
+    }
+
     public Iterable<RealEstateEntity> findAll(Predicate predicate) {
         return repository.findAll(predicate);
     }

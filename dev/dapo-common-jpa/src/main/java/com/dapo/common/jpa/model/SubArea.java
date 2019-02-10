@@ -1,5 +1,6 @@
 package com.dapo.common.jpa.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.vividsolutions.jts.geom.Polygon;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ public class SubArea extends AbstractEntity implements GeometryArea, NamedEntity
 
     private String name;
     @ManyToOne
+    @JsonBackReference
     private City city;
     @Column(columnDefinition = "geometry")
     private Polygon area;
