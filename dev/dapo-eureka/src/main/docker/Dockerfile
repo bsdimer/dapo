@@ -1,7 +1,7 @@
 FROM java:8
-ADD dapo-website-0.0.1-SNAPSHOT.jar app.jar
+ADD dapo-eureka-0.0.1-SNAPSHOT.jar app.jar
 VOLUME /tmp
 VOLUME /target
 RUN bash -c 'touch /app.jar'
-EXPOSE 18080
+EXPOSE 8761
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]

@@ -1,6 +1,6 @@
 #!/bin/bash
 project=dapo-api
-tag=0.0.2-SNAPSHOT
+tag=0.0.1-SNAPSHOT
 cid=`docker ps | grep $project | awk '{ print $1 }'`
 docker stop $cid
 docker container rm $cid
