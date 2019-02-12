@@ -37,3 +37,23 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: dapo
     networks:
       - dapo_bridge
+
+  dapo-authserver:
+    image: dapo/dapo-authserver
+    networks:
+      - rad_bridge
+    ports:
+     - 8082:8082
+    depends_on:
+     - dapo-db-postgis
+     - dapo-discovery
+
+  dapo-api:
+    image: dapo/dapo-api
+    ports:
+     - 8081:8081
+    networks:
+      - rad_bridge
+    depends_on:
+     - dapo-db-postgis
+     - dapo-discovery
