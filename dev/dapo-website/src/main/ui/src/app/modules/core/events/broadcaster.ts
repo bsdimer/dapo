@@ -7,7 +7,7 @@ import { Injectable } from "@angular/core";
   providedIn: 'root'
 })
 export class Broadcaster {
-  private _event: Subject<BroadcastEvent>;
+  public _event: Subject<BroadcastEvent>;
 
   constructor() {
     /**

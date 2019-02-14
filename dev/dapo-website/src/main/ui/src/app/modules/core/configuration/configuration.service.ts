@@ -10,12 +10,12 @@ import { map, catchError } from "rxjs/internal/operators";
 })
 export class ConfigurationService implements OnDestroy{
 
-  private configUrl = 'assets/config.json';
-  private _config;
+  public configUrl = 'assets/config.json';
+  public _config;
   isResolved: boolean = false;
   asd: Date = new Date();
 
-  constructor(private http: HttpClient, private broadcaster:Broadcaster) {
+  constructor(public http: HttpClient, public broadcaster:Broadcaster) {
   }
 
   loadConfig():Observable<any> {

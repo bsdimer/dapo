@@ -10,11 +10,11 @@ import { catchError } from "rxjs/internal/operators";
 })
 export class RegisterComponent implements OnInit {
 
-  private model: SignupRequest = new SignupRequest();
-  private state: string = "default";
-  private message: string = "";
+  public model: SignupRequest = new SignupRequest();
+  public state: string = "default";
+  public message: string = "";
 
-  constructor(private registrationService: RegistrationService) {
+  constructor(public registrationService: RegistrationService) {
   }
 
   ngOnInit() {

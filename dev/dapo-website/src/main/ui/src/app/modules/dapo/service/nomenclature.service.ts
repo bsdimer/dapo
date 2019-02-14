@@ -9,9 +9,9 @@ import { City } from "../model/v1/city";
 })
 export class NomenclatureService {
 
-  private _cities: City[];
+  public _cities: City[];
 
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
     this.getCities().subscribe(result => this._cities = result);
   }
 

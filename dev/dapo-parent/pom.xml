@@ -76,7 +76,7 @@
                             <artifactId>docker-maven-plugin</artifactId>
                             <version>${docker.plugin.version}</version>
                             <configuration>
-                                <imageName>docker-registry.aossia.com:5000/${project.artifactId}:${project.version}
+                                <imageName>dimomass/${project.artifactId}:${project.version}
                                 </imageName>
                                 <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
                                 <pushImage>true</pushImage>

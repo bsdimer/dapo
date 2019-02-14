@@ -15,14 +15,14 @@ import { Router } from "@angular/router";
 export class TopHeaderComponent implements OnInit {
 
   @LocalStorage()
-  private defaultLang;
-  private config: Config;
+  public defaultLang;
+  public config: Config;
 
 
-  constructor(private broadcaster: Broadcaster,
-              private authService: AuthenticationService,
-              private router:Router,
-              private translate: TranslateService) {
+  constructor(public broadcaster: Broadcaster,
+              public authService: AuthenticationService,
+              public router:Router,
+              public translate: TranslateService) {
   }
 
   ngOnInit() {

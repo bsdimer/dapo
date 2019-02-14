@@ -16,8 +16,8 @@ import { RouterOutlet } from "@angular/router";
 })
 export class AppComponent implements OnInit {
 
-  constructor(private configService: ConfigurationService,
-              private authService: AuthenticationService) {
+  constructor(public configService: ConfigurationService,
+              public authService: AuthenticationService) {
   }
 
   ngOnInit(): void {

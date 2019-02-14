@@ -15,21 +15,21 @@ import { JwtToken } from "./jwt-token";
 @Injectable()
 export class AuthenticationService {
 
-  private authenticated: boolean = false;
-  private tokenExpirationDate: Date = undefined;
-  private userData: any = undefined;
-  private tokenExpirationTime: any;
-  private changeTimestamp: any;
-  //private restPrefix: string = environment.mainRestApiPrefix;
-  private clientAuthentication: string = environment.auth.clientAuthentication;
-  private tokenExpirationDelta: number = environment.auth.tokenExpirationDelta;
-  private _activeRoleResolver: ActiveRoleResolver;
+  public authenticated: boolean = false;
+  public tokenExpirationDate: Date = undefined;
+  public userData: any = undefined;
+  public tokenExpirationTime: any;
+  public changeTimestamp: any;
+  //public restPrefix: string = environment.mainRestApiPrefix;
+  public clientAuthentication: string = environment.auth.clientAuthentication;
+  public tokenExpirationDelta: number = environment.auth.tokenExpirationDelta;
+  public _activeRoleResolver: ActiveRoleResolver;
 
   @LocalStorage()
-  private activeRole: string;
+  public activeRole: string;
 
   @LocalStorage()
-  private tokenData: Oauth2TokenData;
+  public tokenData: Oauth2TokenData;
 
   @LocalStorage()
   public token: string;
@@ -164,7 +164,7 @@ export class AuthenticationService {
     }
   }
 
-  private generateToken(tokenData: any, headers: any): Observable<any> {
+  public generateToken(tokenData: any, headers: any): Observable<any> {
     return this.http.post('/auth/oauth/token', tokenData, {headers: headers}).pipe(map(data => {
         this.tokenData = <Oauth2TokenData>data;
         this.authenticated = true;
@@ -231,13 +231,13 @@ export class AuthenticationService {
     return authorizationHeaders;
   }
 
-  private checkTokenExpirationDate() {
+  public checkTokenExpirationDate() {
     if (this.authenticated && this.tokenExpirationDate < new Date()) {
       this.logout();
     }
   }
 
-  private fetchUserData() {
+  public fetchUserData() {
     this.http.get(environment.authRestApiPrefix + '/user', {headers: this.getAuthorizationHeaders()})
       .subscribe(
         data => {

@@ -11,9 +11,9 @@ import { environment } from "../../../../environments/environment";
 })
 export class RealEstateService {
 
-  private apiPrefix: string = environment.apiPrefix;
+  public apiPrefix: string = environment.apiPrefix;
 
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
   }
 
   public search(parameters?): Observable<RealEstate[]> {

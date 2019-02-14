@@ -11,14 +11,14 @@ import { BsModalRef, BsModalService } from "ngx-bootstrap";
 })
 export class ProfileComponent implements OnInit {
 
-  private message: string;
-  private user;
+  public message: string;
+  public user;
   modalRef: BsModalRef;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private router: Router,
-              private modalService: BsModalService,
-              private authService: AuthenticationService) {
+  constructor(public activatedRoute: ActivatedRoute,
+              public router: Router,
+              public modalService: BsModalService,
+              public authService: AuthenticationService) {
   }
 
   ngOnInit() {

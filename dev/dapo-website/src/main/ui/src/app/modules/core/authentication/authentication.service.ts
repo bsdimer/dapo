@@ -14,19 +14,19 @@ import { LoginRequest } from "./login-request";
 export class AuthenticationService {
 
   @LocalStorage()
-  private token;
-  private _currentUser: any;
-  private _isAuthenticated: boolean;
+  token;
+  _currentUser: any;
+  _isAuthenticated: boolean;
 
-  constructor(private http: HttpClient,
-              private broadcaster: Broadcaster) {
+  constructor(public http: HttpClient,
+              public broadcaster: Broadcaster) {
   }
 
-  private validateToken(token: string): boolean {
+  validateToken(token: string): boolean {
     return true;
   }
 
-  public setToken(token: any) {
+  setToken(token: any) {
     if (token.hasOwnProperty("accessToken"))  {
       this.token = token["accessToken"];
     } else {
@@ -35,10 +35,10 @@ export class AuthenticationService {
     return this.authenticate();
   }
 
-  private refreshToken(): void {
+  refreshToken(): void {
   }
 
-  public authenticate() {
+  authenticate() {
     if (!this.token) return of(null);
     return this.http.get(environment.auth.userInfoUri, {headers: {Authorization: `Bearer ${this.token}`}})
       .pipe(
@@ -54,7 +54,7 @@ export class AuthenticationService {
       );
   }
 
-  public login(request: LoginRequest) {
+  login(request: LoginRequest) {
     return this.http.post(environment.auth.loginUrl, request);
   }
 
@@ -64,7 +64,7 @@ export class AuthenticationService {
     return of(true);
   }
 
-  private clearAuthentication() {
+  public clearAuthentication() {
     this.token = null;
     this._currentUser = null;
     this._isAuthenticated = false;

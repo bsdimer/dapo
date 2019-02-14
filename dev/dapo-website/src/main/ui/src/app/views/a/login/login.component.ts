@@ -11,10 +11,10 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  private environment = environment;
-  private req: LoginRequest = new LoginRequest();
+  public environment = environment;
+  public req: LoginRequest = new LoginRequest();
 
-  constructor(private authService: AuthenticationService, private router: Router) {
+  constructor(public authService: AuthenticationService, public router: Router) {
   }
 
   ngOnInit() {

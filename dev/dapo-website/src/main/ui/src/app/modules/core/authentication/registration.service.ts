@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
 })
 export class RegistrationService {
 
-  constructor(private http:HttpClient) { }
+  constructor(public http:HttpClient) { }
 
   public signUp(request:SignupRequest):Observable<any> {
     return this.http.post(environment.auth.signUpUrl, request);

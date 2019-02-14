@@ -29,13 +29,13 @@ export class HomeComponent implements OnInit {
   selectedPropType: string;
   request:any = {announcementType: 'SELL'};
 
-  private zoom: number = 8;
+  public zoom: number = 8;
 
-  constructor(private broadcaster: Broadcaster,
-              private nomenclatureService: NomenclatureService,
-              private configService: ConfigurationService,
-              private authenticationService: AuthenticationService,
-              private realEstateService: RealEstateService) {
+  constructor(public broadcaster: Broadcaster,
+              public nomenclatureService: NomenclatureService,
+              public configService: ConfigurationService,
+              public authenticationService: AuthenticationService,
+              public realEstateService: RealEstateService) {
   }
 
   ngOnInit() {
@@ -56,15 +56,15 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  private onCityChange(event) {
+  public onCityChange(event) {
     this._filter(event.target.value);
   }
 
-  private onCitySet($event) {
+  public onCitySet($event) {
     if($event.target.value.length == 0) delete this.request["city"];
   }
 
-  private _filter(value: string) {
+  public _filter(value: string) {
     this.filteredCities =  this.cities.filter(city => city.name.toLowerCase().includes(value.toLowerCase()));
   }
 
