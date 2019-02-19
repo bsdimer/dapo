@@ -14,23 +14,8 @@ public class MainPageController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = {"/",
-            "/login",
-            "/registration",
-            "/recovery",
-            "/booking/*",
-            "/accept/*",
-            "/meeting/*",
-            "/dashboard",
-            "/history",
-            "/homepage",
-            "/scheduling",
-            "/appointment/*",
-            "/account/*",
-            "/dependents",
-            "/role",
-            "/learn-more",
-            "/documents",
-            "/appointments"})
+            "/a/login",
+            "/a/register"})
     public ModelAndView mainPage() {
         return new ModelAndView("forward://index.html");
     }

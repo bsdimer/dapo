@@ -11,10 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by dimomass on 18.12.18.
@@ -22,7 +19,7 @@ import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class RealEstateEntity extends AbstractAuditableEntity implements PropertyAnnouncement, GeometryPoint {
+public class RealEstateEntity extends AbstractAuditableEntity implements PropertyAnnouncement, GeometryPoint, Commentable {
 
     private RealEstateType type;
     @Column(length = 3000)
@@ -55,7 +52,7 @@ public class RealEstateEntity extends AbstractAuditableEntity implements Propert
     @NotNull
     private int size = 0;
     private Currency currency = Currency.EUR;
-    private Boolean vip = false;
+    private PriorityType priorityType = PriorityType.NORMAL;
     @Column(columnDefinition = "geometry")
     @JsonSerialize(using = GeometrySerializer.class)
     @JsonDeserialize(contentUsing = GeometryDeserializer.class)
@@ -64,6 +61,8 @@ public class RealEstateEntity extends AbstractAuditableEntity implements Propert
     private Set<ExtraEntity> extras;
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     private Set<PictureEntity> pictures = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Comment> comments = new TreeSet<>();
 
     public RealEstateType getType() {
         return type;
@@ -183,15 +182,6 @@ public class RealEstateEntity extends AbstractAuditableEntity implements Propert
         this.currency = currency;
     }
 
-    @Override
-    public Boolean getVip() {
-        return vip;
-    }
-
-    public void setVip(Boolean vip) {
-        this.vip = vip;
-    }
-
     public Set<ExtraEntity> getExtras() {
         return extras;
     }
@@ -233,5 +223,18 @@ public class RealEstateEntity extends AbstractAuditableEntity implements Propert
         this.size = size;
         if (this.getPrice() != null && this.size > 0)
             this.pricePerM2 = this.price.divide(BigDecimal.valueOf(this.size), 2);
+    }
+
+    public PriorityType getPriorityType() {
+        return priorityType;
+    }
+
+    public void setPriorityType(PriorityType priorityType) {
+        this.priorityType = priorityType;
+    }
+
+    @Override
+    public Set<Comment> getComments() {
+        return comments;
     }
 }

@@ -15,5 +15,5 @@ public interface PropertyAnnouncement  {
 
     Currency getCurrency();
 
-    Boolean getVip();
+    PriorityType getPriorityType();
 }

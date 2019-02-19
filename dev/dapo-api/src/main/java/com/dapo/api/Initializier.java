@@ -3,6 +3,7 @@ package com.dapo.api;
 import com.dapo.common.jpa.model.*;
 import com.dapo.common.jpa.model.Currency;
 import com.dapo.common.jpa.repository.CityRepository;
+import com.dapo.common.jpa.repository.CommentRespository;
 import com.dapo.common.jpa.repository.CountryRepository;
 import com.dapo.common.jpa.repository.RealEstateJpaRepository;
 import com.dapo.common.utils.GeoUtils;
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -37,13 +39,34 @@ public class Initializier {
     @Autowired
     CountryRepository countryRepository;
 
+    @Autowired
+    CommentRespository commentRespository;
+
     int citiesCount = 100;
     int subareasCount = 100;
     int neighborhoodsCount = 100;
     int municipalitiesCount = 100;
     int realEstateCount = 1000;
 
-    @PostConstruct
+
+    /*@PostConstruct
+    @Transactional
+    public void init2(){
+        Optional<RealEstateEntity> op = realEstateJpaRepository.findById(1l);
+        op.ifPresent(realEstateEntity -> {
+            Comment comment1 = new Comment();
+            comment1.setText(RandomStringUtils.randomAlphabetic(50));
+            Comment comment2 = new Comment();
+            comment2.setText(RandomStringUtils.randomAlphabetic(50));
+            commentRespository.save(comment1);
+            commentRespository.save(comment2);
+            comment1.getComments().add(comment2);
+            realEstateEntity.getComments().add(comment1);
+            realEstateJpaRepository.save(realEstateEntity);
+        });
+    }*/
+
+    /*@PostConstruct
     public void contextLoads() throws Exception {
         Lorem lorem = LoremIpsum.getInstance();
         Country country = new Country();
@@ -113,7 +136,7 @@ public class Initializier {
             realEstateJpaRepository.save(realEstateEntity);
         }
 
-        /*RealEstateEntity realEstateEntity = new RealEstateEntity();
+        *//*RealEstateEntity realEstateEntity = new RealEstateEntity();
 
         realEstateEntity.setCity("Sofia");
         realEstateEntity.setNeighborhood("Mladost 1");
@@ -127,6 +150,6 @@ public class Initializier {
 
         Polygon polygon = (Polygon) wktToGeometry("POLYGON ((0 0, 0 5, 5 5, 5 0, 0 0))");
         city.setArea(polygon);
-        cityRepository.save(city);*/
-    }
+        cityRepository.save(city);*//*
+    }*/
 }

@@ -10,10 +10,9 @@ import { map, catchError } from "rxjs/internal/operators";
 })
 export class ConfigurationService implements OnDestroy{
 
-  public configUrl = 'assets/config.json';
-  public _config;
+  configUrl = 'assets/config.json';
+  config;
   isResolved: boolean = false;
-  asd: Date = new Date();
 
   constructor(public http: HttpClient, public broadcaster:Broadcaster) {
   }
@@ -32,16 +31,6 @@ export class ConfigurationService implements OnDestroy{
         return error;
       })
     )
-  }
-
-
-  get config() {
-    return this._config;
-  }
-
-
-  set config(value) {
-    this._config = value;
   }
 
   ngOnDestroy(): void {

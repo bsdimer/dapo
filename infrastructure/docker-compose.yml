@@ -57,3 +57,10 @@ services:
     depends_on:
      - dapo-db-postgis
      - dapo-discovery
+
+  dapo-discovery:
+    image: dapo/dapo-eureka
+    networks:
+      - rad_bridge
+    ports:
+     - 8761:8761

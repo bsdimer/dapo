@@ -12,7 +12,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
   datasource:
     platform: postgres
-    url: jdbc:postgresql://${DBHOST:localhost}:5432/${DBNAME:dapo}
+    url: jdbc:postgresql://${DBHOST:localhost}:${DBPORT:5432}/${DBNAME:dapo}
     username: ${DBUSER:dapo}
     password: ${DBPASS:dapo}
     driverClassName: org.postgresql.Driver
@@ -57,5 +57,6 @@ app:
     # We're not using cookies because they won't work well in mobile clients.
     authorizedRedirectUris:
       - http://localhost:4200/a/profile
+      - http://dapo.com/a/profile
       - myandroidapp://oauth2/redirect
       - myiosapp://oauth2/redirect
