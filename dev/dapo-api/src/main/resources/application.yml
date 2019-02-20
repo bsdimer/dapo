@@ -30,3 +30,10 @@ spring:
     username: ${DBUSER:dapo}
     password: ${DBPASS:dapo}
     driverClassName: org.postgresql.Driver
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${EUREKAHOST:localhost}:${EUREKAPORT:18761}/eureka/

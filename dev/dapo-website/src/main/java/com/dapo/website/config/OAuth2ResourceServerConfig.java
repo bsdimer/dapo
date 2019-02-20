@@ -1,4 +1,4 @@
-package com.dapo.portal.config;
+package com.dapo.website.config;
 
 import com.google.common.io.CharStreams;
 import org.apache.commons.codec.Charsets;
@@ -43,7 +43,7 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
                 .anonymous()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/auth/**").permitAll()
+                .antMatchers("/auth/**", "/user/**").permitAll()
                 .anyRequest().permitAll()
                 .and()
                 .csrf().disable()

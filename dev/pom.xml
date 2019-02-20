@@ -20,7 +20,6 @@
         <module>dapo-api</module>
         <module>dapo-portal</module>
         <module>dapo-website</module>
-        <module>dapo-common-jpa</module>
         <module>dapo-config</module>
         <module>dapo-authserver</module>
         <module>dapo-common-auth</module>
