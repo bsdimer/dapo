@@ -9,9 +9,13 @@ import com.dapo.common.jpa.repository.RealEstateJpaRepository;
 import com.dapo.common.utils.GeoUtils;
 import com.thedeanda.lorem.Lorem;
 import com.thedeanda.lorem.LoremIpsum;
+import com.vividsolutions.jts.awt.PointShapeFactory;
+import com.vividsolutions.jts.geom.Polygon;
 import com.vividsolutions.jts.io.ParseException;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -20,6 +24,8 @@ import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.*;
+
+import static com.dapo.common.utils.GeoUtils.wktToGeometry;
 
 /**
  * Created by dimomass on 21.12.18.
@@ -42,31 +48,15 @@ public class Initializier {
     @Autowired
     CommentRespository commentRespository;
 
-    int citiesCount = 100;
-    int subareasCount = 100;
-    int neighborhoodsCount = 100;
-    int municipalitiesCount = 100;
+    private static final Logger logger = LoggerFactory.getLogger(Initializier.class);
+
+    int citiesCount = 5;
+    int subareasCount = 5;
+    int neighborhoodsCount = 5;
+    int municipalitiesCount = 5;
     int realEstateCount = 1000;
 
-
-    /*@PostConstruct
-    @Transactional
-    public void init2(){
-        Optional<RealEstateEntity> op = realEstateJpaRepository.findById(1l);
-        op.ifPresent(realEstateEntity -> {
-            Comment comment1 = new Comment();
-            comment1.setText(RandomStringUtils.randomAlphabetic(50));
-            Comment comment2 = new Comment();
-            comment2.setText(RandomStringUtils.randomAlphabetic(50));
-            commentRespository.save(comment1);
-            commentRespository.save(comment2);
-            comment1.getComments().add(comment2);
-            realEstateEntity.getComments().add(comment1);
-            realEstateJpaRepository.save(realEstateEntity);
-        });
-    }*/
-
-    /*@PostConstruct
+    @PostConstruct
     public void contextLoads() throws Exception {
         Lorem lorem = LoremIpsum.getInstance();
         Country country = new Country();
@@ -112,7 +102,9 @@ public class Initializier {
                 municipality.setCity(city);
                 municipalities.add(municipality);
             }
+
             cityRepository.save(city);
+            logger.info(String.format("Saving CITY %s %s", i, city.getName()));
         }
 
         for (int i = 0; i < realEstateCount; i++) {
@@ -133,15 +125,26 @@ public class Initializier {
             realEstateEntity.setSize(RandomUtils.nextInt(50, 700));
             realEstateEntity.setPoint(GeoUtils.getRandomPoint(41, 43, 25, 27));
             realEstateEntity.setDescription(lorem.getWords(100, 200));
+
             realEstateJpaRepository.save(realEstateEntity);
+
+            Comment comment1 = new Comment();
+            comment1.setText(RandomStringUtils.randomAlphabetic(50));
+            Comment comment2 = new Comment();
+            comment2.setText(RandomStringUtils.randomAlphabetic(50));
+            commentRespository.save(comment1);
+            commentRespository.save(comment2);
+            comment1.getComments().add(comment2);
+            realEstateEntity.getComments().add(comment1);
+            logger.info(String.format("Saving RENTITY %s", i));
         }
 
-        *//*RealEstateEntity realEstateEntity = new RealEstateEntity();
+        /*RealEstateEntity realEstateEntity = new RealEstateEntity();
 
         realEstateEntity.setCity("Sofia");
         realEstateEntity.setNeighborhood("Mladost 1");
         realEstateEntity.setSubarea("Arsenalski");
-        Point point = (Point) wktToGeometry("POINT (23.43312 45.232332)");
+        PointShapeFactory.Point point = (PointShapeFactory.Point) wktToGeometry("POINT (23.43312 45.232332)");
         realEstateEntity.setPoint(point);
         realEstateJpaRepository.save(realEstateEntity);
 
@@ -150,6 +153,6 @@ public class Initializier {
 
         Polygon polygon = (Polygon) wktToGeometry("POLYGON ((0 0, 0 5, 5 5, 5 0, 0 0))");
         city.setArea(polygon);
-        cityRepository.save(city);*//*
-    }*/
+        cityRepository.save(city);*/
+    }
 }

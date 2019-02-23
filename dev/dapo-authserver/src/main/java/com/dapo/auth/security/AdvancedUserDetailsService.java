@@ -1,4 +1,4 @@
-package com.dapo.auth.common.oauth2;
+package com.dapo.auth.security;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

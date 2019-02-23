@@ -1,6 +1,6 @@
 package com.dapo.auth.controller;
 
-import com.dapo.auth.common.oauth2.TokenProvider;
+import com.dapo.auth.security.TokenProvider;
 import com.dapo.auth.payload.LoginRequest;
 import com.dapo.auth.exception.BadRequestException;
 import com.dapo.auth.common.oauth2.AuthProvider;

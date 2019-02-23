@@ -1,6 +1,6 @@
 package com.dapo.auth.config;
 
-import com.dapo.auth.common.oauth2.TokenAuthenticationFilter;
+import com.dapo.auth.security.TokenAuthenticationFilter;
 import com.dapo.auth.security.CustomUserDetailsService;
 import com.dapo.auth.security.RestAuthenticationEntryPoint;
 import com.dapo.auth.security.oauth2.HttpCookieOAuth2AuthorizationRequestRepository;

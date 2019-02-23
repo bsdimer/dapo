@@ -6,7 +6,6 @@ export const environment = {
   production: false,
   loggerUri: "/logger",
   apiPrefix: "/api/v1",
-  authRestApiPrefix: "/auth",
   auth: {
     clientAuthentication: "dapoweb:dapo123**",
     tokenExpirationDelta: 15000,

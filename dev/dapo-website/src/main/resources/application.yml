@@ -46,6 +46,7 @@ zuul:
     socket-timeout-millis: 10000
   routes:
     dapo-api:
+      sensitiveHeaders:
       path: /api/**
       stripPrefix: false
     dapo-authserver:
@@ -57,23 +58,15 @@ zuul:
       serviceId: dapo-authserver
       stripPrefix: false
     dapo-authserver-user:
+      sensitiveHeaders:
       path: /user/**
       serviceId: dapo-authserver
       stripPrefix: false
 
-# Fixes com.netflix.zuul.exception.ZuulException: Forwarding error
+# Fix the error upon first load
 ribbon:
-  ConnectTimeout: 4000
-  ReadTimeout: 10000
+  eager-load.enabled: true
 
-# HYSTERIX
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 60000
 # EUREKA
 eureka:
   client:
@@ -82,28 +75,9 @@ eureka:
     serviceUrl:
       defaultZone: http://${EUREKAHOST:localhost}:${EUREKAPORT:18761}/eureka/
 
-# Disable spring basic authentication security
-  oauth2:
-    sso:
-      loginPath: /login
-
-stomp.broker:
-  host: localhost
-  port: 61613
-  login: stomp
-  password: P@ssp0rt
-
 ---
 
 # Use this profile fi you start this application trought the IDEA
-spring:
-  profiles: standalone
-  rabbitmq:
-    host: ${RABBITMQ_HOST:localhost}
-    port: ${RABBITMQ_PORT:5672}
-    username: ${RABBITMQ_USER:guest}
-    password: ${RABBITMQ_PASS:guest}
-
 eureka:
   client:
     serviceUrl:

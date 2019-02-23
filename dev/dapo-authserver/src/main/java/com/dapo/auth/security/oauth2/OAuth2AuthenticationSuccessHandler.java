@@ -1,7 +1,7 @@
 package com.dapo.auth.security.oauth2;
 
 import com.dapo.auth.common.config.AppProperties;
-import com.dapo.auth.common.oauth2.TokenProvider;
+import com.dapo.auth.security.TokenProvider;
 import com.dapo.auth.exception.BadRequestException;
 import com.dapo.auth.util.CookieUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,11 +1,11 @@
 {
-  "name": "dapo",
-  "version": "0.0.0",
+  "name": "dapo-website",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json --host 0.0.0.0",
     "startssl": "ng serve --proxy-config proxy.conf.json --host 0.0.0.0 --disable-host-check --ssl 1 --ssl-key './cert/key.pem' --ssl-cert './cert/cert.pem'",
-    "build:prod": "ng build --prod --aot --buildOptimizer",
+    "build:prod": "ng build --prod --aot --build-optimizer --lazy-modules --output-path ./dist/",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

@@ -1,7 +1,6 @@
 package com.dapo.auth.security;
 
 
-import com.dapo.auth.common.oauth2.AdvancedUserDetailsService;
 import com.dapo.auth.common.oauth2.UserPrincipal;
 import com.dapo.auth.exception.ResourceNotFoundException;
 import com.dapo.auth.model.UserEntity;

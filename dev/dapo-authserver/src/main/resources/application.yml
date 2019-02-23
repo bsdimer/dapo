@@ -12,7 +12,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
   datasource:
     platform: postgres
-    url: jdbc:postgresql://${DBHOST:localhost}:${DBPORT:5432}/${DBNAME:dapo}
+    url: jdbc:postgresql://${DBHOST:staging3.aossia.com}:${DBPORT:55432}/${DBNAME:dapo}
     username: ${DBUSER:dapo}
     password: ${DBPASS:dapo}
     driverClassName: org.postgresql.Driver
@@ -53,6 +53,8 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://${EUREKAHOST:localhost}:${EUREKAPORT:18761}/eureka/
+ribbon:
+  eager-load.enabled: true
 
 app:
   auth:
