@@ -1,6 +1,6 @@
 package com.dapo.auth.security.oauth2;
 
-import com.dapo.auth.util.CookieUtils;
+import com.dapo.auth.common.utils.CookieUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;

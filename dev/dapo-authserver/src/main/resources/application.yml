@@ -23,7 +23,7 @@ spring:
           google:
             clientId: 1068892626621-q685593a795qsvfubd89l9ejg4tjkk4p.apps.googleusercontent.com
             clientSecret: H7jLnkXvWr-fVgfvb78cRoDx
-            redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
+            redirectUriTemplate: "http://dapo.com/oauth2/callback/{registrationId}"
             scope:
               - email
               - profile
@@ -68,5 +68,6 @@ app:
     authorizedRedirectUris:
       - http://localhost:4200/a/profile
       - http://dapo.com/a/profile
+      - https://dapo.com/a/profile
       - myandroidapp://oauth2/redirect
       - myiosapp://oauth2/redirect

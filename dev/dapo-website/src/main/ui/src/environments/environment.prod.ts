@@ -9,8 +9,8 @@ export const environment = {
   auth: {
     clientAuthentication: "dapoweb:dapo123**",
     tokenExpirationDelta: 15000,
-    facebookLoginUri: "/oauth2/authorize/facebook?redirect_uri=http://dapo.com/a/profile",
-    googleLoginUri: "/oauth2/authorize/google?redirect_uri=http://dapo.com/a/profile",
+    facebookLoginUri: "/oauth2/authorize/facebook?redirect_uri=https://dapo.com/a/profile",
+    googleLoginUri: "/oauth2/authorize/google?redirect_uri=https://dapo.com/a/profile",
     successUrl: "/a/profile",
     failUrl: "/a/login",
     userInfoUri: "/user/me",

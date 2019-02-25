@@ -1,4 +1,4 @@
-package com.dapo.auth.util;
+package com.dapo.auth.common.utils;
 
 import org.springframework.util.SerializationUtils;
 import javax.servlet.http.Cookie;
@@ -26,7 +26,8 @@ public class CookieUtils {
     public static void addCookie(HttpServletResponse response, String name, String value, int maxAge) {
         Cookie cookie = new Cookie(name, value);
         cookie.setPath("/");
-        cookie.setHttpOnly(true);
+        cookie.setHttpOnly(false);
+        cookie.setSecure(false);
         cookie.setMaxAge(maxAge);
         response.addCookie(cookie);
     }

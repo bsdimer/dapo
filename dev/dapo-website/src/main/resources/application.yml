@@ -50,10 +50,12 @@ zuul:
       path: /api/**
       stripPrefix: false
     dapo-authserver:
+      sensitiveHeaders:
       path: /auth/**
       serviceId: dapo-authserver
       stripPrefix: false
     dapo-authserver-oath2:
+      sensitiveHeaders:
       path: /oauth2/**
       serviceId: dapo-authserver
       stripPrefix: false
