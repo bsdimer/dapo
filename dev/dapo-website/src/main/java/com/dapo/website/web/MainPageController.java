@@ -15,6 +15,7 @@ public class MainPageController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = {
             "/",
+            "/as/",
             "/home",
             "/a/login",
             "/a/profile",

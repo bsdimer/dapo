@@ -1,0 +1,1416 @@
+<div class="main_search_panel">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon>home</mat-icon>
+            </ng-template>
+            <form #searchForm="ngForm">
+              <div class="row" style="margin: 0">
+                <div class="col-sm-6 pl-0">
+                  <mat-form-field>
+                    <mat-select placeholder="{{'realEstateTypes'| translate}}" multiple>
+                      <mat-option *ngFor="let realEstateType of realEstateTypeValues()" [value]="realEstateType">
+                        {{realEstateType | translate}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-6 text-capitalize pr-0">
+                  <mat-form-field>
+                    <mat-select placeholder="{{'country'| translate}}" multiple>
+                      <mat-option *ngFor="let country of countries" [value]="country">{{country | translate}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon>hotel</mat-icon>
+            </ng-template>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon>gavel</mat-icon>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+
+      </div>
+      <div class="col-sm-8">
+        <!--<div id="map" *ngIf="!!config && !!config.mapConfig">
+          <agm-map style="height: 100%" [latitude]="config.mapConfig.latitude"
+                   [scrollwheel]="null"
+                   [gestureHandling]="'cooperative'"
+                   [longitude]="config.mapConfig.longitude" [zoom]="zoom"
+                   (boundsChange)="onBoundsChange($event)" (zoomChange)="onZoomChange($event)">
+            <agm-marker-cluster
+              imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+              <agm-marker *ngFor="let property of properties" iconUrl="/assets/images/favicon.png"
+                          [latitude]="property.point.coordinates[0]"
+                          [longitude]="property.point.coordinates[1]">
+                <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+                  <ng-template>
+                    {{property.description}}
+                  </ng-template>
+                </agm-snazzy-info-window>
+              </agm-marker>
+            </agm-marker-cluster>
+          </agm-map>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rs_property_categories_wrapper full_grid_wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sidebar2_main_wrapper">
+        <div class="left_side_category_wraper">
+          <div class="filter-area">
+            <div class="showpro">
+              <h4>listing style</h4>
+            </div>
+            <select>
+              <option>filter by</option>
+              <option>flat</option>
+              <option>villa</option>
+              <option>rental</option>
+            </select>
+            <div class="list-grid">
+              <ul class="list-inline nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="#list"><i class="fa fa-list"></i></a></li>
+                <li><a data-toggle="pill" href="#grid"><i class="fa fa-th-large"></i></a></li>
+
+              </ul>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="tab-content">
+              <div id="list" class="tab-pane fade in active">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="prs_mcc_list_movie_main_wrapper lp_cntnt">
+                      <div class="project-inner project-head inner_projext_head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button featured agent">agent</div>
+                            <div class="home-tag-price">
+                              $ 2700,00
+                            </div>
+                            <div class="homes-tag button alt sale">Rent</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="/assets/images/lp3.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <div class="prs_mcc_list_movie_img_cont_wrapper">
+
+                        <div class="homes-content">
+                          <!-- homes address -->
+                          <div class="homes_cntnt_box homes_cntnt_box_2">
+
+                            <div class="homes_cntnt_right">
+                              <h3><a href="#">308/955 kilda road</a></h3>
+                              <p class="homes-address mb-3">
+                                <a href="#">
+                                  new south wales,USA
+                                </a>
+                              </p>
+                            </div>
+
+                          </div>
+                          <!-- homes hover -->
+
+                          <!-- homes List -->
+                          <div class="home_wrapper_list">
+                            <ul class="homes-list clearfix">
+                              <li>
+                                type
+                                <span>house</span>
+                              </li>
+                              <li>
+                                area
+                                <span>More than 100m2</span>
+                              </li>
+                              <li>
+                                rooms
+                                <span>03</span>
+                              </li>
+
+                            </ul>
+                          </div>
+
+                          <div class="footer">
+                            <h3>view map</h3>
+                            <div class="lp_deals_icon">
+                              <ul>
+                                <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                                <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                                <li><a href="#"><i class="flaticon-television"></i></a></li>
+                                <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                                <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                                <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="prs_mcc_list_movie_main_wrapper lp_cntnt">
+                      <div class="project-inner project-head inner_projext_head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button alt featured">owner</div>
+                            <div class="home-tag-price">
+                              $ 2700,00
+                            </div>
+                            <div class="homes-tag button alt sale">rent</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp1.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <div class="prs_mcc_list_movie_img_cont_wrapper">
+
+                        <div class="homes-content">
+                          <!-- homes address -->
+                          <div class="homes_cntnt_box homes_cntnt_box_2">
+
+                            <div class="homes_cntnt_right">
+                              <h3><a href="#">308/955 kilda road</a></h3>
+                              <p class="homes-address mb-3">
+                                <a href="#">
+                                  new south wales,USA
+                                </a>
+                              </p>
+                            </div>
+
+                          </div>
+                          <!-- homes hover -->
+
+                          <!-- homes List -->
+                          <div class="home_wrapper_list">
+                            <ul class="homes-list clearfix">
+                              <li>
+                                type
+                                <span>house</span>
+                              </li>
+                              <li>
+                                area
+                                <span>More than 100m2</span>
+                              </li>
+                              <li>
+                                rooms
+                                <span>03</span>
+                              </li>
+
+                            </ul>
+                          </div>
+
+                          <div class="footer">
+                            <h3>view map</h3>
+                            <div class="lp_deals_icon">
+                              <ul>
+                                <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                                <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                                <li><a href="#"><i class="flaticon-television"></i></a></li>
+                                <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                                <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                                <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="prs_mcc_list_movie_main_wrapper lp_cntnt">
+                      <div class="project-inner project-head inner_projext_head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button alt featured">owner</div>
+                            <div class="home-tag-price">
+                              $ 2500,00
+                            </div>
+                            <div class="homes-tag button alt sale">rent</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp3.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <div class="prs_mcc_list_movie_img_cont_wrapper">
+
+                        <div class="homes-content">
+                          <!-- homes address -->
+                          <div class="homes_cntnt_box homes_cntnt_box_2">
+
+                            <div class="homes_cntnt_right">
+                              <h3><a href="#">308/955 kilda road</a></h3>
+                              <p class="homes-address mb-3">
+                                <a href="#">
+                                  new south wales,USA
+                                </a>
+                              </p>
+                            </div>
+
+                          </div>
+                          <!-- homes hover -->
+
+                          <!-- homes List -->
+                          <div class="home_wrapper_list">
+                            <ul class="homes-list clearfix">
+                              <li>
+                                type
+                                <span>house</span>
+                              </li>
+                              <li>
+                                area
+                                <span>More than 100m2</span>
+                              </li>
+                              <li>
+                                rooms
+                                <span>03</span>
+                              </li>
+
+                            </ul>
+                          </div>
+
+                          <div class="footer">
+                            <h3>view map</h3>
+                            <div class="lp_deals_icon">
+                              <ul>
+                                <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                                <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                                <li><a href="#"><i class="flaticon-television"></i></a></li>
+                                <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                                <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                                <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="prs_mcc_list_movie_main_wrapper lp_cntnt">
+                      <div class="project-inner project-head inner_projext_head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button featured offer">offer</div>
+                            <div class="home-tag-price">
+                              $ 2900,00
+                            </div>
+                            <div class="homes-tag button sale" id="sale_second_12">sell</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp1.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <div class="prs_mcc_list_movie_img_cont_wrapper">
+
+                        <div class="homes-content">
+                          <!-- homes address -->
+                          <div class="homes_cntnt_box homes_cntnt_box_2">
+
+                            <div class="homes_cntnt_right">
+                              <h3><a href="#">308/955 kilda road</a></h3>
+                              <p class="homes-address mb-3">
+                                <a href="#">
+                                  new mexico villas,USA
+                                </a>
+                              </p>
+                            </div>
+
+                          </div>
+                          <!-- homes hover -->
+
+                          <!-- homes List -->
+                          <div class="home_wrapper_list">
+                            <ul class="homes-list clearfix">
+                              <li>
+                                type
+                                <span>house</span>
+                              </li>
+                              <li>
+                                area
+                                <span>More than 100m2</span>
+                              </li>
+                              <li>
+                                rooms
+                                <span>03</span>
+                              </li>
+
+                            </ul>
+                          </div>
+
+                          <div class="footer">
+                            <h3>view map</h3>
+                            <div class="lp_deals_icon">
+                              <ul>
+                                <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                                <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                                <li><a href="#"><i class="flaticon-television"></i></a></li>
+                                <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                                <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                                <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="prs_mcc_list_movie_main_wrapper lp_cntnt">
+                      <div class="project-inner project-head inner_projext_head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button featured agent">agent</div>
+                            <div class="home-tag-price">
+                              $ 2700,00
+                            </div>
+                            <div class="homes-tag button alt sale">Rent</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp3.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <div class="prs_mcc_list_movie_img_cont_wrapper">
+
+                        <div class="homes-content">
+                          <!-- homes address -->
+                          <div class="homes_cntnt_box homes_cntnt_box_2">
+
+                            <div class="homes_cntnt_right">
+                              <h3><a href="#">308/955 kilda road</a></h3>
+                              <p class="homes-address mb-3">
+                                <a href="#">
+                                  victoria, australia
+                                </a>
+                              </p>
+                            </div>
+
+                          </div>
+                          <!-- homes hover -->
+
+                          <!-- homes List -->
+                          <div class="home_wrapper_list">
+                            <ul class="homes-list clearfix">
+                              <li>
+                                type
+                                <span>house</span>
+                              </li>
+                              <li>
+                                area
+                                <span>More than 100m2</span>
+                              </li>
+                              <li>
+                                rooms
+                                <span>03</span>
+                              </li>
+
+                            </ul>
+                          </div>
+
+                          <div class="footer">
+                            <h3>view map</h3>
+                            <div class="lp_deals_icon">
+                              <ul>
+                                <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                                <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                                <li><a href="#"><i class="flaticon-television"></i></a></li>
+                                <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                                <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                                <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="prs_mcc_list_movie_main_wrapper lp_cntnt">
+                      <div class="project-inner project-head inner_projext_head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button alt featured">owner</div>
+                            <div class="home-tag-price">
+                              $ 2500,00
+                            </div>
+                            <div class="homes-tag button alt sale">rent</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp4.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <div class="prs_mcc_list_movie_img_cont_wrapper">
+
+                        <div class="homes-content">
+                          <!-- homes address -->
+                          <div class="homes_cntnt_box homes_cntnt_box_2">
+
+                            <div class="homes_cntnt_right">
+                              <h3><a href="#">308/11 degves street</a></h3>
+                              <p class="homes-address mb-3">
+                                <a href="#">
+                                  new south wales,USA
+                                </a>
+                              </p>
+                            </div>
+
+                          </div>
+                          <!-- homes hover -->
+
+                          <!-- homes List -->
+                          <div class="home_wrapper_list">
+                            <ul class="homes-list clearfix">
+                              <li>
+                                type
+                                <span>house</span>
+                              </li>
+                              <li>
+                                area
+                                <span>More than 100m2</span>
+                              </li>
+                              <li>
+                                rooms
+                                <span>03</span>
+                              </li>
+
+                            </ul>
+                          </div>
+
+                          <div class="footer">
+                            <h3>view map</h3>
+                            <div class="lp_deals_icon">
+                              <ul>
+                                <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                                <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                                <li><a href="#"><i class="flaticon-television"></i></a></li>
+                                <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                                <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                                <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="prs_mcc_list_movie_main_wrapper lp_cntnt">
+                      <div class="project-inner project-head inner_projext_head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button featured agent">agent</div>
+                            <div class="home-tag-price">
+                              $ 2700,00
+                            </div>
+                            <div class="homes-tag button alt sale">Rent</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp2.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <div class="prs_mcc_list_movie_img_cont_wrapper">
+
+                        <div class="homes-content">
+                          <!-- homes address -->
+                          <div class="homes_cntnt_box homes_cntnt_box_2">
+
+                            <div class="homes_cntnt_right">
+                              <h3><a href="#">22/955 oliva road</a></h3>
+                              <p class="homes-address mb-3">
+                                <a href="#">
+                                  victoria, australia
+                                </a>
+                              </p>
+                            </div>
+
+                          </div>
+                          <!-- homes hover -->
+
+                          <!-- homes List -->
+                          <div class="home_wrapper_list">
+                            <ul class="homes-list clearfix">
+                              <li>
+                                type
+                                <span>house</span>
+                              </li>
+                              <li>
+                                area
+                                <span>More than 100m2</span>
+                              </li>
+                              <li>
+                                rooms
+                                <span>03</span>
+                              </li>
+
+                            </ul>
+                          </div>
+
+                          <div class="footer">
+                            <h3>view map</h3>
+                            <div class="lp_deals_icon">
+                              <ul>
+                                <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                                <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                                <li><a href="#"><i class="flaticon-television"></i></a></li>
+                                <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                                <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                                <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="prs_mcc_list_movie_main_wrapper lp_cntnt">
+                      <div class="project-inner project-head inner_projext_head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button featured offer">offer</div>
+                            <div class="home-tag-price">
+                              $ 2900,00
+                            </div>
+                            <div class="homes-tag button sale" id="sale_second_pc">sell</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp2.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <div class="prs_mcc_list_movie_img_cont_wrapper">
+
+                        <div class="homes-content">
+                          <!-- homes address -->
+                          <div class="homes_cntnt_box homes_cntnt_box_2">
+
+                            <div class="homes_cntnt_right">
+                              <h3><a href="#">101/1 oliva street</a></h3>
+                              <p class="homes-address mb-3">
+                                <a href="#">
+                                  new south wales,USA
+                                </a>
+                              </p>
+                            </div>
+
+                          </div>
+                          <!-- homes hover -->
+
+                          <!-- homes List -->
+                          <div class="home_wrapper_list">
+                            <ul class="homes-list clearfix">
+                              <li>
+                                type
+                                <span>house</span>
+                              </li>
+                              <li>
+                                area
+                                <span>More than 100m2</span>
+                              </li>
+                              <li>
+                                rooms
+                                <span>03</span>
+                              </li>
+
+                            </ul>
+                          </div>
+
+                          <div class="footer">
+                            <h3>view map</h3>
+                            <div class="lp_deals_icon">
+                              <ul>
+                                <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                                <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                                <li><a href="#"><i class="flaticon-television"></i></a></li>
+                                <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                                <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                                <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div id="grid" class="tab-pane fade">
+                <div class="row">
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 prs_upcom_slide_first">
+                    <div class="lp_cntnt">
+                      <div class="project-inner project-head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button alt featured">owner</div>
+                            <div class="home-tag-price">
+                              $ 2500,00
+                            </div>
+                            <div class="homes-tag button alt sale">rent</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp3.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <!-- homes content -->
+                      <div class="homes-content">
+                        <!-- homes address -->
+                        <div class="homes_cntnt_box">
+                          <div class="homes_cntnt_left">
+                            <img src="assets/images/lp_img_1.png" alt="home" class="img-responsive">
+                          </div>
+                          <div class="homes_cntnt_right">
+                            <h3><a href="#">308/9 Degves Street</a></h3>
+                            <p class="homes-address mb-3">
+                              <a href="#">
+                                New Mexico, United States
+                              </a>
+                            </p>
+                          </div>
+
+                        </div>
+                        <!-- homes hover -->
+
+                        <!-- homes List -->
+                        <div class="home_wrapper_list">
+                          <ul class="homes-list clearfix">
+                            <li>
+                              type
+                              <span>house</span>
+                            </li>
+                            <li>
+                              area
+                              <span>More than 100m2</span>
+                            </li>
+                            <li>
+                              rooms
+                              <span>03</span>
+                            </li>
+
+                          </ul>
+                        </div>
+
+                        <div class="footer">
+                          <h3>view map</h3>
+                          <div class="lp_deals_icon">
+                            <ul>
+                              <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                              <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                              <li><a href="#"><i class="flaticon-television"></i></a></li>
+                              <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                              <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                              <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 prs_upcom_slide_first">
+                    <div class="lp_cntnt">
+                      <div class="project-inner project-head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button featured offer">offer</div>
+                            <div class="home-tag-price">
+                              $ 2900,00
+                            </div>
+                            <div class="homes-tag button sale" id="sale_second_tr">sell</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp2.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <!-- homes content -->
+                      <div class="homes-content">
+                        <!-- homes address -->
+                        <div class="homes_cntnt_box">
+                          <div class="homes_cntnt_left">
+                            <img src="assets/images/lp_img_4.png" alt="home" class="img-responsive">
+                          </div>
+                          <div class="homes_cntnt_right">
+                            <h3><a href="#">101/9 oliva Street</a></h3>
+                            <p class="homes-address mb-3">
+                              <a href="#">
+                                victoria,austraila
+                              </a>
+                            </p>
+                          </div>
+
+                        </div>
+                        <!-- homes hover -->
+
+                        <!-- homes List -->
+                        <div class="home_wrapper_list">
+                          <ul class="homes-list clearfix">
+                            <li>
+                              type
+                              <span>house</span>
+                            </li>
+                            <li>
+                              area
+                              <span>More than 100m2</span>
+                            </li>
+                            <li>
+                              rooms
+                              <span>03</span>
+                            </li>
+
+                          </ul>
+                        </div>
+
+                        <div class="footer">
+                          <h3>view map</h3>
+                          <div class="lp_deals_icon">
+                            <ul>
+                              <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                              <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                              <li><a href="#"><i class="flaticon-television"></i></a></li>
+                              <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                              <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                              <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 prs_upcom_slide_first">
+                    <div class="lp_cntnt">
+                      <div class="project-inner project-head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button alt featured">owner</div>
+                            <div class="home-tag-price">
+                              $ 2500,00
+                            </div>
+                            <div class="homes-tag button alt sale">rent</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp4.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <!-- homes content -->
+                      <div class="homes-content">
+                        <!-- homes address -->
+                        <div class="homes_cntnt_box">
+                          <div class="homes_cntnt_left">
+                            <img src="assets/images/lp_img_1.png" alt="home" class="img-responsive">
+                          </div>
+                          <div class="homes_cntnt_right">
+                            <h3><a href="#">308/9 Degves Street</a></h3>
+                            <p class="homes-address mb-3">
+                              <a href="#">
+                                New Mexico, United States
+                              </a>
+                            </p>
+                          </div>
+
+                        </div>
+                        <!-- homes hover -->
+
+                        <!-- homes List -->
+                        <div class="home_wrapper_list">
+                          <ul class="homes-list clearfix">
+                            <li>
+                              type
+                              <span>house</span>
+                            </li>
+                            <li>
+                              area
+                              <span>More than 100m2</span>
+                            </li>
+                            <li>
+                              rooms
+                              <span>03</span>
+                            </li>
+
+                          </ul>
+                        </div>
+
+                        <div class="footer">
+                          <h3>view map</h3>
+                          <div class="lp_deals_icon">
+                            <ul>
+                              <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                              <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                              <li><a href="#"><i class="flaticon-television"></i></a></li>
+                              <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                              <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                              <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 prs_upcom_slide_first">
+                    <div class="lp_cntnt">
+                      <div class="project-inner project-head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button alt featured">owner</div>
+                            <div class="home-tag-price">
+                              $ 2500,00
+                            </div>
+                            <div class="homes-tag button alt sale">rent</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp4.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <!-- homes content -->
+                      <div class="homes-content">
+                        <!-- homes address -->
+                        <div class="homes_cntnt_box">
+                          <div class="homes_cntnt_left">
+                            <img src="assets/images/lp_img_1.png" alt="home" class="img-responsive">
+                          </div>
+                          <div class="homes_cntnt_right">
+                            <h3><a href="#">308/9 Degves Street</a></h3>
+                            <p class="homes-address mb-3">
+                              <a href="#">
+                                New Mexico, United States
+                              </a>
+                            </p>
+                          </div>
+
+                        </div>
+                        <!-- homes hover -->
+
+                        <!-- homes List -->
+                        <div class="home_wrapper_list">
+                          <ul class="homes-list clearfix">
+                            <li>
+                              type
+                              <span>house</span>
+                            </li>
+                            <li>
+                              area
+                              <span>More than 100m2</span>
+                            </li>
+                            <li>
+                              rooms
+                              <span>03</span>
+                            </li>
+
+                          </ul>
+                        </div>
+
+                        <div class="footer">
+                          <h3>view map</h3>
+                          <div class="lp_deals_icon">
+                            <ul>
+                              <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                              <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                              <li><a href="#"><i class="flaticon-television"></i></a></li>
+                              <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                              <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                              <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 prs_upcom_slide_first">
+                    <div class="lp_cntnt">
+                      <div class="project-inner project-head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button featured agent">agent</div>
+                            <div class="home-tag-price">
+                              $ 2700,00
+                            </div>
+                            <div class="homes-tag button alt sale">Rent</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp1.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <!-- homes content -->
+                      <div class="homes-content">
+                        <!-- homes address -->
+                        <div class="homes_cntnt_box">
+                          <div class="homes_cntnt_left">
+                            <img src="assets/images/lp_img_2.png" alt="home" class="img-responsive">
+                          </div>
+                          <div class="homes_cntnt_right">
+                            <h3><a href="#">308/955 kilda road</a></h3>
+                            <p class="homes-address mb-3">
+                              <a href="#">
+                                new south wales,USA
+                              </a>
+                            </p>
+                          </div>
+
+                        </div>
+                        <!-- homes hover -->
+
+                        <!-- homes List -->
+                        <div class="home_wrapper_list">
+                          <ul class="homes-list clearfix">
+                            <li>
+                              type
+                              <span>house</span>
+                            </li>
+                            <li>
+                              area
+                              <span>More than 100m2</span>
+                            </li>
+                            <li>
+                              rooms
+                              <span>03</span>
+                            </li>
+
+                          </ul>
+                        </div>
+
+                        <div class="footer">
+                          <h3>view map</h3>
+                          <div class="lp_deals_icon">
+                            <ul>
+                              <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                              <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                              <li><a href="#"><i class="flaticon-television"></i></a></li>
+                              <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                              <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                              <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 prs_upcom_slide_first">
+                    <div class="lp_cntnt">
+                      <div class="project-inner project-head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button featured agent">agent</div>
+                            <div class="home-tag-price">
+                              $ 2700,00
+                            </div>
+                            <div class="homes-tag button alt sale">Rent</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp4.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <!-- homes content -->
+                      <div class="homes-content">
+                        <!-- homes address -->
+                        <div class="homes_cntnt_box">
+                          <div class="homes_cntnt_left">
+                            <img src="assets/images/lp_img_2.png" alt="home" class="img-responsive">
+                          </div>
+                          <div class="homes_cntnt_right">
+                            <h3><a href="#">308/955 kilda road</a></h3>
+                            <p class="homes-address mb-3">
+                              <a href="#">
+                                new south wales,USA
+                              </a>
+                            </p>
+                          </div>
+
+                        </div>
+                        <!-- homes hover -->
+
+                        <!-- homes List -->
+                        <div class="home_wrapper_list">
+                          <ul class="homes-list clearfix">
+                            <li>
+                              type
+                              <span>house</span>
+                            </li>
+                            <li>
+                              area
+                              <span>More than 100m2</span>
+                            </li>
+                            <li>
+                              rooms
+                              <span>03</span>
+                            </li>
+
+                          </ul>
+                        </div>
+
+                        <div class="footer">
+                          <h3>view map</h3>
+                          <div class="lp_deals_icon">
+                            <ul>
+                              <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                              <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                              <li><a href="#"><i class="flaticon-television"></i></a></li>
+                              <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                              <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                              <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 prs_upcom_slide_first">
+                    <div class="lp_cntnt">
+                      <div class="project-inner project-head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button featured offer">offer</div>
+                            <div class="home-tag-price">
+                              $ 2900,00
+                            </div>
+                            <div class="homes-tag button sale" id="sale_second_nd">sell</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp2.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <!-- homes content -->
+                      <div class="homes-content">
+                        <!-- homes address -->
+                        <div class="homes_cntnt_box">
+                          <div class="homes_cntnt_left">
+                            <img src="assets/images/lp_img_4.png" alt="home" class="img-responsive">
+                          </div>
+                          <div class="homes_cntnt_right">
+                            <h3><a href="#">101/9 oliva Street</a></h3>
+                            <p class="homes-address mb-3">
+                              <a href="#">
+                                victoria,austraila
+                              </a>
+                            </p>
+                          </div>
+
+                        </div>
+                        <!-- homes hover -->
+
+                        <!-- homes List -->
+                        <div class="home_wrapper_list">
+                          <ul class="homes-list clearfix">
+                            <li>
+                              type
+                              <span>house</span>
+                            </li>
+                            <li>
+                              area
+                              <span>More than 100m2</span>
+                            </li>
+                            <li>
+                              rooms
+                              <span>03</span>
+                            </li>
+
+                          </ul>
+                        </div>
+
+                        <div class="footer">
+                          <h3>view map</h3>
+                          <div class="lp_deals_icon">
+                            <ul>
+                              <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                              <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                              <li><a href="#"><i class="flaticon-television"></i></a></li>
+                              <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                              <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                              <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 prs_upcom_slide_first">
+                    <div class="lp_cntnt">
+                      <div class="project-inner project-head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button alt featured">owner</div>
+                            <div class="home-tag-price">
+                              $ 2500,00
+                            </div>
+                            <div class="homes-tag button alt sale">rent</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp3.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <!-- homes content -->
+                      <div class="homes-content">
+                        <!-- homes address -->
+                        <div class="homes_cntnt_box">
+                          <div class="homes_cntnt_left">
+                            <img src="assets/images/lp_img_1.png" alt="home" class="img-responsive">
+                          </div>
+                          <div class="homes_cntnt_right">
+                            <h3><a href="#">308/9 Degves Street</a></h3>
+                            <p class="homes-address mb-3">
+                              <a href="#">
+                                New Mexico, United States
+                              </a>
+                            </p>
+                          </div>
+
+                        </div>
+                        <!-- homes hover -->
+
+                        <!-- homes List -->
+                        <div class="home_wrapper_list">
+                          <ul class="homes-list clearfix">
+                            <li>
+                              type
+                              <span>house</span>
+                            </li>
+                            <li>
+                              area
+                              <span>More than 100m2</span>
+                            </li>
+                            <li>
+                              rooms
+                              <span>03</span>
+                            </li>
+
+                          </ul>
+                        </div>
+
+                        <div class="footer">
+                          <h3>view map</h3>
+                          <div class="lp_deals_icon">
+                            <ul>
+                              <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                              <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                              <li><a href="#"><i class="flaticon-television"></i></a></li>
+                              <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                              <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                              <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 prs_upcom_slide_first">
+                    <div class="lp_cntnt">
+                      <div class="project-inner project-head">
+
+                        <div class="homes">
+                          <!-- homes img -->
+                          <a href="#" class="homes-img">
+                            <div class="homes-tag button featured agent">agent</div>
+                            <div class="home-tag-price">
+                              $ 2700,00
+                            </div>
+                            <div class="homes-tag button alt sale">Rent</div>
+
+                          </a>
+
+                        </div>
+                        <div class="homes_img_wrapper">
+                          <img src="assets/images/lp5.jpg" alt="home" class="img-responsive">
+                        </div>
+                      </div>
+                      <!-- homes content -->
+                      <div class="homes-content">
+                        <!-- homes address -->
+                        <div class="homes_cntnt_box">
+                          <div class="homes_cntnt_left">
+                            <img src="assets/images/lp_img_4.png" alt="home" class="img-responsive">
+                          </div>
+                          <div class="homes_cntnt_right">
+                            <h3><a href="#">308/955 diverg road</a></h3>
+                            <p class="homes-address mb-3">
+                              <a href="#">
+                                new south wales,USA
+                              </a>
+                            </p>
+                          </div>
+
+                        </div>
+                        <!-- homes hover -->
+
+                        <!-- homes List -->
+                        <div class="home_wrapper_list">
+                          <ul class="homes-list clearfix">
+                            <li>
+                              type
+                              <span>house</span>
+                            </li>
+                            <li>
+                              area
+                              <span>More than 100m2</span>
+                            </li>
+                            <li>
+                              rooms
+                              <span>03</span>
+                            </li>
+
+                          </ul>
+                        </div>
+
+                        <div class="footer">
+                          <h3>view map</h3>
+                          <div class="lp_deals_icon">
+                            <ul>
+                              <li><a href="#"><i class="flaticon-shower"></i></a></li>
+                              <li><a href="#"><i class="flaticon-fan"></i></a></li>
+                              <li><a href="#"><i class="flaticon-television"></i></a></li>
+                              <li><a href="#"><i class="flaticon-garage"></i></a></li>
+                              <li><a href="#"><i class="flaticon-policeman"></i></a></li>
+                              <li><a href="#"><i class="flaticon-cctv"></i></a></li>
+
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <!-- blog_pagination_section start -->
+          <div class="blog_pagination_section blog_page_category">
+            <ul>
+              <li>
+                <a href="#" class="prev"> prev </a>
+              </li>
+              <li><a href="#">01</a>
+              </li>
+              <li><a href="#">02</a>
+              </li>
+              <li class="blog_pagination_after"><a href="#">03</a>
+              </li>
+              <li class="hidden-xs"><a href="#">04</a>
+              </li>
+
+              <li><a href="#" class="next">next</a>
+              </li>
+            </ul>
+          </div>
+          <!-- blog_pagination_section end -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

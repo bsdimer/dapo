@@ -1,5 +1,6 @@
 server:
   port: ${PORT:18082}
+  use-forward-headers: true
 spring:
   application.name: dapo-authserver
   jpa:
@@ -23,7 +24,7 @@ spring:
           google:
             clientId: 1068892626621-q685593a795qsvfubd89l9ejg4tjkk4p.apps.googleusercontent.com
             clientSecret: H7jLnkXvWr-fVgfvb78cRoDx
-            redirectUriTemplate: "http://dapo.com/oauth2/callback/{registrationId}"
+            redirectUriTemplate: "https://dapo.com/oauth2/callback/{registrationId}"
             scope:
               - email
               - profile

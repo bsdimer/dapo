@@ -85,5 +85,7 @@
   "MASE" : "мазе",
   "WHOLE_BUILDING" : "цяла сграда",
   "HOUSE" : "къща",
-  "HOUSE_FLOOR" : "етаж от къща"
+  "HOUSE_FLOOR" : "етаж от къща",
+  "realEstateTypes": "Тип обява",
+  "country": "държава"
 }

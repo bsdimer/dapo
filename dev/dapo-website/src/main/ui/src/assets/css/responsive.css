@@ -6,10 +6,10 @@
 }
 
 @media only screen and (max-width: 1500px) {
-	
+
 }
 @media only screen and (max-width: 1400px) {
- 
+
 }
 @media only screen and (max-width: 1300px) {
 	header .serach-header{
@@ -28,14 +28,14 @@
 /**********************992 & 1199 start******************/
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  
+
     nav > ul > li > a {
         padding: 32px 13px 36px 13px;
     }
     .sc_navigation .nav_left_margin {
         margin-left: 0;
     }
-   
+
     .tb_es_input_width {
         width: 30%;
     }
@@ -369,8 +369,8 @@
 		margin-top:20px;
 	}
 	.rs_property_categories_wrapper{
-		padding-bottom:50px;
-		padding-top:90px;
+		padding-bottom:20px;
+		padding-top:20px;
 	}
 	.full_grid_wrapper{
 		padding-bottom:90px;
@@ -414,7 +414,7 @@
 	.cc_li_cont_wrapper{
 		position:relative;
 		float:left;
-		right:-22px;		
+		right:-22px;
 	}
 	.home_cnttn_paaa{
 		padding:15px 20px;
@@ -451,7 +451,7 @@
 	.shop_product_single_head{
 		padding-top:30px;
 	}
-   
+
 }
 
 
@@ -530,7 +530,7 @@
 		width:100%;
 		text-align:center;
 	}
-	
+
 	.aboutus_social_icons{
 		display:inline-block;
 	}
@@ -763,7 +763,7 @@
 		float:left;
 	}
 	.sp_btn_form li{
-		float:left; 
+		float:left;
 	}
 	.sp_btn_form ul{
 		float:left;
@@ -793,8 +793,8 @@
 	width:100%;
 	margin-left:0;
 }
-   
- 
+
+
 }
 
 /*********----------481 $ 766 responsive css-------**********/
@@ -809,13 +809,13 @@
 	.video_img_section .owl-theme .owl-nav .owl-next{
 		right:200px;
 	}
- 
+
 }
 
 /*********----------321 & 480 responsive css-------**********/
 
 @media (min-width: 321px) and (max-width: 480px) {
-  
+
 }
 
 /*********----------320 responsive css-------**********/
@@ -857,7 +857,7 @@
 	.accordion_section .panel .panel-heading a{
 		font-size:14px;
 	}
-   
+
 }
 
 

@@ -1,29 +1,27 @@
 package com.dapo.api.controller;
 
 import com.dapo.common.jpa.model.RealEstateEntity;
-import com.dapo.common.jpa.repository.RealEstateJpaRepository;
 import com.dapo.common.jpa.service.RealEstateJpaService;
 import com.querydsl.core.types.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.querydsl.binding.QuerydslPredicate;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by dimomass on 21.12.18.
  */
 
-@RestController
-@RequestMapping("/realEstate")
-public class RealEstateController {
+public class CommonEntityController<S > {
 
     private RealEstateJpaService realEstateJpaService;
 
     @Autowired
-    public RealEstateController(RealEstateJpaService realEstateJpaService) {
+    public CommonEntityController(RealEstateJpaService realEstateJpaService) {
         this.realEstateJpaService = realEstateJpaService;
     }
 

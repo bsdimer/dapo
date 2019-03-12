@@ -3461,7 +3461,7 @@ header .serach-header .searchbox.open {
 /******------contact us css wrapper-------********/
 #map {
   width: 100%;
-  height: 600px;
+  height: 100%;
 }
 
 .contact_iner_wrapper {
@@ -3703,8 +3703,8 @@ header .serach-header .searchbox.open {
   width: 100%;
   overflow: hidden;
   background: #f9f9f9;
-  padding-top: 100px;
-  padding-bottom: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .filter-area {
@@ -5521,7 +5521,7 @@ main-search-field_
 
 /*******---------map wrapper index map-----***********/
 #map_wrapper {
-  height: 700px;
+  height: calc(100vh - 450px);
   float: left;
   width: 100%;
 }
@@ -8398,6 +8398,13 @@ video {
     z-index: 3;
   }
 
+  #map_wrapper {
+    height: calc(100vh - 250px);
+    float: left;
+    width: 100%;
+  }
+
+
   .sc_navigation {
     float: right;
     background: #fff;
@@ -9199,5 +9206,5 @@ nav ul li:nth-child(8) > ul {
   font-style: normal;
   text-transform: uppercase;
   font-weight: 500;
-
 }
+

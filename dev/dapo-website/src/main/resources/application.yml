@@ -39,6 +39,7 @@ spring:
 
 # ZULL
 zuul:
+  sensitiveHeaders:
   add-proxy-headers: true
   add-host-header: true
   host:

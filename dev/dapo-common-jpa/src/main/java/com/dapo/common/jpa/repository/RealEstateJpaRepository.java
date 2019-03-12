@@ -8,5 +8,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * Created by dimomass on 19.12.18.
  */
 
-public interface RealEstateJpaRepository extends PagingAndSortingRepository<RealEstateEntity, Long>, QuerydslPredicateExecutor<RealEstateEntity> {
+public interface RealEstateJpaRepository extends CommonSearchRepository<RealEstateEntity> {
 }

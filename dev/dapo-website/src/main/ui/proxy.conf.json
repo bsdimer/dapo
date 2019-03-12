@@ -1,10 +1,10 @@
 {
-  "/auth/*": "http://localhost:18082",
-  "/oauth2/*": "http://localhost:18082",
-  "/user/*": "http://localhost:18082",
+  "/auth/*": "http://staging3.aossia.com:18082",
+  "/oauth2/*": "http://staging3.aossia.com:18082",
+  "/user/*": "http://staging3.aossia.com:18082",
   "/api/*": "http://localhost:18081",
   "/stomp/*": {
-    "target": "wss://localhost:18080",
+    "target": "wss://staging3.aossia.com:18080",
     "ws": true
   }
 }
