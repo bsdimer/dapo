@@ -40,3 +40,11 @@ eureka:
 
 ribbon:
   eager-load.enabled: true
+
+---
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+      url: jdbc:postgresql://${DBHOST:localhost}:${DBPORT:5432}/${DBNAME:dapo}

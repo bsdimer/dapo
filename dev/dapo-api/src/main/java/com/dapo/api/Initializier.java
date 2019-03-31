@@ -60,7 +60,7 @@ public class Initializier {
     public void contextLoads() throws Exception {
         Lorem lorem = LoremIpsum.getInstance();
         Country country = new Country();
-        country.setName("България");
+        country.setName("Bulgaria");
         country.setCode("BG");
         country.setArea(GeoUtils.getRandomPolygon(41, 43, 25, 27));
         countryRepository.save(country);
