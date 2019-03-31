@@ -602,9 +602,9 @@
 	.accordion_section .panel-group .panel-heading+.panel-collapse>.panel-body{
 		padding:20px;
 	}
-	#map_wrapper{
-		height:500px;
-	}
+  #map_wrapper {
+    height: calc(100vh - 480px);
+  }
 	.deals_form_tab_2 .nav-tabs>li>a{
 		width:auto;
 		line-height:55px;

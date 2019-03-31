@@ -1,5 +1,5 @@
 .main_search_panel {
-  margin-top: 20px;
+  margin-top: 30px;
   width: 100%;
   height: calc(100vh - 50px);
 }
@@ -10,8 +10,15 @@
   width: 30px !important;
 }
 
-.overflow-none {
-  overflow: hidden;
+.map-container {
+  width: 100%;
+  min-height: 40vh;
+  background-color: lightgrey;
+}
+
+.search-item {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 992px) {

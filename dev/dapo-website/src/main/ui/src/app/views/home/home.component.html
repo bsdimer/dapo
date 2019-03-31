@@ -37,12 +37,22 @@
               <!-- Nav tabs -->
               <ul id="tabTwo" class="nav nav-tabs">
                 <li class="active">
+<!--
+                  <mat-icon>home</mat-icon>
+-->
                   <a href="#contentTwo-1" data-toggle="tab" (click)="request.announcementType = 'SELL'">
+                    <i class="fa fa-home"></i>
                     {{'buy' | translate}}</a>
                 </li>
                 <li>
                   <a href="#contentTwo-1" data-toggle="tab" (click)="request.announcementType = 'RENT'">
+                    <i class="fa fa-hotel"></i>
                     {{'rent' | translate}}</a>
+                </li>
+                <li>
+                  <a href="#contentTwo-1" data-toggle="tab" (click)="request.announcementType = 'AUCTION'">
+                    <i class="fa fa-gavel"></i>
+                    {{'auction' | translate}}</a>
                 </li>
               </ul>
 

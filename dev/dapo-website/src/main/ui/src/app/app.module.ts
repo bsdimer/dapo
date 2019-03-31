@@ -23,11 +23,12 @@ import {
   MatSelectModule,
   MatFormFieldModule,
   MatAutocompleteModule,
-  MatTabsModule, MatButtonModule, MatIconModule
+  MatTabsModule, MatButtonModule, MatIconModule, MatCardModule
 } from "@angular/material";
 import {AdvancedSearchComponent} from './views/advanced-search/advanced-search.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import {InputTextModule} from "primeng/components/inputtext/inputtext";
+import {AutoCompleteModule} from 'primeng/autocomplete';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -59,13 +60,16 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     FormsModule,
     ReactiveFormsModule,
     DapoModule,
+
     MatButtonModule,
     MatInputModule,
     MatIconModule,
     MatTabsModule,
     MatSelectModule,
-    MatCheckboxModule,
     MatFormFieldModule,
+
+    InputTextModule,
+    AutoCompleteModule,
     MatAutocompleteModule,
     ModalModule.forRoot(),
     TranslateModule.forRoot({

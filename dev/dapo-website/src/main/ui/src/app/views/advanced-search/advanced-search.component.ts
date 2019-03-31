@@ -22,16 +22,20 @@ export class AdvancedSearchComponent implements OnInit {
 
   config: any;
   result: Array<RealEstate> = [];
-  countries: Array<string> = [];
+  countries: Array<Country> = [];
+  cities: Array<City> = [];
   properties: Array<RealEstate>;
   propertyTypes: Array<string> = [];
   citiesFormControl = new FormControl();
-  cities: City[] = [];
-  filteredCities: City[];
-  selectedCountry: Country;
-  selectedCity: City;
+
+  selectedCities: Array<City> = [];
+  filteredCities: Array<City> = [];
+
+  selectedCountry: string;
+  filtredCountries: Array<Country> = [];
+
   selectedPropType: string;
-  request:any = {announcementType: 'SELL'};
+  request: any = {announcementType: 'SELL'};
 
   public zoom: number = 8;
 
@@ -58,9 +62,13 @@ export class AdvancedSearchComponent implements OnInit {
       this.filteredCities = result;
     });
     this.nomenclatureService.countries.subscribe(result => {
-      this.cities = result;
-      this.filteredCities = result;
+      this.countries = result;
     });
+  }
+
+  public searchCountry($event) {
+    console.log(event);
+    //this.filtredCountries = this.countries.filter(country => )
   }
 
   public onCityChange(event) {
@@ -68,11 +76,11 @@ export class AdvancedSearchComponent implements OnInit {
   }
 
   public onCitySet($event) {
-    if($event.target.value.length == 0) delete this.request["city"];
+    if ($event.target.value.length == 0) delete this.request["city"];
   }
 
   public _filter(value: string) {
-    this.filteredCities =  this.cities.filter(city => city.name.toLowerCase().includes(value.toLowerCase()));
+    this.filteredCities = this.cities.filter(city => city.name.toLowerCase().includes(value.toLowerCase()));
   }
 
   onBoundsChange($event) {
@@ -83,11 +91,11 @@ export class AdvancedSearchComponent implements OnInit {
     this.zoom = $event;
   }
 
-  cityNameFn(event):string {
+  cityNameFn(event): string {
     return event.name;
   }
 
-  search(){
+  search() {
     this.realEstateService.search(this.request).subscribe(result => this.properties = result);
   }
 
