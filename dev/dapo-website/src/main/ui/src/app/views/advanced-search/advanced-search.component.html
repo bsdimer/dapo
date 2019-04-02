@@ -32,8 +32,25 @@
 
       </div>
       <div class="col-md-9">
-        <div class="map-container">
-
+        <div class="map-container" *ngIf="!!config && !!config.mapConfig" >
+          <agm-map style="height: 400px" [latitude]="config.mapConfig.latitude"
+                   [scrollwheel]="null"
+                   [gestureHandling]="'cooperative'"
+                   [longitude]="config.mapConfig.longitude" [zoom]="zoom"
+                   (boundsChange)="onBoundsChange($event)" (zoomChange)="onZoomChange($event)">
+            <agm-marker-cluster
+              imagePath="https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclustererplus/images/m">
+              <agm-marker *ngFor="let property of properties" iconUrl="/assets/images/favicon.png"
+                          [latitude]="property.point.coordinates[0]"
+                          [longitude]="property.point.coordinates[1]">
+                <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+                  <ng-template>
+                    {{property.description}}
+                  </ng-template>
+                </agm-snazzy-info-window>
+              </agm-marker>
+            </agm-marker-cluster>
+          </agm-map>
         </div>
         <div class="rs_property_categories_wrapper full_grid_wrapper">
           <div class="row">

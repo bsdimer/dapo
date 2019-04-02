@@ -11,6 +11,7 @@ import {ConfigEvent} from "../../modules/core/configuration/config-event.enum";
 import {FormControl} from "@angular/forms";
 import {City} from "../../modules/dapo/model/v1/city";
 import {Country} from "../../modules/dapo/model/v1/country";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-advanced-search',
@@ -69,6 +70,12 @@ export class AdvancedSearchComponent implements OnInit {
   public searchCountry($event) {
     console.log(event);
     //this.filtredCountries = this.countries.filter(country => )
+  }
+
+  onCountryChange(country) {
+    this.nomenclatureService.findCitiesByCountry(country).subscribe(result => {
+      this.filteredCities = result;
+    });
   }
 
   public onCityChange(event) {

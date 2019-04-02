@@ -21,6 +21,10 @@ export const environment = {
     default: "/",
     defaultLang: "en",
     langs: ["bg", "en"]
+  },
+  mapConfig: {
+    latitude: 42.813858,
+    longitude: 25.595982
   }
 };
 

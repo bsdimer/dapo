@@ -21,6 +21,10 @@ export class NomenclatureService {
     return this.http.get<City[]>(environment.apiPrefix + "/nm/cities");
   }
 
+  public findCitiesByCountry(country: Country): Observable<City[]> {
+    return this.http.get<City[]>(environment.apiPrefix + "/nm/cities/findAllByCountry?country=" + country.id);
+  }
+
   public getCountries(): Observable<Country[]> {
     return this.http.get<Country[]>(environment.apiPrefix + "/nm/countries");
   }
