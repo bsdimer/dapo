@@ -1,6 +1,7 @@
 package com.dapo.common.jpa.repository;
 
 import com.dapo.common.jpa.model.City;
+import com.dapo.common.jpa.model.Country;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
@@ -8,4 +9,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 
 public interface CityRepository extends PagingAndSortingRepository<City, Long>{
+    Iterable<City> findAllByCountry(Country country);
 }

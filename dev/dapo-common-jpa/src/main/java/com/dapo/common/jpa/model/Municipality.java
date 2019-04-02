@@ -1,24 +1,32 @@
 package com.dapo.common.jpa.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.vividsolutions.jts.geom.Polygon;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by dimomass on 24.12.18.
  */
 
 @Entity
-@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"city_id" , "name"})})
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"city_id", "name"})})
 public class Municipality extends AbstractEntity implements GeometryArea, NamedEntity {
 
     private String name;
+
     @Column(columnDefinition = "geometry")
     private Polygon area;
+
     @ManyToOne
     @JsonBackReference
     private City city;
+
+    @OneToMany
+    @JsonManagedReference
+    private List<Neighborhood> neighborhoods;
 
     public String getName() {
         return name;
@@ -45,5 +53,13 @@ public class Municipality extends AbstractEntity implements GeometryArea, NamedE
     @Override
     public void setArea(Polygon area) {
         this.area = area;
+    }
+
+    public List<Neighborhood> getNeighborhoods() {
+        return neighborhoods;
+    }
+
+    public void setNeighborhoods(List<Neighborhood> neighborhoods) {
+        this.neighborhoods = neighborhoods;
     }
 }

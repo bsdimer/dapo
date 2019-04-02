@@ -8,6 +8,7 @@ import com.dapo.common.jpa.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -33,6 +34,11 @@ public class NomenclatureController {
     @RequestMapping(method = RequestMethod.GET, value = "/cities")
     public Iterable<City> getCities(){
         return cityRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/cities/findAllByCountry")
+    public Iterable<City> findAllByCountry(@RequestParam(name = "country") Country country){
+        return cityRepository.findAllByCountry(country);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/countries")

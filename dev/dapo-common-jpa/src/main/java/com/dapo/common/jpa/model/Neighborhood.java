@@ -14,11 +14,17 @@ import javax.persistence.*;
 public class Neighborhood extends AbstractEntity implements GeometryArea, NamedEntity {
 
     private String name;
+
     @Column(columnDefinition = "geometry")
     private Polygon area;
+
     @ManyToOne
     @JsonBackReference
     private City city;
+
+    @ManyToOne
+    @JsonBackReference
+    private Municipality municipality;
 
     public String getName() {
         return name;
@@ -45,5 +51,13 @@ public class Neighborhood extends AbstractEntity implements GeometryArea, NamedE
     @Override
     public void setArea(Polygon area) {
         this.area = area;
+    }
+
+    public Municipality getMunicipality() {
+        return municipality;
+    }
+
+    public void setMunicipality(Municipality municipality) {
+        this.municipality = municipality;
     }
 }
