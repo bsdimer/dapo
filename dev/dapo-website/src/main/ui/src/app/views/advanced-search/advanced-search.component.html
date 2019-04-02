@@ -9,14 +9,12 @@
             </ng-template>
             <form #searchForm="ngForm">
               <div class="search-item text-capitalize">
-                <p-autoComplete name="country" [(ngModel)]="selectedCountry" field="name" [suggestions]="filtredCountries" (completeMethod)="searchCountry($event)"
-                                [dropdown]="true"></p-autoComplete>
-                <!--<mat-form-field>
+                <mat-form-field>
                   <mat-select placeholder="{{'country'| translate}}" multiple>
                     <mat-option *ngFor="let country of countries" [value]="country">{{country.name | translate}}
                     </mat-option>
                   </mat-select>
-                </mat-form-field>-->
+                </mat-form-field>
               </div>
             </form>
           </mat-tab>

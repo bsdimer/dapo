@@ -67,10 +67,8 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     MatTabsModule,
     MatSelectModule,
     MatFormFieldModule,
-
-    InputTextModule,
-    AutoCompleteModule,
     MatAutocompleteModule,
+
     ModalModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

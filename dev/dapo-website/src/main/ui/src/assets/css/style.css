@@ -5604,7 +5604,7 @@ main-search-field_
 .map_deal_wrapper {
   float: left;
   width: 100%;
-  background: #34495e;
+  background: rgba(200,200,200,0.5);
 }
 
 .map_form_tab {
@@ -5620,7 +5620,8 @@ main-search-field_
 }
 
 .map_form_tab .nav-tabs > .active > a, .map_form_tab .nav-tabs > .active > a:focus, .map_form_tab .nav-tabs > .active > a:hover {
-  background: #34495e;
+  color: black;
+  background: rgba(180,180,180,1);
 }
 
 .homes_cntnt_right h3 a {
@@ -5629,7 +5630,8 @@ main-search-field_
 }
 
 .map_form_tab .nav-tabs > li > a {
-  background: #3a5066;
+  color: black;
+  background: rgba(200,200,200,1);
 }
 
 .map_form_tab .nav-tabs {
