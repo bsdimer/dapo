@@ -14,6 +14,8 @@ import javax.persistence.*;
 public class SubArea extends AbstractEntity implements GeometryArea, NamedEntity {
 
     private String name;
+    @Column(unique = true)
+    private String code;
     @ManyToOne
     @JsonBackReference
     private City city;
@@ -43,5 +45,14 @@ public class SubArea extends AbstractEntity implements GeometryArea, NamedEntity
 
     public void setArea(Polygon area) {
         this.area = area;
+    }
+
+    @Override
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

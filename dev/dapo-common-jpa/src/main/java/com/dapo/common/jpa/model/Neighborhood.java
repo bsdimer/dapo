@@ -15,6 +15,9 @@ public class Neighborhood extends AbstractEntity implements GeometryArea, NamedE
 
     private String name;
 
+    @Column(unique = true)
+    private String code;
+
     @Column(columnDefinition = "geometry")
     private Polygon area;
 
@@ -59,5 +62,14 @@ public class Neighborhood extends AbstractEntity implements GeometryArea, NamedE
 
     public void setMunicipality(Municipality municipality) {
         this.municipality = municipality;
+    }
+
+    @Override
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

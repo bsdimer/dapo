@@ -18,6 +18,9 @@ public class City extends AbstractEntity implements GeometryArea, NamedEntity {
     @Column(unique = true)
     private String name;
 
+    @Column(unique = true)
+    private String code;
+
     @ManyToOne
     private Country country;
 
@@ -82,5 +85,14 @@ public class City extends AbstractEntity implements GeometryArea, NamedEntity {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    @Override
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

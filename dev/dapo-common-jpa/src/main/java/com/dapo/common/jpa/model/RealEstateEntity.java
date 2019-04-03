@@ -21,12 +21,6 @@ import java.util.*;
 @EntityListeners(AuditingEntityListener.class)
 public class RealEstateEntity extends AbstractAuditableEntity implements PropertyAnnouncement, GeometryPoint, Commentable {
 
-    private RealEstateType type;
-    @Column(length = 3000)
-    private String description;
-    @ElementCollection
-    private List<String> tags = new ArrayList<>();
-    private Float energyEfficiency;
     @NotNull
     @OneToOne
     @JsonSerialize(using = NamedEntitySerializer.class)
@@ -40,6 +34,7 @@ public class RealEstateEntity extends AbstractAuditableEntity implements Propert
     @OneToOne
     @JsonSerialize(using = NamedEntitySerializer.class)
     private SubArea subarea;
+    private RealEstateType type;
     private ConstructionType constructionType;
     private Byte floorCount;
     private Byte floor;
@@ -63,6 +58,11 @@ public class RealEstateEntity extends AbstractAuditableEntity implements Propert
     private Set<PictureEntity> pictures = new HashSet<>();
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Comment> comments = new TreeSet<>();
+    @Column(length = 3000)
+    private String description;
+    @ElementCollection
+    private List<String> tags = new ArrayList<>();
+    private Float energyEfficiency;
 
     public RealEstateType getType() {
         return type;

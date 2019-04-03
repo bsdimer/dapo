@@ -5,4 +5,6 @@ package com.dapo.common.jpa.model;
  */
 public interface NamedEntity extends Identifiable {
     String getName();
+
+    String getCode();
 }
