@@ -1,12 +1,11 @@
 package com.dapo.common.jpa.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.vividsolutions.jts.geom.Polygon;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +15,8 @@ import java.util.List;
 
 @Entity
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"country_id", "code"})})
-public class Municipality extends AbstractEntity implements GeometryArea, NamedEntity {
+public class District extends AbstractEntity implements GeometryArea, NamedEntity {
 
-    @NotBlank
     private String name;
 
     @Column(unique = true)
@@ -28,12 +26,12 @@ public class Municipality extends AbstractEntity implements GeometryArea, NamedE
     private Polygon area;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonIgnore
     private Country country;
 
-    @ManyToOne
-    @JsonBackReference
-    private District district;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Municipality> municipalities = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
     @JsonManagedReference
@@ -47,12 +45,10 @@ public class Municipality extends AbstractEntity implements GeometryArea, NamedE
         this.name = name;
     }
 
-    @Override
     public Polygon getArea() {
         return area;
     }
 
-    @Override
     public void setArea(Polygon area) {
         this.area = area;
     }
@@ -66,16 +62,12 @@ public class Municipality extends AbstractEntity implements GeometryArea, NamedE
         this.code = code;
     }
 
+    public List<Municipality> getMunicipalities() {
+        return municipalities;
+    }
+
     public List<City> getCities() {
         return cities;
-    }
-
-    public District getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(District district) {
-        this.district = district;
     }
 
     public Country getCountry() {

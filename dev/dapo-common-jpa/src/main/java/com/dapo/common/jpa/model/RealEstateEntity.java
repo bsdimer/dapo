@@ -3,6 +3,8 @@ package com.dapo.common.jpa.model;
 import com.bedatadriven.jackson.datatype.jts.serialization.GeometryDeserializer;
 import com.bedatadriven.jackson.datatype.jts.serialization.GeometrySerializer;
 import com.dapo.common.jpa.serializiers.NamedEntitySerializer;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.vividsolutions.jts.geom.Point;
@@ -25,15 +27,19 @@ public class RealEstateEntity extends AbstractAuditableEntity implements Propert
     @OneToOne
     @JsonSerialize(using = NamedEntitySerializer.class)
     private City city;
+
     @OneToOne
     @JsonSerialize(using = NamedEntitySerializer.class)
     private Municipality municipality;
+
     @OneToOne
     @JsonSerialize(using = NamedEntitySerializer.class)
-    private Neighborhood neighborhood;
-    @OneToOne
-    @JsonSerialize(using = NamedEntitySerializer.class)
-    private SubArea subarea;
+    private District district;
+
+    @ManyToOne
+    @JsonIgnore
+    private Country country;
+
     private RealEstateType type;
     private ConstructionType constructionType;
     private Byte floorCount;
@@ -104,20 +110,12 @@ public class RealEstateEntity extends AbstractAuditableEntity implements Propert
         this.municipality = municipality;
     }
 
-    public Neighborhood getNeighborhood() {
-        return neighborhood;
+    public District getDistrict() {
+        return district;
     }
 
-    public void setNeighborhood(Neighborhood neighborhood) {
-        this.neighborhood = neighborhood;
-    }
-
-    public SubArea getSubarea() {
-        return subarea;
-    }
-
-    public void setSubarea(SubArea subarea) {
-        this.subarea = subarea;
+    public void setDistrict(District district) {
+        this.district = district;
     }
 
     public void setPricePerM2(BigDecimal pricePerM2) {
@@ -236,5 +234,13 @@ public class RealEstateEntity extends AbstractAuditableEntity implements Propert
     @Override
     public Set<Comment> getComments() {
         return comments;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }

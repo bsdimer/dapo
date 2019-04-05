@@ -10,7 +10,7 @@
             <form #searchForm="ngForm">
               <div class="search-item text-capitalize">
                 <mat-form-field>
-                  <mat-select placeholder="{{'country'| translate}}" multiple>
+                  <mat-select placeholder="{{'country'| translate}}">
                     <mat-option *ngFor="let country of countries" [value]="country">{{country.name | translate}}
                     </mat-option>
                   </mat-select>

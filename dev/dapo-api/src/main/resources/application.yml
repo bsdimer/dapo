@@ -46,5 +46,13 @@ ribbon:
 spring:
   profiles:
     active: dev
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+      use-new-id-generator-mappings: true
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.spatial.dialect.postgis.PostgisPG95Dialect
   datasource:
-      url: jdbc:postgresql://${DBHOST:localhost}:${DBPORT:5432}/${DBNAME:dapo}
+    url: jdbc:postgresql://${DBHOST:localhost}:${DBPORT:5432}/${DBNAME:dapo}

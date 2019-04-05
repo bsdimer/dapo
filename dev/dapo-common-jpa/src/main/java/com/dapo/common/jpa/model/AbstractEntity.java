@@ -15,9 +15,6 @@ public abstract class AbstractEntity implements Serializable, Cloneable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Version
-    private int version;
-
     public Long getId() {
         return id;
     }

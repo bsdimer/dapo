@@ -1,11 +1,13 @@
 package com.dapo.common.jpa.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.vividsolutions.jts.geom.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -13,31 +15,31 @@ import java.util.Set;
  */
 
 @Entity
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"country_id", "code"})})
 public class City extends AbstractEntity implements GeometryArea, NamedEntity {
 
-    @Column(unique = true)
+    @NotBlank
     private String name;
 
     @Column(unique = true)
     private String code;
 
+    private CityType type;
+
     @ManyToOne
+    @JsonIgnore
     private Country country;
 
     @Column(columnDefinition = "geometry")
     private Polygon area;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Municipality> municipalityList = new HashSet<>();
+    @ManyToOne
+    @JsonBackReference
+    private Municipality municipality;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Neighborhood> neighborhoods = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<SubArea> subAreas = new HashSet<>();
+    @ManyToOne
+    @JsonBackReference
+    private District district;
 
     public String getName() {
         return name;
@@ -45,30 +47,6 @@ public class City extends AbstractEntity implements GeometryArea, NamedEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Set<Municipality> getMunicipalityList() {
-        return municipalityList;
-    }
-
-    public void setMunicipalityList(Set<Municipality> municipalityList) {
-        this.municipalityList = municipalityList;
-    }
-
-    public Set<Neighborhood> getNeighborhoods() {
-        return neighborhoods;
-    }
-
-    public void setNeighborhoods(Set<Neighborhood> neighborhoods) {
-        this.neighborhoods = neighborhoods;
-    }
-
-    public Set<SubArea> getSubAreas() {
-        return subAreas;
-    }
-
-    public void setSubAreas(Set<SubArea> subAreas) {
-        this.subAreas = subAreas;
     }
 
     public Polygon getArea() {
@@ -94,5 +72,29 @@ public class City extends AbstractEntity implements GeometryArea, NamedEntity {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public District getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
+    }
+
+    public Municipality getMunicipality() {
+        return municipality;
+    }
+
+    public void setMunicipality(Municipality municipality) {
+        this.municipality = municipality;
+    }
+
+    public CityType getType() {
+        return type;
+    }
+
+    public void setType(CityType type) {
+        this.type = type;
     }
 }

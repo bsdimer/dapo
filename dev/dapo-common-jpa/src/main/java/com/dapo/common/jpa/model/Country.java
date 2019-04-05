@@ -24,23 +24,12 @@ public class Country extends AbstractEntity implements GeometryArea, NamedEntity
     @NotNull
     private String code;
 
-    @OneToMany
-    private Set<City> cities;
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Set<City> getCities() {
-        return cities;
-    }
-
-    public void setCities(Set<City> cities) {
-        this.cities = cities;
     }
 
     public String getCode() {
