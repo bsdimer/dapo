@@ -8,8 +8,8 @@ import { NomenclatureService } from "../../modules/dapo/service/nomenclature.ser
 import { FormControl } from "@angular/forms";
 import { Observable } from "rxjs";
 import { startWith, map } from "rxjs/internal/operators";
-import { City } from "../../modules/dapo/model/v1/city";
 import { RealEstate } from "../../modules/dapo/model/v1/real-estate";
+import { District } from "../../modules/dapo/model/v1/District";
 
 @Component({
   selector: 'app-home',
@@ -22,10 +22,10 @@ export class HomeComponent implements OnInit {
   config: any;
   properties: Array<RealEstate>;
   propertyTypes: Array<string> = [];
-  citiesFormControl = new FormControl();
-  cities: City[] = [{id:1, name:"asd"}];
-  filteredCities: City[];
-  selectedCity: City;
+  districtsFormControl = new FormControl();
+  districts: District[] = [];
+  filteredDistricts: District[];
+  selectedDistrict: District;
   selectedPropType: string;
   request:any = {announcementType: 'SELL'};
 
@@ -50,22 +50,22 @@ export class HomeComponent implements OnInit {
       this.propertyTypes = result
     });
 
-    this.nomenclatureService.cities.subscribe(result => {
-      this.cities = result;
-      this.filteredCities = result;
+    this.nomenclatureService.districts.subscribe(result => {
+      this.districts = result;
+      this.filteredDistricts = result;
     });
   }
 
-  public onCityChange(event) {
+  public onDistrictChange(event) {
     this._filter(event.target.value);
   }
 
-  public onCitySet($event) {
-    if($event.target.value.length == 0) delete this.request["city"];
+  public onDistrictSet($event) {
+    if($event.target.value.length == 0) delete this.request["district"];
   }
 
   public _filter(value: string) {
-    this.filteredCities =  this.cities.filter(city => city.name.toLowerCase().includes(value.toLowerCase()));
+    this.filteredDistricts =  this.districts.filter(district => district.name.toLowerCase().includes(value.toLowerCase()));
   }
 
   onBoundsChange($event) {
@@ -76,7 +76,7 @@ export class HomeComponent implements OnInit {
     this.zoom = $event;
   }
 
-  cityNameFn(event):string {
+  districtNameFn(event):string {
     return event.name;
   }
 

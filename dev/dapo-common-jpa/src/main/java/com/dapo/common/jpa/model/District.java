@@ -34,7 +34,7 @@ public class District extends AbstractEntity implements GeometryArea, NamedEntit
     private List<Municipality> municipalities = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonIgnore
     private List<City> cities = new ArrayList<>();
 
     public String getName() {

@@ -55,15 +55,12 @@ public class Initializier {
 
     private static final Logger logger = LoggerFactory.getLogger(Initializier.class);
 
-    /*int citiesCount = 5;
-    int subareasCount = 5;
-    int neighborhoodsCount = 5;
-    int municipalitiesCount = 5;
-    int realEstateCount = 1000;*/
+    int realEstateCount = 1000;
 
     @PostConstruct
     @Transactional
     public void initialize() throws ParseException {
+        Lorem lorem = LoremIpsum.getInstance();
         Country country = new Country();
         country.setName("Bulgaria");
         country.setCode("BG");
@@ -83,6 +80,11 @@ public class Initializier {
             District district = new District();
             district.setCode(dParts[0]);
             district.setName(dParts[2]);
+            try {
+                district.setArea(GeoUtils.getRandomPolygon(41, 43, 25, 27));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             district.setCountry(country);
             district = districtRepository.save(district);
             districtMap.put(district.getCode(), district);
@@ -93,6 +95,11 @@ public class Initializier {
             Municipality municipality = new Municipality();
             municipality.setCode(mlineParts[0]);
             municipality.setName(mlineParts[2]);
+            try {
+                municipality.setArea(GeoUtils.getRandomPolygon(41, 43, 25, 27));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             municipality.setCountry(country);
             District district = districtMap.get(municipality.getCode().substring(0, 3));
             municipality.setDistrict(district);
@@ -107,6 +114,11 @@ public class Initializier {
             city.setCode(cityLineParts[0]);
             city.setType(CityType.values()[Integer.parseInt(cityLineParts[1])]);
             city.setName(cityLineParts[2]);
+            try {
+                city.setArea(GeoUtils.getRandomPolygon(41, 43, 25, 27));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             city.setCountry(country);
             city = cityRepository.save(city);
             District district = districtMap.get(cityLineParts[3]);
@@ -118,33 +130,39 @@ public class Initializier {
             cityMap.put(city.getCode(), city);
         });
 
-        /*cityMap.values().forEach(city -> {
-            cityRepository.save(city);
-        });*/
-
-        /*municipalityMap.values().forEach(municipality -> {
-            municipalityRepository.save(municipality);
-        });*/
-
         districtMap.values().forEach(district -> {
             districtRepository.save(district);
         });
 
+        for (int i = 0; i < realEstateCount; i++) {
+            RealEstateEntity realEstateEntity = new RealEstateEntity();
+            City city = (City) cityMap.values().toArray()[RandomUtils.nextInt(0, cityMap.size())];
+            District district = city.getDistrict();
+            Municipality municipality = city.getMunicipality();
+            realEstateEntity.setCity(city);
+            realEstateEntity.setCountry(country);
+            realEstateEntity.setDistrict(district);
+            realEstateEntity.setMunicipality(municipality);
+            realEstateEntity.setType(RealEstateType.values()[RandomUtils.nextInt(0, RealEstateType.values().length)]);
+            realEstateEntity.setAnnouncementType(AnnouncementType.values()[RandomUtils.nextInt(0, AnnouncementType.values().length)]);
+            realEstateEntity.setConstructionType(ConstructionType.values()[RandomUtils.nextInt(0, ConstructionType.values().length)]);
+            realEstateEntity.setCurrency(Currency.EUR);
+            realEstateEntity.setPrice(new BigDecimal(RandomUtils.nextDouble(10000, 10000000)));
+            realEstateEntity.setSize(RandomUtils.nextInt(50, 700));
+            realEstateEntity.setPoint(GeoUtils.getRandomPoint(41, 43, 25, 27));
+            realEstateEntity.setDescription(lorem.getWords(100, 200));
 
+            realEstateJpaRepository.save(realEstateEntity);
 
-
-        /*citiesLines.forEach(cityLine -> {
-            final String[] clineParts = cityLine.split("\t");
-            City municipality = new City();
-            municipality.setCode(mlineParts[0]);
-            municipality.setName(mlineParts[2]);
-            municipality = municipalityRepository.save(municipality);
-            District district = districtMap.get(municipality.getCode().substring(0, 3);
-            municipality.setDistrict(district);
-            district.getMunicipalities().add(municipality);
-            municipalityMap.put(municipality.getCode(), municipality);
-            districtRepository.save(district);
-        });*/
+            Comment comment1 = new Comment();
+            comment1.setText(RandomStringUtils.randomAlphabetic(50));
+            Comment comment2 = new Comment();
+            comment2.setText(RandomStringUtils.randomAlphabetic(50));
+            commentRespository.save(comment1);
+            commentRespository.save(comment2);
+            comment1.getComments().add(comment2);
+            realEstateEntity.getComments().add(comment1);
+        }
     }
 
     private List<String> readFile2Lines(String path) {
